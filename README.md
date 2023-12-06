@@ -93,6 +93,6 @@ Podemos pensar nessas pequenas versões como MVPs (do inglês, *minimum viable p
 | José Fabiano Silva de Andrade          | jfsa@ic.ufal.br       | Desenvolvedor back-end| [radbios](https://github.com/radbios)        |
 | Juliana Karla de Carvalho Melo         | jkcm@ic.ufal.br       | Desenvolvedor front-end| [julianakcm1](https://github.com/julianakcm1)  |
 | Pedro Augusto de Almeida Costa Tenorio| paact@ic.ufal.br       | Desenvolvedor front-end| [PedroAugustoACT](https://github.com/PedroAugustoACT)                                |
-| Welson Deivid dos Santos               | wds@ic.ufal.br        |                       | [welsondeivid](https://github.com/welsondeivid)                                |
+| Welson Deivid dos Santos               | wds@ic.ufal.br        | Dev back-end/PLN                    | [welsondeivid](https://github.com/welsondeivid)                                |
 
 ## 9. STATUS REPORT ##
