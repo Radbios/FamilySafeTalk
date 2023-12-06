@@ -89,7 +89,7 @@ Podemos pensar nessas pequenas versões como MVPs (do inglês, *minimum viable p
 ## 8. EQUIPE ##
 | Nome                                   | E-mail                | Função                | GitHub                                    |
 |----------------------------------------|-----------------------|-----------------------|-------------------------------------------|
-| Ewerton Felipe Silva Marinho           | efsm@ic.ufal.br       | stack                 | [ewertonfelipee](https://github.com/ewertonfelipee)  |
+| Ewerton Felipe Silva Marinho           | efsm@ic.ufal.br       | Desenvolvedor front-end                 | [ewertonfelipee](https://github.com/ewertonfelipee)  |
 | José Fabiano Silva de Andrade          | jfsa@ic.ufal.br       | Desenvolvedor back-end| [radbios](https://github.com/radbios)        |
 | Juliana Karla de Carvalho Melo         | jkcm@ic.ufal.br       | Desenvolvedor front-end| [julianakcm1](https://github.com/julianakcm1)  |
 | Pedro Augusto de Almeida Costa Tenorio| paact@ic.ufal.br       | Desenvolvedor front-end| [PedroAugustoACT](https://github.com/PedroAugustoACT)                                |
