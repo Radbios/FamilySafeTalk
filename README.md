@@ -14,7 +14,11 @@
 
 ## 2. SOBRE O PROJETO ##
 <p align="justify">
-  O FamilySafeTalk é um aplicativo especialmente projetado para atender ao público infantil, destaca-se como uma solução centrada em segurança e controle parental. O cerne do projeto é proporcionar aos responsáveis uma plataforma virtual na qual seus filhos possam interagir de maneira segura, minimizando os riscos de abusos ou aliciamento, ao mesmo tempo em que implementamos medidas proativas para detectar e prevenir possíveis diálogos suspeitos. Diferenciando as funcionalidades entre crianças e responsáveis, o aplicativo estará acessível 24 horas por dia, 7 dias na semana, permitindo um monitoramento contínuo. A interface destinada às crianças contará com recursos básicos de chat, enquanto os responsáveis serão notificados instantaneamente em situações de perigo, proporcionando a capacidade de gerenciar remotamente as configurações de segurança. A acessibilidade é uma prioridade, com o acesso gratuito ao aplicativo, e o custo de desenvolvimento será cuidadosamente calculado para garantir eficiência, segurança robusta e escalabilidade, refletindo no compromisso com a segurança online e o bem-estar das crianças que utilizam o app.
+  O FamilySafeTalk é um aplicativo especialmente projetado para atender ao público infantil, destaca-se como uma solução centrada em segurança e controle parental. O cerne do projeto é proporcionar aos responsáveis uma plataforma virtual na qual seus filhos possam interagir de maneira segura, minimizando os riscos de abusos ou aliciamento, ao mesmo tempo em que implementamos medidas proativas para detectar e prevenir possíveis diálogos suspeitos. 
+<br>  
+Diferenciando as funcionalidades entre crianças e responsáveis, o aplicativo estará acessível 24 horas por dia, 7 dias na semana, permitindo um monitoramento contínuo. A interface destinada às crianças contará com recursos básicos de chat, enquanto os responsáveis serão notificados instantaneamente em situações de perigo, proporcionando a capacidade de gerenciar remotamente as configurações de segurança.
+  <br>
+  A acessibilidade é uma prioridade, com o acesso gratuito ao aplicativo, e o custo de desenvolvimento será cuidadosamente calculado para garantir eficiência, segurança robusta e escalabilidade, refletindo no compromisso com a segurança online e o bem-estar das crianças que utilizam o app.
 </p>
 
 ### PERSONAS ###
