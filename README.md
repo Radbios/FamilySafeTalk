@@ -1,4 +1,10 @@
-# <div align="center">FamilySafeTalk</div> #
+<div align="center">
+
+<img src="https://github.com/Radbios/FamilySafeTalk/assets/54086293/2f1f4aab-0da1-4d64-844a-90eaf07c37f4" width=90 height=90>
+
+# FamilySafeTalk
+
+</div>
 
 ## 1. ESPECIFICAÇÕES DO SISTEMA ##
 
