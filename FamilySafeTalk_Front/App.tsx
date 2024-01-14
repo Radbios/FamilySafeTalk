@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Login from './src/screens/login';
+//import Login from './src/screens/login';
+import Cadastro2 from './src/screens/cadastro/cadastro2';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Login/>
+      <Cadastro2/>
     </View>
   );
 }
