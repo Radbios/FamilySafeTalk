@@ -32,9 +32,9 @@ function Cadastro1() {
           </TitleContainer>
           <SubTitleBox>
             <SubTitleText>CADASTRO</SubTitleText>
-            <SubTitleText>Dados do Responsável:</SubTitleText>
           </SubTitleBox>
           <InputsContainer>
+            <SubTitleText>Dados do Responsável:</SubTitleText>
             <InputsBox placeholder="Nome Completo" />
             <InputsBox placeholder="Telefone Celular" />
             <InputsBox placeholder="E-mail" />

@@ -19,7 +19,7 @@ import {
 import { Image } from "react-native";
 
 function Login() {
-  const navigation = useNavigation<RegisterScreenNavigationProp>()
+  const navigation = useNavigation<RegisterScreenNavigationProp>();
 
   return (
     <GestureHandlerRootView>

@@ -28,6 +28,7 @@ export const TitleContainer = styled(View)`
 export const TitleText = styled(Text)`
   font-size: 30px;
   text-align: center;
+  font-family: "Dosis_600SemiBold";
 `;
 
 export const SubTitleBox = styled(View)`
@@ -40,6 +41,7 @@ export const SubTitleBox = styled(View)`
 export const SubTitleText = styled(Text)`
   font-size: 22px;
   text-align: center;
+  font-family: "Dosis_600SemiBold";
 `;
 
 export const InputsContainer = styled(View)`
@@ -58,10 +60,10 @@ export const InputsBox = styled(TextInput)`
   margin-top: 10px;
   text-align: center;
   font-size: 22px;
+  font-family: "Dosis_400Regular"
 `;
 
 export const ButtonsContainer = styled(View)`
-  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -69,7 +71,6 @@ export const ButtonsContainer = styled(View)`
 `;
 
 export const ButtonBox = styled(TouchableOpacity)`
-  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -82,7 +83,6 @@ export const ButtonBox = styled(TouchableOpacity)`
 
 export const ButtonBox1 = styled(ButtonBox)`
   background-color: #adb5bd;
-  font-size: 50px;
 `;
 
 export const ButtonBox2 = styled(ButtonBox)`
@@ -91,4 +91,5 @@ export const ButtonBox2 = styled(ButtonBox)`
 
 export const ButtonText = styled(Text)`
   font-size: 18px;
+  font-family: "Dosis_600SemiBold";
 `;
