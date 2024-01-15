@@ -129,7 +129,7 @@ Ao desenvolver um sistema de chat dedicado a crianças com monitoramento pelos r
         </ul>
       </td>
       <td>
-        dd/mm/yyyy
+        27/01/2024
       </td>
     </tr>
      <tr>
@@ -169,7 +169,7 @@ Ao desenvolver um sistema de chat dedicado a crianças com monitoramento pelos r
         </ul>
       </td>
       <td>
-        dd/mm/yyyy
+        19/02/2024
       </td>
     </tr>
     <tr>
@@ -215,7 +215,7 @@ Ao desenvolver um sistema de chat dedicado a crianças com monitoramento pelos r
         </ul>
       </td>
       <td>
-        dd/mm/yyyy
+        04/03/2024
       </td>
     </tr>
      <tr>
@@ -258,7 +258,7 @@ Ao desenvolver um sistema de chat dedicado a crianças com monitoramento pelos r
         </ul>
       </td>
       <td>
-        dd/mm/yyyy
+        14/03/2024
       </td>
     </tr>
     <tr>
@@ -298,7 +298,7 @@ Ao desenvolver um sistema de chat dedicado a crianças com monitoramento pelos r
         </ul>
       </td>
       <td>
-        dd/mm/yyyy
+        21/03/2024
       </td>
     </tr>
  
