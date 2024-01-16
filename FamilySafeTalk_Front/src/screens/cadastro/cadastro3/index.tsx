@@ -26,7 +26,7 @@ function Cadastro3() {
       <Container>
         <ContentsBox>
           <TitleContainer>
-            <Image source={require("C:\\Users\\ewert\\Documents\\FamilySafeTalk\\FamilySafeTalk_Front\\assets\\logo.png")} />
+            <Image source={require("../../../../assets/logo.png")} />
             <TitleText>FamilySafeTalk</TitleText>
           </TitleContainer>
           <SubTitleBox>
