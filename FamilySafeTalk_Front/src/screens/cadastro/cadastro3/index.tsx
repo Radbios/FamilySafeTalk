@@ -1,9 +1,5 @@
 import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
-import { LoginScreenNavigationProp } from "../../../@types/navigation";
-
-import { Image } from "react-native";
 import {
   Container,
   ContentsBox,
@@ -13,15 +9,18 @@ import {
   SubTitleText,
   InputsContainer,
   InputsBox,
+  BirthInputsContainer,
+  BirthInputsBox,
+  IconInputsContainer,
+  Icon,
   ButtonsContainer,
   ButtonBox1,
   ButtonBox2,
   ButtonText,
 } from "./styles";
+import { Image } from "react-native";
 
-function Cadastro1() {
-  const navigation = useNavigation<LoginScreenNavigationProp>();
-
+function Cadastro3() {
   return (
     <GestureHandlerRootView>
       <Container>
@@ -31,20 +30,23 @@ function Cadastro1() {
             <TitleText>FamilySafeTalk</TitleText>
           </TitleContainer>
           <SubTitleBox>
-            <SubTitleText>CADASTRO</SubTitleText>
+            <SubTitleText>CADASTRO DE DEPENDENTE:</SubTitleText>
           </SubTitleBox>
           <InputsContainer>
-            <SubTitleText>Dados do Responsável:</SubTitleText>
             <InputsBox placeholder="Nome Completo" />
-            <InputsBox placeholder="Telefone Celular" />
             <InputsBox placeholder="E-mail" />
             <InputsBox placeholder="Senha" />
+            <InputsBox placeholder="Parentesco" />
           </InputsContainer>
+          <BirthInputsContainer>
+            <BirthInputsBox placeholder="Data de Nascimento" />
+          </BirthInputsContainer>
+          <IconInputsContainer>
+            <Icon source={require('../../../../assets/icons8-calendário-32.png')} />
+          </IconInputsContainer>
           <ButtonsContainer>
             <ButtonBox1>
-              <ButtonText onPress={() => navigation.navigate("Login")}>
-                Voltar
-              </ButtonText>
+              <ButtonText>Voltar</ButtonText>
             </ButtonBox1>
             <ButtonBox2>
               <ButtonText>Próximo</ButtonText>
@@ -56,4 +58,4 @@ function Cadastro1() {
   );
 }
 
-export default Cadastro1;
+export default Cadastro3;
