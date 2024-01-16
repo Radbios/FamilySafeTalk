@@ -23,7 +23,7 @@ function Cadastro2() {
       <Container>
         <ContentsBox>
           <TitleContainer>
-            <Image source={require("assets\\logo.png")} />
+            <Image source={require("../../../../assets/logo.png")} />
             <TitleText>FamilySafeTalk</TitleText>
           </TitleContainer>
           <SubTitleBox>
@@ -31,7 +31,7 @@ function Cadastro2() {
           </SubTitleBox>
           <ButtonsContainer>
             <ButtonBox3>
-              <Image source={require("assets\\pluscircle.png")} />
+              <Image source={require("../../../../assets/pluscircle.png")} />
               <ButtonText>Adicionar Dependente</ButtonText>
             </ButtonBox3>
           </ButtonsContainer>
