@@ -1,14 +1,7 @@
-// types.ts
-import { RouteProp } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-
-export type RootStackParamList = {
+export type NavigationParamList = {
   Login: undefined;
   Register: undefined;
+  Register2: undefined;
+  Register3: undefined;
+  //Adicionem aqui mais telas sempre que precisar
 };
-
-export type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
-export type LoginScreenRouteProp = RouteProp<RootStackParamList, 'Login'>;
-
-export type RegisterScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Register'>;
-export type RegisterScreenRouteProp = RouteProp<RootStackParamList, 'Register'>;

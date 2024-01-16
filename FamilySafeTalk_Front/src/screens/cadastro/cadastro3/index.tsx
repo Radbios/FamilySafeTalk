@@ -1,5 +1,6 @@
 import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import useAppRoute from "../../../routes/hooks/types";
 import {
   Container,
   ContentsBox,
@@ -21,6 +22,7 @@ import {
 import { Image } from "react-native";
 
 function Cadastro3() {
+  const { navigate } = useAppRoute().navigation;
   return (
     <GestureHandlerRootView>
       <Container>
@@ -40,13 +42,17 @@ function Cadastro3() {
           </InputsContainer>
           <BirthInputsContainer>
             <BirthInputsBox placeholder="Data de Nascimento" />
+            <IconInputsContainer>
+              <Icon
+                source={require("../../../../assets/icons8-calendário-32.png")}
+              />
+            </IconInputsContainer>
           </BirthInputsContainer>
-          <IconInputsContainer>
-            <Icon source={require('../../../../assets/icons8-calendário-32.png')} />
-          </IconInputsContainer>
           <ButtonsContainer>
             <ButtonBox1>
-              <ButtonText>Voltar</ButtonText>
+              <ButtonText onPress={() => navigate("Register2")}>
+                Voltar
+              </ButtonText>
             </ButtonBox1>
             <ButtonBox2>
               <ButtonText>Próximo</ButtonText>
