@@ -80,6 +80,17 @@ export const BirthInputsBox = styled(TextInput)`
   font-size: 22px;
 `;
 
+export const IconInputsContainer = styled(View)`
+  width: 90%;
+  margin-top: -48px;
+  align-items: flex-end;
+`;
+
+export const Icon = styled(Image)`
+  width: 45px;
+  height: 45px;
+`;
+
 export const ButtonsContainer = styled(View)`
   display: flex;
   align-items: center;

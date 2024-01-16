@@ -11,6 +11,8 @@ import {
   InputsBox,
   BirthInputsContainer,
   BirthInputsBox,
+  IconInputsContainer,
+  Icon,
   ButtonsContainer,
   ButtonBox1,
   ButtonBox2,
@@ -39,6 +41,9 @@ function Cadastro3() {
           <BirthInputsContainer>
             <BirthInputsBox placeholder="Data de Nascimento" />
           </BirthInputsContainer>
+          <IconInputsContainer>
+            <Icon source={require('C:\\Users\\ewert\\Documents\\FamilySafeTalk\\FamilySafeTalk_Front\\assets\\icons8-calendário-32.png')} />
+          </IconInputsContainer>
           <ButtonsContainer>
             <ButtonBox1>
               <ButtonText>Voltar</ButtonText>
