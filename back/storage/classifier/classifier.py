@@ -48,7 +48,7 @@ def classificar(texto, model):
 
    return result[0]
 
-msg = "Você já experimentou cozinhar algo novo? Quer trocar receitas?"
+msg = "Podemos conversar? Mas não pode falar pros seus pais"
 model = carregar_modelo()
 
 msg = pre_process(msg)
