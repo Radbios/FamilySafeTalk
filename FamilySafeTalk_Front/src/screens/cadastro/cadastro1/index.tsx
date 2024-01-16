@@ -33,7 +33,7 @@ function Cadastro1() {
             <InputsBox placeholder="Nome Completo" />
             <InputsBox placeholder="Telefone Celular" />
             <InputsBox placeholder="E-mail" />
-            <InputsBox placeholder="CPF" />
+            <InputsBox placeholder="Senha" />
           </InputsContainer>
           <ButtonsContainer>
             <ButtonBox1>
