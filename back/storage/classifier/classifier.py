@@ -18,6 +18,7 @@ def tokenizar(texto):
 
 def stop_words(tokens):
   stop_words = set(stopwords.words('portuguese'))
+  stop_words.discard('não')
   tokens_sem_stopwords = [token for token in tokens if token.lower() not in stop_words]
   #print(tokens_sem_stopwords)
   return tokens_sem_stopwords
