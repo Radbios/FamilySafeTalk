@@ -18,5 +18,7 @@ class UserSeeder extends Seeder
             "email"=> "admin@gmail.com",
             "password"=> bcrypt("admin"),
         ]);
+
+        User::factory(10)->create();
     }
 }
