@@ -42,7 +42,7 @@ function Cadastro3() {
             <BirthInputsBox placeholder="Data de Nascimento" />
           </BirthInputsContainer>
           <IconInputsContainer>
-            <Icon source={require('C:\\Users\\ewert\\Documents\\FamilySafeTalk\\FamilySafeTalk_Front\\assets\\icons8-calendário-32.png')} />
+            <Icon source={require('../../../../assets/icons8-calendário-32.png')} />
           </IconInputsContainer>
           <ButtonsContainer>
             <ButtonBox1>
