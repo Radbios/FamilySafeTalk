@@ -42,7 +42,7 @@ export const SubTitleText = styled(Text)`
   font-size: 29px;
   font-family: "Dosis_600SemiBold";
   text-align: center;
-  marginTop: 50px
+  margintop: 50px;
 `;
 
 export const ButtonsContainer = styled(View)`
@@ -50,36 +50,14 @@ export const ButtonsContainer = styled(View)`
   justify-content: flex-end;
   text-align: center;
   flex-direction: row;
-`;
-
-export const ButtonBoxAddDep = styled(TouchableOpacity)`
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-top: 1px;
-  margin-bottom: 200px;
-  margin-horizontal: 10px;
-  padding-vertical: 35px;
-  width: 85%;
-  border-radius: 13px;
-`;
-
-export const ButtonBox3 = styled(ButtonBoxAddDep)`
-  background-color: #A0C4FF;
-  font-size: 50px;
-`;
-
-export const ButtonText = styled(Text)`
-  font-size: 29px;
-  font-family: "Dosis_600SemiBold";
+  margin-top: 10%;
 `;
 
 export const ButtonBox = styled(TouchableOpacity)`
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 50px;
-  margin-bottom: 90px;
+  margin-bottom: 9%;
   margin-horizontal: 10px;
   padding-vertical: 10px;
   width: 40%;
@@ -95,7 +73,7 @@ export const ButtonBox2 = styled(ButtonBox)`
   background-color: #ffadad;
 `;
 
-export const ButtonText2 = styled(Text)`
+export const ButtonText = styled(Text)`
   font-size: 18px;
   font-family: "Dosis_600SemiBold";
 `;

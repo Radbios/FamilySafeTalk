@@ -11,11 +11,10 @@ import {
   ButtonsContainer,
   ButtonBox1,
   ButtonBox2,
-  ButtonBox3,
   ButtonText,
-  ButtonText2,
 } from "./styles";
 import { Image } from "react-native";
+import CardDependents from "../../../components/cardDependents";
 
 function Cadastro2() {
   const { navigate } = useAppRoute().navigation;
@@ -30,22 +29,17 @@ function Cadastro2() {
           <SubTitleBox>
             <SubTitleText>CADASTRO DE DEPENDENTE</SubTitleText>
           </SubTitleBox>
-          <ButtonsContainer>
-            <ButtonBox3>
-              <Image source={require("../../../../assets/pluscircle.png")} />
-              <ButtonText>Adicionar Dependente</ButtonText>
-            </ButtonBox3>
-          </ButtonsContainer>
+          <CardDependents />
           <ButtonsContainer>
             <ButtonBox1>
-              <ButtonText2 onPress={() => navigate("Register")}>
+              <ButtonText onPress={() => navigate("Register")}>
                 Voltar
-              </ButtonText2>
+              </ButtonText>
             </ButtonBox1>
             <ButtonBox2>
-              <ButtonText2 onPress={() => navigate("Register3")}>
+              <ButtonText onPress={() => navigate("Register3")}>
                 Próximo
-              </ButtonText2>
+              </ButtonText>
             </ButtonBox2>
           </ButtonsContainer>
         </ContentsBox>
