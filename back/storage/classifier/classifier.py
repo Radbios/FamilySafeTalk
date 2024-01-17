@@ -1,10 +1,9 @@
 #Pre-Process
-import nltk
+import import_data
 import spacy
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-#nltk.download('stopwords')
-#nltk.download('punkt')
+
 nlp = spacy.load("pt_core_news_sm", disable=["tokenizer", "parser", "ner"])
 
 #Modelo
