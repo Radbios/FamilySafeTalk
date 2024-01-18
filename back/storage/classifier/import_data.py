@@ -6,12 +6,9 @@ from pathlib import Path
 try:
     import pipenv
 except ImportError:
-    # Se o módulo pipenv não estiver instalado, instale-o
     subprocess.run(["pip", "install", "pipenv"])
 
-# Verificar se o arquivo Pipfile existe (indicando que o ambiente virtual está configurado)
 if not Path("Pipfile").is_file():
-    # Se o Pipfile não existir, execute o comando para criar o ambiente virtual e instalar as dependências
     subprocess.run(["pipenv", "install"])
 
 def download_spacy_data():
