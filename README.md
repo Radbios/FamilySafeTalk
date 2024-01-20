@@ -129,7 +129,7 @@ Ao desenvolver um sistema de chat dedicado a crianças com monitoramento pelos r
         </ul>
       </td>
       <td>
-        dd/mm/yyyy
+        27/01/2024
       </td>
     </tr>
      <tr>
@@ -169,7 +169,7 @@ Ao desenvolver um sistema de chat dedicado a crianças com monitoramento pelos r
         </ul>
       </td>
       <td>
-        dd/mm/yyyy
+        19/02/2024
       </td>
     </tr>
     <tr>
@@ -215,7 +215,7 @@ Ao desenvolver um sistema de chat dedicado a crianças com monitoramento pelos r
         </ul>
       </td>
       <td>
-        dd/mm/yyyy
+        04/03/2024
       </td>
     </tr>
      <tr>
@@ -258,7 +258,7 @@ Ao desenvolver um sistema de chat dedicado a crianças com monitoramento pelos r
         </ul>
       </td>
       <td>
-        dd/mm/yyyy
+        14/03/2024
       </td>
     </tr>
     <tr>
@@ -298,7 +298,7 @@ Ao desenvolver um sistema de chat dedicado a crianças com monitoramento pelos r
         </ul>
       </td>
       <td>
-        dd/mm/yyyy
+        21/03/2024
       </td>
     </tr>
  
@@ -336,7 +336,7 @@ Ao desenvolver um sistema de chat dedicado a crianças com monitoramento pelos r
 |----------------------------------------|-----------------------|-----------------------|-------------------------------------------|
 | Ewerton Felipe Silva Marinho           | efsm@ic.ufal.br       | Desenvolvedor front-end                 | [ewertonfelipee](https://github.com/ewertonfelipee)  |
 | José Fabiano Silva de Andrade          | jfsa@ic.ufal.br       | Desenvolvedor back-end| [radbios](https://github.com/radbios)        |
-| Juliana Karla de Carvalho Melo         | jkcm@ic.ufal.br       | Desenvolvedor front-end| [julianakcm1](https://github.com/julianakcm1)  |
+| Juliana Karla de Carvalho Melo         | jkcm@ic.ufal.br       | Design| [julianakcm1](https://github.com/julianakcm1)  |
 | Pedro Augusto de Almeida Costa Tenorio| paact@ic.ufal.br       | Desenvolvedor front-end| [PedroAugustoACT](https://github.com/PedroAugustoACT)                                |
 | Welson Deivid dos Santos               | wds@ic.ufal.br        | Dev back-end/PLN                    | [welsondeivid](https://github.com/welsondeivid)                                |
 
