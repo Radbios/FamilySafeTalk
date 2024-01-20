@@ -1,6 +1,6 @@
 import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import useAppRoute from "../../routes/hooks/types";
+import useAppRoute from "../../../routes/hooks/types";
 import {
   Container,
   ContentsBox,
@@ -8,43 +8,38 @@ import {
   TitleText,
   SubTitleBox,
   SubTitleText,
-  InputsContainer,
-  InputsBox,
   ButtonsContainer,
   ButtonBox1,
   ButtonBox2,
   ButtonText,
 } from "./styles";
 import { Image } from "react-native";
+import CardDependents from "../../../components/cardDependents";
 
-function Login() {
-  const {navigate} = useAppRoute().navigation;
-
+function Cadastro2() {
+  const { navigate } = useAppRoute().navigation;
   return (
     <GestureHandlerRootView>
       <Container>
         <ContentsBox>
           <TitleContainer>
-            <TitleText>Bem-vindo(a) ao FamilySafeTalk!</TitleText>
+            <Image source={require("../../../../assets/logo.png")} />
+            <TitleText>FamilySafeTalk</TitleText>
           </TitleContainer>
-          <Image source={require("../../../assets/familia1.png")} />
           <SubTitleBox>
-            <SubTitleText>
-              Para iniciar, faça o login ou cadastre-se:
-            </SubTitleText>
+            <SubTitleText>CADASTRO DE DEPENDENTE</SubTitleText>
           </SubTitleBox>
-          <InputsContainer>
-            <InputsBox placeholder="Login" />
-            <InputsBox placeholder="Senha" />
-          </InputsContainer>
+          <CardDependents />
           <ButtonsContainer>
             <ButtonBox1>
               <ButtonText onPress={() => navigate("Register")}>
-                Cadastrar
+                Voltar
               </ButtonText>
             </ButtonBox1>
             <ButtonBox2>
-              <ButtonText>Entrar</ButtonText>
+              <ButtonText onPress={() => navigate("Register3")}>
+                Próximo
+              </ButtonText>
             </ButtonBox2>
           </ButtonsContainer>
         </ContentsBox>
@@ -53,4 +48,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Cadastro2;

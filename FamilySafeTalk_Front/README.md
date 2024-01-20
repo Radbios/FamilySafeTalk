@@ -11,6 +11,9 @@
 Entre na pasta do front: <br>
 ```cd FamilySafeTalk_Front```
 
+Para baixar as dependências, execute o comando: <br>
+```npm install`
+
 Execute o comando: <br>
 ```npm start```
 
