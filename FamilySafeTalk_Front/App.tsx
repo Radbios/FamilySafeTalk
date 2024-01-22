@@ -4,6 +4,8 @@ import { useFonts } from "expo-font";
 import { Dosis_400Regular, Dosis_600SemiBold } from "@expo-google-fonts/dosis";
 
 import Routes from "./src/routes";
+import { AddContact } from "./src/screens/telas_config/Config_Responsavel/Config_tab/config";
+import BottomTabNavigator from "./src/screens/telas_config/Config_Responsavel";
 
 export default function App() {
 
@@ -20,6 +22,14 @@ export default function App() {
     return (
       <View style={styles.container}>
         <StatusBar style="auto" />
-        <Routes />
+        <Routes /> 
       </View>
     );
+}
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
