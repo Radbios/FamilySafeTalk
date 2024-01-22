@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {Feather} from '@expo/vector-icons';
 import { Conversas } from '../Config_Responsavel/conversas';
 import { Contatos } from '../Config_Responsavel/contatos';
-import { Configs } from '../Config_Responsavel/config';
+import { AddContact } from './Config_tab/config';
 //import { Image } from "react-native";
 const Tab = createBottomTabNavigator();
 
@@ -42,7 +42,7 @@ export function BottomTabNavigator () {
 
         <Tab.Screen
           name="Configurações"
-          component={Configs}
+          component={AddContact}
           options={{
             tabBarIcon:({ size, color }) => <Feather name="settings" size={size} color={color}/>
           }} 
