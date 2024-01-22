@@ -1,6 +1,5 @@
 import styled from "styled-components/native";
-import { View, Text, Image, TouchableOpacity } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { View, Text, TouchableOpacity } from "react-native";
 
 export const Container = styled(View)`
   flex-grow: 1;
@@ -29,6 +28,7 @@ export const TitleContainer = styled(View)`
 export const TitleText = styled(Text)`
   font-size: 25px;
   text-align: center;
+  font-family: "Dosis_400Regular";
 `;
 
 export const SubTitleBox = styled(View)`
@@ -40,51 +40,28 @@ export const SubTitleBox = styled(View)`
 
 export const SubTitleText = styled(Text)`
   font-size: 29px;
+  font-family: "Dosis_600SemiBold";
   text-align: center;
-  marginTop: 50px
+  margintop: 50px;
 `;
 
 export const ButtonsContainer = styled(View)`
-  display: flex;
   align-items: center;
   justify-content: flex-end;
   text-align: center;
   flex-direction: row;
-`;
-
-export const ButtonBoxAddDep = styled(TouchableOpacity)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-top: 1px;
-  margin-bottom: 200px;
-  margin-horizontal: 10px;
-  padding-vertical: 35px;
-  width: 85%;
-  border-radius: 13px;
-`;
-
-export const ButtonBox3 = styled(ButtonBoxAddDep)`
-  background-color: #A0C4FF;
-  font-size: 50px;
-`;
-
-export const ButtonText = styled(Text)`
-  font-size: 29px;
+  margin-top: 10%;
 `;
 
 export const ButtonBox = styled(TouchableOpacity)`
-  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 50px;
-  margin-bottom: 90px;
+  margin-bottom: 9%;
   margin-horizontal: 10px;
-  padding-vertical: 15px;
-  width: 42%;
-  border-radius: 13px;
+  padding-vertical: 10px;
+  width: 40%;
+  border-radius: 10px;
 `;
 
 export const ButtonBox1 = styled(ButtonBox)`
@@ -96,6 +73,7 @@ export const ButtonBox2 = styled(ButtonBox)`
   background-color: #ffadad;
 `;
 
-export const ButtonText2 = styled(Text)`
+export const ButtonText = styled(Text)`
   font-size: 18px;
+  font-family: "Dosis_600SemiBold";
 `;

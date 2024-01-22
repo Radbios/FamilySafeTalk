@@ -29,6 +29,7 @@ export const TitleContainer = styled(View)`
 export const TitleText = styled(Text)`
   font-size: 25px;
   text-align: center;
+  font-family: "Dosis_400Regular";
 `;
 
 export const SubTitleBox = styled(View)`
@@ -40,6 +41,7 @@ export const SubTitleBox = styled(View)`
 
 export const SubTitleText = styled(Text)`
   font-size: 29px;
+  font-family: "Dosis_600SemiBold";
   text-align: center;
   marginTop: 50px
 `;
@@ -60,6 +62,7 @@ export const InputsBox = styled(TextInput)`
   margin-top: 25px;
   text-align: center;
   font-size: 22px;
+  font-family: "Dosis_400Regular";
 `;
 
 export const BirthInputsContainer = styled(View)`
@@ -78,11 +81,13 @@ export const BirthInputsBox = styled(TextInput)`
   margin-top: 25px;
   text-align: center;
   font-size: 22px;
+  font-family: "Dosis_400Regular";
 `;
 
 export const IconInputsContainer = styled(View)`
   width: 90%;
   margin-top: -48px;
+  margin-left: 4%;
   align-items: flex-end;
 `;
 
@@ -107,9 +112,9 @@ export const ButtonBox = styled(TouchableOpacity)`
   margin-top: 50px;
   margin-bottom: 90px;
   margin-horizontal: 10px;
-  padding-vertical: 15px;
-  width: 42%;
-  border-radius: 13px;
+  padding-vertical: 10px;
+  width: 40%;
+  border-radius: 10px;
 `;
 
 export const ButtonBox1 = styled(ButtonBox)`
@@ -123,4 +128,5 @@ export const ButtonBox2 = styled(ButtonBox)`
 
 export const ButtonText = styled(Text)`
   font-size: 18px;
+  font-family: "Dosis_600SemiBold";
 `;

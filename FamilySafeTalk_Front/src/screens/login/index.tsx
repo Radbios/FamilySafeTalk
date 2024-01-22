@@ -1,7 +1,6 @@
 import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
-import { RegisterScreenNavigationProp } from "../../@types/navigation";
+import useAppRoute from "../../routes/hooks/types";
 import {
   Container,
   ContentsBox,
@@ -19,7 +18,7 @@ import {
 import { Image } from "react-native";
 
 function Login() {
-  const navigation = useNavigation<RegisterScreenNavigationProp>();
+  const {navigate} = useAppRoute().navigation;
 
   return (
     <GestureHandlerRootView>
@@ -40,7 +39,7 @@ function Login() {
           </InputsContainer>
           <ButtonsContainer>
             <ButtonBox1>
-              <ButtonText onPress={() => navigation.navigate("Register")}>
+              <ButtonText onPress={() => navigate("Register")}>
                 Cadastrar
               </ButtonText>
             </ButtonBox1>

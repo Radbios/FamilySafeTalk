@@ -1,6 +1,5 @@
 import styled from "styled-components/native";
-import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { View, Text, TouchableOpacity, TextInput } from "react-native";
 
 export const Container = styled(View)`
   flex-grow: 1;
@@ -60,7 +59,7 @@ export const InputsBox = styled(TextInput)`
   margin-top: 10px;
   text-align: center;
   font-size: 22px;
-  font-family: "Dosis_400Regular"
+  font-family: "Dosis_400Regular";
 `;
 
 export const ButtonsContainer = styled(View)`

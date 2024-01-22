@@ -1,8 +1,6 @@
 import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
-import { LoginScreenNavigationProp } from "../../../@types/navigation";
-
+import useAppRoute from "../../../routes/hooks/types";
 import { Image } from "react-native";
 import {
   Container,
@@ -20,7 +18,7 @@ import {
 } from "./styles";
 
 function Cadastro1() {
-  const navigation = useNavigation<LoginScreenNavigationProp>();
+  const { navigate } = useAppRoute().navigation;
 
   return (
     <GestureHandlerRootView>
@@ -42,12 +40,14 @@ function Cadastro1() {
           </InputsContainer>
           <ButtonsContainer>
             <ButtonBox1>
-              <ButtonText onPress={() => navigation.navigate("Login")}>
+              <ButtonText onPress={() => navigate("Login")}>
                 Voltar
               </ButtonText>
             </ButtonBox1>
             <ButtonBox2>
-              <ButtonText>Próximo</ButtonText>
+              <ButtonText onPress={() => navigate("Register2")}>
+                Próximo
+              </ButtonText>
             </ButtonBox2>
           </ButtonsContainer>
         </ContentsBox>
