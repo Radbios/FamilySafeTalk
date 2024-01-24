@@ -4,8 +4,7 @@ import { useFonts } from "expo-font";
 import { Dosis_400Regular, Dosis_600SemiBold } from "@expo-google-fonts/dosis";
 
 import Routes from "./src/routes";
-import { AddContact } from "./src/screens/telas_config/Config_Responsavel/Config_tab/config";
-import BottomTabNavigator from "./src/screens/telas_config/Config_Responsavel";
+import BottomTabNavigator from "./src/components/cardDependents/BottomTab";
 
 export default function App() {
 
