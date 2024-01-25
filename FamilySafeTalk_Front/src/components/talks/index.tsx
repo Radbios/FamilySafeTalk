@@ -1,6 +1,6 @@
 import { View } from "react-native";
 
-export function Conversas() {
+export default function Conversas() {
   return (
     <View
       style={{
