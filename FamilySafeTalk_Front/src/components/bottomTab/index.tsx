@@ -12,13 +12,14 @@ export function BottomTabNavigator() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          tabBarLabelStyle: { fontSize: 14 },
+          tabBarLabelStyle: { fontSize: 14, fontFamily: "Dosis_400Regular"},
           tabBarItemStyle: { width: 100 },
           tabBarStyle: { backgroundColor: "#a0c4ff" },
           tabBarInactiveTintColor: "black",
           headerTitleAlign: "center",
           headerStyle: { backgroundColor: "#a0c4ff" },
           headerStatusBarHeight: 30,
+          headerTitleStyle: {fontSize: 20, fontFamily: "Dosis_400Regular"}
         }}
       >
         <Tab.Screen
