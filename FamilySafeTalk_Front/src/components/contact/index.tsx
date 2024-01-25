@@ -1,14 +1,14 @@
-import { View } from "react-native";
+import { View, Image } from "react-native";
+import { ButtonContainer, Container } from "./styles";
+import CardContacts from "../cardContacts";
 
-export function Contatos() {
+export default function Contatos() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 32,
-      }}
-    ></View>
+    <Container>
+      <ButtonContainer>
+        <Image source={require("../../../assets/plusicon.png")} />
+      </ButtonContainer>
+      <CardContacts />
+    </Container>
   );
 }
