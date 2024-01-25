@@ -16,7 +16,7 @@ import {
 import { Image } from "react-native";
 import CardDependents from "../../../components/cardDependents";
 
-function Cadastro2() {
+export default function Cadastro2() {
   const { navigate } = useAppRoute().navigation;
   return (
     <GestureHandlerRootView>
@@ -48,4 +48,3 @@ function Cadastro2() {
   );
 }
 
-export default Cadastro2;
