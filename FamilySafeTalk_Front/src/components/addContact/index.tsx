@@ -14,7 +14,7 @@ import {
   TitleText,
 } from "./styles";
 
-export function AddContact() {
+export default function AddContact() {
   const handleArrowPress = () => {};
 
   const handleCheckPress = () => {};
@@ -79,4 +79,4 @@ export function AddContact() {
   );
 }
 
-export default AddContact;
+;

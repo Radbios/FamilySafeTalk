@@ -8,7 +8,7 @@ import SeeContact from "../seeContact";
 import { red300 } from "react-native-paper/lib/typescript/styles/themes/v2/colors";
 const Tab = createBottomTabNavigator();
 
-export function BottomTabNavigator() {
+export  default function BottomTabNavigator() {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -69,4 +69,4 @@ export function BottomTabNavigator() {
   );
 }
 
-export default BottomTabNavigator;
+;

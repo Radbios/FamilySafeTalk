@@ -21,7 +21,7 @@ import {
 } from "./styles";
 import { Image } from "react-native";
 
-function Cadastro3() {
+export default function Cadastro3() {
   const { navigate } = useAppRoute().navigation;
   return (
     <GestureHandlerRootView>
@@ -64,4 +64,3 @@ function Cadastro3() {
   );
 }
 
-export default Cadastro3;
