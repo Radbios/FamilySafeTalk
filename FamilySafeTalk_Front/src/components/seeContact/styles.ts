@@ -25,44 +25,43 @@ export const TitleContainer = styled(View)`
 export const TitleText = styled(Text)`
   font-size: 30px;
   text-align: center;
-  font-family: "Dosis_400Regular"
+  font-family: "Dosis_400Regular";
 `;
 
 export const ButtonsContainer = styled(View)`
   align-items: center;
   justify-content: center;
   width: 92%;
-  `;
-  
-export const ButtonBox1 = styled(TouchableOpacity)`
-  width: 110%;
-  padding-vertical: 3%;
-  margin-top: 3%;
-  background-color: #CED7E1;
-  border-radius: 10px;
 `;
 
 export const ButtonBox = styled(TouchableOpacity)`
   width: 110%;
   padding-vertical: 1%;
   margin-top: 2%;
-  background-color: #CED7E1;
+  background-color: #ced7e1;
   border-radius: 10px;
   font-family: "Dosis_400Regular";
 `;
 
-export const ButtonTextPhone = styled(Text)`
-  padding-vertical: 9%;
-  margin-top: -10%;
-  margin-left: 3%;
-  font-family: "Dosis_400Regular";
+export const ButtonBox1 = styled(TouchableOpacity)`
+  width: 110%;
+  padding: 3%;
+  margin-top: 3%;
+  background-color: #ced7e1;
+  border-radius: 10px;
+  align-items: flex-start;
+  justify-content: center;
 `;
 
-export const ButtonTextMail = styled(Text)`
-  padding-vertical: 9%;
-  margin-top: -10%;
-  margin-left: 3%;
+export const PlaceholderTextButton = styled(Text)`
   font-family: "Dosis_400Regular";
+
+`;
+export const ButtonText = styled(Text)`
+  font-family: "Dosis_400Regular";
+  font-size: 15px;
+  color: #004ECC;
+  align-self: center;
 `;
 
 export const ButtonTextMSG = styled(Text)`

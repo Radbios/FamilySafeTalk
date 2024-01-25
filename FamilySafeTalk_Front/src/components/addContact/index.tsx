@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
-import { IconButton } from 'react-native-paper';
-import { Feather } from '@expo/vector-icons';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import React from "react";
+import { View, TouchableOpacity } from "react-native";
+import { IconButton } from "react-native-paper";
+import { Feather } from "@expo/vector-icons";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import {
   InputsBox,
@@ -12,17 +12,12 @@ import {
   SubTitleText,
   TitleContainer,
   TitleText,
-} from './styles';
+} from "./styles";
 
 export function AddContact() {
+  const handleArrowPress = () => {};
 
-  const handleArrowPress = () => {
-
-  };
-
-  const handleCheckPress = () => {
-
-  };
+  const handleCheckPress = () => {};
 
   return (
     <GestureHandlerRootView>
@@ -33,7 +28,7 @@ export function AddContact() {
               <IconButton
                 icon={() => <Feather name="plus" size={54} color="#FF69B4" />}
                 style={{
-                  backgroundColor: '#ffb6c1',
+                  backgroundColor: "#ffb6c1",
                   borderRadius: 8,
                   padding: 8,
                   width: 80,
@@ -50,24 +45,28 @@ export function AddContact() {
             <InputsBox placeholder="Telefone Celular" />
             <InputsBox placeholder="E-mail" />
           </InputsContainer>
-          <View 
-            style={{ 
-              position: 'absolute', 
-              left: 6, 
+          <View
+            style={{
+              position: "absolute",
+              left: 6,
               bottom: -60,
-            }}>
+            }}
+          >
             <TouchableOpacity onPress={handleArrowPress}>
               <IconButton
-                icon={() => <Feather name="arrow-left" size={30} color="#000" />}
+                icon={() => (
+                  <Feather name="arrow-left" size={30} color="#000" />
+                )}
               />
             </TouchableOpacity>
           </View>
-          <View 
-            style={{ 
-              position: 'absolute', 
-              right: 6, 
+          <View
+            style={{
+              position: "absolute",
+              right: 6,
               bottom: -60,
-            }}>
+            }}
+          >
             <TouchableOpacity onPress={handleCheckPress}>
               <IconButton
                 icon={() => <Feather name="check" size={30} color="#4169E1" />}
