@@ -1,10 +1,11 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { Feather } from "@expo/vector-icons";
+import { Feather, FontAwesome } from "@expo/vector-icons";
 import { Conversas } from "../talks";
 import { Contatos } from "../contact";
 import SeeContact from "../seeContact";
+import { red300 } from "react-native-paper/lib/typescript/styles/themes/v2/colors";
 const Tab = createBottomTabNavigator();
 
 export  default function BottomTabNavigator() {
@@ -29,6 +30,18 @@ export  default function BottomTabNavigator() {
             tabBarIcon: ({ size = 150, color }) => (
               <Feather name="message-square" size={size} color={color} />
             ),
+            headerRight: () => (
+              <FontAwesome name="bell" size={23} color={"#E80A51"} 
+              style={{
+                marginRight: 25, 
+                marginTop: 4,
+                backgroundColor: "#FFAFCC",
+                borderRadius: 50,
+                padding: 8
+              }}
+              onPress={() => {}}
+              />
+            )
           }}
         />
 
