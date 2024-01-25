@@ -17,7 +17,7 @@ import {
   ButtonText,
 } from "./styles";
 
-function Cadastro1() {
+export default function Cadastro1() {
   const { navigate } = useAppRoute().navigation;
 
   return (
@@ -56,4 +56,3 @@ function Cadastro1() {
   );
 }
 
-export default Cadastro1;

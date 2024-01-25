@@ -7,7 +7,7 @@ import { Contatos } from "../contact";
 import SeeContact from "../seeContact";
 const Tab = createBottomTabNavigator();
 
-export function BottomTabNavigator() {
+export  default function BottomTabNavigator() {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -56,4 +56,4 @@ export function BottomTabNavigator() {
   );
 }
 
-export default BottomTabNavigator;
+;
