@@ -14,7 +14,7 @@ export function BottomTabNavigator() {
         screenOptions={{
           tabBarLabelStyle: { fontSize: 14, fontFamily: "Dosis_400Regular"},
           tabBarItemStyle: { width: 100 },
-          tabBarStyle: { backgroundColor: "#a0c4ff" },
+          tabBarStyle: { backgroundColor: "#a0c4ff", height: 57, marginBottom: 1 },
           tabBarInactiveTintColor: "black",
           headerTitleAlign: "center",
           headerStyle: { backgroundColor: "#a0c4ff" },
