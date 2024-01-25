@@ -60,8 +60,9 @@ export const PlaceholderTextButton = styled(Text)`
 export const ButtonText = styled(Text)`
   font-family: "Dosis_400Regular";
   font-size: 15px;
+  margin-top: 2%;
   color: #004ECC;
-  align-self: center;
+  align-self: flex-start;
 `;
 
 export const ButtonTextMSG = styled(Text)`
