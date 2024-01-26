@@ -21,7 +21,6 @@ export const TextContainer = styled.View`
 
 export const Name = styled.Text`
   font-size: 18px;
-  font-weight: bold;
   margin-left: 3%;
   font-family: "Dosis_400Regular";
 `;
