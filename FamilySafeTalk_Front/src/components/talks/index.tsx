@@ -1,6 +1,5 @@
-// ChatItem.js
 import React from 'react';
-import { View, FlatList, ImageSourcePropType } from 'react-native';
+import { FlatList, ImageSourcePropType } from 'react-native';
 import {
   ItemContainer,
   Avatar,
@@ -8,7 +7,7 @@ import {
   Name,
   LastMessage,
   Time,
-} from './styles'; // Importe os componentes de estilo
+} from './styles';
 import { chatData } from '../../data/chatData';
 
 interface ChatItemProps {
