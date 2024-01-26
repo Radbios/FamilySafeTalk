@@ -5,6 +5,7 @@ import { Dosis_400Regular, Dosis_600SemiBold } from "@expo-google-fonts/dosis";
 
 import Routes from "./src/routes";
 import BottomTabNavigator from "./src/components/bottomTab";
+import Conversa from "./src/screens/conversa";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -20,7 +21,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <BottomTabNavigator />
+      <Conversa />
     </View>
   );
 }
