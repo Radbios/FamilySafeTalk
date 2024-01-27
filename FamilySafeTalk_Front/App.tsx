@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { useFonts } from "expo-font";
 import { Dosis_400Regular, Dosis_600SemiBold } from "@expo-google-fonts/dosis";
 
@@ -19,11 +19,13 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Conversa />
-    </View>
-  );
+    <SafeAreaView style={{ flex : 1, paddingTop: 25}}>
+      <View style={styles.container}>
+        <StatusBar style="auto" />
+        <Conversa />
+      </View>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
