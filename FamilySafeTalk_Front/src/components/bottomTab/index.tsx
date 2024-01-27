@@ -22,7 +22,7 @@ export default function BottomTabNavigator() {
           tabBarInactiveTintColor: "black",
           headerTitleAlign: "center",
           headerStyle: { backgroundColor: "#a0c4ff" },
-          headerStatusBarHeight: 30,
+          headerStatusBarHeight: 1,
           headerTitleStyle: { fontSize: 20, fontFamily: "Dosis_400Regular" },
         }}
       >

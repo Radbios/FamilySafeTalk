@@ -13,7 +13,7 @@ export const Container = styled(View)`
 export const ContentsBox = styled(TouchableOpacity)`
   align-items: center;
   justify-content: flex-start;
-  background-color: #ffadad;
+  background-color: #FFAFCC;
   flex-direction: row;
   width: 90%;
   padding: 5%;
