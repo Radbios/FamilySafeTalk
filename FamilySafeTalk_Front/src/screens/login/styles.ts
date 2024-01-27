@@ -85,7 +85,7 @@ export const ButtonBox1 = styled(ButtonBox)`
 `;
 
 export const ButtonBox2 = styled(ButtonBox)`
-  background-color: #ffadad;
+  background-color: #FFAFCC;
 `;
 
 export const ButtonText = styled(Text)`

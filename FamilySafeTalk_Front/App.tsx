@@ -19,10 +19,10 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={{ flex : 1, paddingTop: 20, marginTop: 1}}>
+    <SafeAreaView style={{ flex : 1, paddingTop: 35, marginTop: 2, backgroundColor: '#FFAFCC'}}>
       <View style={styles.container}>
         <StatusBar style="auto" />
-        <Conversa />
+        <Routes />
       </View>
     </SafeAreaView>
   );
