@@ -25,7 +25,7 @@ export default function Login() {
   const { navigate } = useAppRoute().navigation;
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#a0c4ff' }}>
       <KeyboardAvoidingView
         behavior={Platform.OS == "ios" ? "padding" : "height"}
         style={{ flex: 1}}
