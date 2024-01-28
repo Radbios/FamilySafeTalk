@@ -21,6 +21,8 @@ class MessageResource extends JsonResource
             'type' => $this->type,
             'is_read'=> $this->is_read,
             'sender' => new UserResource($this->sender),
+            'date' => $this->created_at->toDateString(),
+            'hour' => $this->created_at->toTimeString(),
         ];
 
         if($rules['sender']->id == Auth()->user()->id){
