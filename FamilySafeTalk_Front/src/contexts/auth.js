@@ -18,6 +18,10 @@ export const AuthProvider = ({ children }) => {
             const storagedUser = await AsyncStorage.getItem('@FST-Auth:user');
             const storagedToken = await AsyncStorage.getItem('@FST-Auth:token');
 
+            // AsyncStorage.clear().then(() => {
+            //     setUser(null);
+            // });
+
             if(storagedUser && storagedToken){
 
                 api.defaults.headers['Authorization'] = `Bearer ${storagedToken}`;
