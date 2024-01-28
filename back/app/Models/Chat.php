@@ -12,6 +12,7 @@ class Chat extends Model
     protected $fillable = [
         "name",
         "type",
+        "image",
     ];
 
     public function participants()
