@@ -29,6 +29,7 @@ class ContactController extends Controller
         $data = Contact::create([
             "user_id" => Auth::user()->id,
             "contact_id" => $request->contact_id,
+            "name" => $request->name,
             "is_blocked" => false
         ]);
 
@@ -51,7 +52,8 @@ class ContactController extends Controller
     {
         $data = Contact::findOrFail($id);
         $data->update([
-            "is_blocked" => $request->is_blocked
+            "is_blocked" => $request->is_blocked,
+            "name" => $request->name
         ]);
 
         return new ContactResource($data);
