@@ -9,6 +9,7 @@ import {
 import { IconButton } from "react-native-paper";
 import { Feather } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native"
 
 import {
   InputsBox,
@@ -21,9 +22,13 @@ import {
 } from "./styles";
 
 export default function AddContact() {
+  const navigation = useNavigation();
+  
   const handleArrowPress = () => {};
 
-  const handleCheckPress = () => {};
+  const handleCheckPress = () => {
+    navigation.navigate('SeeContact');
+  };
 
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: 'white' }}>
