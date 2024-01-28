@@ -6,7 +6,7 @@ export const Container = styled(View)`
   align-items: center;
   justify-content: center;
   height: 100%;
-  background-color: #ffb6c1;
+  background-color: #FFAFCC;
 `;
 
 export const ContentsBox = styled(View)`
@@ -86,7 +86,7 @@ export const ButtonBox1 = styled(ButtonBox)`
 `;
 
 export const ButtonBox2 = styled(ButtonBox)`
-  background-color: #ffadad;
+  background-color: #FFAFCC;
 `;
 
 export const ButtonText = styled(Text)`

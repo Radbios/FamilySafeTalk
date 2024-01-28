@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import useAppRoute from "../../routes/hooks/types";
+import {useAuth} from "../../contexts/auth";
+
 import {
   Container,
   ContentsBox,
@@ -20,6 +22,16 @@ import { Image } from "react-native";
 function Login() {
   const {navigate} = useAppRoute().navigation;
 
+  const { signed, singIn, user } = useAuth();
+
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+
+    
+    function handleSignIn(){
+        singIn(email, password);
+    }
+
   return (
     <GestureHandlerRootView>
       <Container>
@@ -34,8 +46,17 @@ function Login() {
             </SubTitleText>
           </SubTitleBox>
           <InputsContainer>
-            <InputsBox placeholder="Login" />
-            <InputsBox placeholder="Senha" />
+            <InputsBox 
+              onChangeText={setEmail}
+              value={email}
+              placeholder={'email'}
+            />
+            <InputsBox 
+              placeholder={'password'}
+              onChangeText={setPassword}
+              value={password}
+              secureTextEntry={true}
+            />
           </InputsContainer>
           <ButtonsContainer>
             <ButtonBox1>
@@ -44,7 +65,9 @@ function Login() {
               </ButtonText>
             </ButtonBox1>
             <ButtonBox2>
-              <ButtonText>Entrar</ButtonText>
+              <ButtonText onPress={handleSignIn} >
+                Entrar
+              </ButtonText>
             </ButtonBox2>
           </ButtonsContainer>
         </ContentsBox>
