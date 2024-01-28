@@ -6,7 +6,7 @@ export const Container = styled(View)`
   align-items: center;
   justify-content: center;
   height: 100%;
-  background-color: #FFAFCC;
+  padding: 8px 0;
 `;
 
 export const ContentsBox = styled(View)`
@@ -14,8 +14,9 @@ export const ContentsBox = styled(View)`
   justify-content: center;
   background-color: white;
   width: 90%;
-  height: 94%;
+  height: 100%;
   border-radius: 10px;
+  padding: 8px 0;
 `;
 
 export const TitleContainer = styled(View)`
