@@ -4,6 +4,7 @@ import { IconButton } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 import {
   Container,
@@ -21,9 +22,14 @@ import {
 } from "./styles";
 
 export default function SeeContact() {
-  const handleArrowPress = () => {};
 
-  const handlePencilPress = () => {};
+  const navigation = useNavigation();
+
+  const handleArrowPress = () => {
+    navigation.navigate('AddContact');
+  }
+
+  const handlePencilPress = () => {}
 
   return (
     <GestureHandlerRootView>
