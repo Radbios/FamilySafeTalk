@@ -27,8 +27,6 @@ export default function CardContacts() {
     .slice()
     .sort((a, b) => a.name.localeCompare(b.name)) : null;
 
-    console.log(sortedContacts);
-
   let currentLetter = "";
 
   return (
