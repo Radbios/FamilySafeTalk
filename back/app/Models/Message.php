@@ -15,7 +15,7 @@ class Message extends Model
         "type",
         "is_suspected",
         "content",
-        'is_read'
+        'is_read',
     ];
 
     public function sender()
