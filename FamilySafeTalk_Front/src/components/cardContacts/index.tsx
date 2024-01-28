@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, Image } from "react-native";
+import { ScrollView, Image, View, ActivityIndicator } from "react-native";
 import {
   Container,
   ContentsBox,
@@ -32,38 +32,43 @@ export default function CardContacts() {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <Container>
-        {sortedContacts.map((user, index) => {
-          const firstLetter = user.name[0].toUpperCase();
-
-          if (firstLetter !== currentLetter) {
-            currentLetter = firstLetter;
-            return (
-              <React.Fragment key={index}>
-                <ContentsBox>
-                  <InfosBox>
-                    <NameText>{currentLetter}</NameText>
-                  </InfosBox>
-                </ContentsBox>
-                <Separator />
-                <ContentsBox key={index + 1}>
-                  <Image source={user.photo} />
-                  <InfosBox>
-                    <NameText>{user.name}</NameText>
-                  </InfosBox>
-                </ContentsBox>
-              </React.Fragment>
-            );
-          } else {
-            return (
-              <ContentsBox key={index}>
-                <Image source={user.photo} />
-                <InfosBox>
-                  <NameText>{user.name}</NameText>
-                </InfosBox>
-              </ContentsBox>
-            );
+        {
+            sortedContacts && sortedContacts.length > 0 ? (sortedContacts.map((user, index) => {
+              const firstLetter = user.name[0].toUpperCase();
+  
+              if (firstLetter !== currentLetter) {
+                currentLetter = firstLetter;
+                return (
+                  <React.Fragment key={index}>
+                    <ContentsBox>
+                      <InfosBox>
+                        <NameText>{currentLetter}</NameText>
+                      </InfosBox>
+                    </ContentsBox>
+                    <Separator />
+                    <ContentsBox key={index + 1}>
+                      <Image source={user.photo} />
+                      <InfosBox>
+                        <NameText>{user.name}</NameText>
+                      </InfosBox>
+                    </ContentsBox>
+                  </React.Fragment>
+                );
+              } else {
+                return (
+                  <ContentsBox key={index}>
+                    <Image source={user.photo} />
+                    <InfosBox>
+                      <NameText>{user.name}</NameText>
+                    </InfosBox>
+                  </ContentsBox>
+                );
+              }
+            }))
+            : (
+              <View></View>
+            )
           }
-        })}
       </Container>
     </ScrollView>
   );
