@@ -5,20 +5,21 @@ export const Container = styled(View)`
   flex-grow: 1;
   align-items: center;
   justify-content: center;
-  height: 65%;
+  height: 100%;
+  padding: 8px 0;
 `;
 
 export const ContentsBox = styled(View)`
   align-items: center;
   justify-content: center;
   width: 90%;
-  height: 94%;
+  height: 100%;
+  border-radius: 10px;
+  padding: 8px 0;
 `;
-
 export const TitleContainer = styled(View)`
   align-items: center;
   justify-content: center;
-  margin-top: 0%;
   margin-bottom: 5%;
 `;
 

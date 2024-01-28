@@ -20,9 +20,13 @@ export default function App() {
     <SafeAreaView style={{ flex : 1, paddingTop: 35, marginTop: 2, backgroundColor: '#FFAFCC'}}>
       <View style={styles.container}>
         <StatusBar style="auto" />
+<<<<<<< HEAD
         <AuthProvider>
           <Routes />
         </AuthProvider>
+=======
+        <Conversa />
+>>>>>>> refs/remotes/origin/develop
       </View>
     </SafeAreaView>
   );
