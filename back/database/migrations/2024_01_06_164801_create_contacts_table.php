@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("user_id")->constrained("users")->cascadeOnDelete();
             $table->foreignId("contact_id")->constrained("users")->cascadeOnDelete();
+            $table->string("name")->nullable();
             $table->boolean("is_blocked")->default(false);
             $table->timestamps();
         });
