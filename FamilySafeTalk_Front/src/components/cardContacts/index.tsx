@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView, Image } from "react-native";
 import {
   Container,
@@ -8,11 +8,26 @@ import {
   Separator,
 } from "./styles";
 import { contactsData } from "../../data/contacts";
+import api from "../../services/api";
 
 export default function CardContacts() {
-  const sortedContacts = contactsData
+
+  const [contacts, setContacts] = useState(null);
+
+  async function getContacts(){
+    const response = await api.get("/contact");
+    setContacts(response.data)
+  }
+
+  useEffect(() => {
+    getContacts();
+  }, []);
+
+  const sortedContacts = contacts != null ? contacts
     .slice()
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .sort((a, b) => a.name.localeCompare(b.name)) : null;
+
+    console.log(sortedContacts);
 
   let currentLetter = "";
 
