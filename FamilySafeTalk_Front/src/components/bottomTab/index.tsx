@@ -5,6 +5,7 @@ import { Feather, FontAwesome } from "@expo/vector-icons";
 import Conversas from "../talks";
 import Contatos from "../contact";
 import SeeContact from "../seeContact";
+import AddContact from "../../screens/addContact";
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
