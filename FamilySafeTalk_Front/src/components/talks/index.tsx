@@ -1,5 +1,5 @@
-import React from 'react';
-import { FlatList, ImageSourcePropType } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, ImageSourcePropType, View } from 'react-native';
 import {
   ItemContainer,
   Avatar,
@@ -9,31 +9,78 @@ import {
   Time,
 } from './styles';
 import { chatData } from '../../data/chatData';
+import api from '../../services/api';
 
-interface ChatItemProps {
-  name: string;
-  lastMessage: string;
-  time: string;
-  avatar: ImageSourcePropType;
+interface LastMessageProps {
+  content: string;
+  date: Date;
+  sender: object;
 }
 
-const ChatItem: React.FC<ChatItemProps> = ({ name, lastMessage, time, avatar }) => (
+interface ChatItemProps {
+  lastMessage: LastMessageProps;
+  image: string;
+}
+
+const renderDateTime = (createdAt) => {
+  try {
+    const createdDate = new Date(createdAt);
+    if (!isNaN(createdDate.getTime())) {
+      const now = new Date();
+      
+      if (
+        now.getDate() === createdDate.getDate() &&
+        now.getMonth() === createdDate.getMonth() &&
+        now.getFullYear() === createdDate.getFullYear()
+      ) {
+        return createdDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric' });
+      } else {
+        return createdDate.toLocaleDateString('en-US');
+      }
+    }
+  } catch (error) {
+    console.error('Erro ao processar a data:', error.message);
+  }
+
+  return "Data inválida";
+};
+const ChatItem: React.FC<ChatItemProps> = ({image, lastMessage}) => (
   <ItemContainer>
-    <Avatar source={avatar} />
+    <Avatar />
     <TextContainer>
-      <Name>{name}</Name>
-      <LastMessage>{lastMessage}</LastMessage>
+      <Name>{lastMessage.sender.name}</Name>
+      <LastMessage>{lastMessage.content}</LastMessage>
     </TextContainer>
-    <Time>{time}</Time>
+    <Time>{renderDateTime(lastMessage.date)}</Time>
   </ItemContainer>
 );
 
 export default function Chat() {
+
+  const [chats, setChats] = useState(null);
+
+  async function getChats(){
+    const response = await api.get("/chat");
+    setChats(response.data)
+    console.log(response.data)
+  }
+
+  useEffect(() => {
+    getChats();
+  }, []);
+
   return (
-    <FlatList
-      data={chatData}
-      keyExtractor={(item) => item.id}
-      renderItem={({ item }) => <ChatItem {...item} />}
-    />
+    <View>
+      {chats && chats.length > 0 ? (
+        <FlatList
+          data={chats}
+          keyExtractor={(item) => item.id.toString()} // Certifique-se de converter o ID para string
+          renderItem={({ item }) => <ChatItem {...item} />}
+        />
+      ) : (
+        <View>
+        </View>
+      )}
+    </View>
   );
 }
