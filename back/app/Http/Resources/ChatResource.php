@@ -18,12 +18,20 @@ class ChatResource extends JsonResource
 
         $lastMessage = new MessageResource($this->messages()->orderByDesc('created_at')->orderByDesc('id')->first());
 
-        $image = $this->participants()->where("user_id", "<>", Auth()->user()->id)->first()->user->image;
+        $user = $this->participants()->where("user_id", "<>", Auth()->user()->id)->first()->user;
+
+        $contact = Auth()->user()->contacts()->where('contact_id', $user->id)->first();
+
+        $name = $this->type == "group" ? $this->name : ($contact ? $contact->name : $user->name);
+
+        $image = $this->type == "group" ? $this->image : $user->image;
 
         return [
             'id' => $this->id,
             'image' => $image,
             'lastMessage' => $lastMessage,
+            'messages' => $this->messages()->orderByDesc('created_at')->orderByDesc('id')->paginate(15),
+            'name' => $name,
         ];
     }
 }

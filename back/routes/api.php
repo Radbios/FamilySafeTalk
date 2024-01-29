@@ -23,5 +23,5 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('/logout', [AuthController::class, "logout"]);
     Route::apiResource("/contact", ContactController::class);
     Route::apiResource("/message", MessageController::class)->only("store");
-    Route::apiResource("/chat", ChatController::class)->only("index");
+    Route::apiResource("/chat", ChatController::class)->only("index", "show");
 });

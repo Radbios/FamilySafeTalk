@@ -19,4 +19,11 @@ class ChatController extends Controller
         );
         return response()->json($data);
     }
+
+    public function show($chat_id)
+    {
+        $data = Chat::findOrFail($chat_id);
+
+        return response()->json(new ChatResource($data));
+    }
 }
