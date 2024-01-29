@@ -34,7 +34,7 @@ export const TitleText = styled(Text)`
 export const SubTitleBox = styled(View)`
   align-items: center;
   justify-content: center;
-  width: 60%px;
+  width: 60%;
   margin: 50px;
 `;
 

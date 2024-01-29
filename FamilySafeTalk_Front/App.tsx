@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { useFonts } from "expo-font";
 import { Dosis_400Regular, Dosis_600SemiBold } from "@expo-google-fonts/dosis";
 
@@ -16,8 +17,10 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
+  const statusBarHeight: number = getStatusBarHeight();
+
   return (
-    <SafeAreaView style={{ flex : 1, paddingTop: 35, marginTop: 2, backgroundColor: '#FFAFCC'}}>
+    <SafeAreaView style={[styles.safeArea, { marginTop: statusBarHeight }]}>
       <View style={styles.container}>
         <StatusBar style="auto" />
         <AuthProvider>
@@ -31,5 +34,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#FFAFCC',
   },
 });
