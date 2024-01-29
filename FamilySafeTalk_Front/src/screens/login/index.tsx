@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-=======
-import React from "react";
 import {
   GestureHandlerRootView,
   ScrollView,
 } from "react-native-gesture-handler";
->>>>>>> refs/remotes/origin/develop
 import useAppRoute from "../../routes/hooks/types";
 import {useAuth} from "../../contexts/auth";
 
@@ -42,47 +37,6 @@ export default function Login() {
     }
 
   return (
-<<<<<<< HEAD
-    <GestureHandlerRootView>
-      <Container>
-        <ContentsBox>
-          <TitleContainer>
-            <TitleText>Bem-vindo(a) ao FamilySafeTalk!</TitleText>
-          </TitleContainer>
-          <Image source={require("../../../assets/familia1.png")} />
-          <SubTitleBox>
-            <SubTitleText>
-              Para iniciar, faça o login ou cadastre-se:
-            </SubTitleText>
-          </SubTitleBox>
-          <InputsContainer>
-            <InputsBox 
-              onChangeText={setEmail}
-              value={email}
-              placeholder={'email'}
-            />
-            <InputsBox 
-              placeholder={'password'}
-              onChangeText={setPassword}
-              value={password}
-              secureTextEntry={true}
-            />
-          </InputsContainer>
-          <ButtonsContainer>
-            <ButtonBox1>
-              <ButtonText onPress={() => navigate("Register")}>
-                Cadastrar
-              </ButtonText>
-            </ButtonBox1>
-            <ButtonBox2>
-              <ButtonText onPress={handleSignIn} >
-                Entrar
-              </ButtonText>
-            </ButtonBox2>
-          </ButtonsContainer>
-        </ContentsBox>
-      </Container>
-=======
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#a0c4ff' }}>
       <KeyboardAvoidingView
         behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -102,8 +56,17 @@ export default function Login() {
                 </SubTitleText>
               </SubTitleBox>
               <InputsContainer>
-                <InputsBox placeholder="Login" />
-                <InputsBox placeholder="Senha" />
+                <InputsBox
+                  onChangeText={setEmail}
+                  value={email}
+                  placeholder={'email'}
+                />
+                <InputsBox 
+                  placeholder={'password'}
+                  onChangeText={setPassword}
+                  value={password}
+                  secureTextEntry={true}
+                />
               </InputsContainer>
               <ButtonsContainer>
                 <ButtonBox1>
@@ -112,14 +75,15 @@ export default function Login() {
                   </ButtonText>
                 </ButtonBox1>
                 <ButtonBox2>
-                  <ButtonText>Entrar</ButtonText>
+                  <ButtonText onPress={handleSignIn} >
+                    Entrar
+                  </ButtonText>
                 </ButtonBox2>
               </ButtonsContainer>
             </ContentsBox>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
->>>>>>> refs/remotes/origin/develop
     </GestureHandlerRootView>
   );
 }

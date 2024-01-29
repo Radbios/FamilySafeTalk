@@ -12,10 +12,10 @@ export const Container = styled(View)`
 export const ContentsBox = styled(View)`
   align-items: center;
   justify-content: center;
-  width: 90%;
-  height: 100%;
+  width: 95%;
+  height: 60%;
   border-radius: 10px;
-  padding: 8px 0;
+  padding: 0px;
 `;
 export const TitleContainer = styled(View)`
   align-items: center;

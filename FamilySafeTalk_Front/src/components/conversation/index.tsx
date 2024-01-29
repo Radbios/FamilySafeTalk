@@ -3,15 +3,15 @@ import { Container } from "./styles";
 import { messagesData } from "../../data/messagesData";
 import Messages from "../messages";
 
-export default function Conversation() {
+export default function Conversation({messages}) {
   return (
     <ScrollView>
       <Container>
-        {messagesData.map((message) => (
+        {messages.map((message) => (
           <Messages
             key={message.id}
-            type={message.type}
-            text={message.message}
+            type={message.sender.name}
+            text={message.content}
           />
         ))}
       </Container>

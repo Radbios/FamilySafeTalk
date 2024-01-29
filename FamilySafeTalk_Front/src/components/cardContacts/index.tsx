@@ -10,18 +10,7 @@ import {
 import { contactsData } from "../../data/contacts";
 import api from "../../services/api";
 
-export default function CardContacts() {
-
-  const [contacts, setContacts] = useState(null);
-
-  async function getContacts(){
-    const response = await api.get("/contact");
-    setContacts(response.data)
-  }
-
-  useEffect(() => {
-    getContacts();
-  }, []);
+export default function CardContacts({contacts}) {
 
   const sortedContacts = contacts != null ? contacts
     .slice()

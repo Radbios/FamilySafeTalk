@@ -9,16 +9,18 @@ import {
   RightContent,
 } from "./styles";
 
-export default function TopBar() {
+export default function TopBar({navigation, name, image}) {
+  const urlImg = "../../../assets/" + image;
+  console.log(urlImg);
   return (
     <Bar>
       <LeftContents>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.pop()}>
           <Image source={require("../../../assets/navigate_before.png")} />
         </TouchableOpacity>
         <UserContent>
-          <Image source={require("../../../assets/usericon.png")} />
-          <TextUser>Pedro</TextUser>
+          <Image source={{uri:urlImg}} />
+          <TextUser>{name}</TextUser>
         </UserContent>
       </LeftContents>
       <RightContent>
