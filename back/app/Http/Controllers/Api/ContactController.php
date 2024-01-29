@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ContactResource;
 use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,9 +27,18 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        $contact = User::where('email', $request->email)->first();
+        if(!$contact)
+        {
+            return response()->json([
+                'status' => "error",
+                'message' => "Usuário não existe"
+            ]);
+        }
         $data = Contact::create([
             "user_id" => Auth::user()->id,
-            "contact_id" => $request->contact_id,
+            "contact_id" => $contact->id,
+            "name" => $request->name,
             "is_blocked" => false
         ]);
 
@@ -51,7 +61,8 @@ class ContactController extends Controller
     {
         $data = Contact::findOrFail($id);
         $data->update([
-            "is_blocked" => $request->is_blocked
+            "is_blocked" => $request->is_blocked,
+            "name" => $request->name
         ]);
 
         return new ContactResource($data);

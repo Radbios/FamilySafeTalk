@@ -1,15 +1,41 @@
-import { View, Image } from "react-native";
+import { View, Image, Text } from "react-native";
 import { ButtonContainer, Container } from "./styles";
 import CardContacts from "../cardContacts";
+import React, { useEffect, useState } from "react";
+import api from "../../services/api";
+import { useFocusEffect } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default function Contatos() {
+const Contatos = ({navigation}) => {
   
+  const [contacts, setContacts] = useState(null);
+
+  async function getContacts(){
+    const response = await api.get("/contact");
+    setContacts(response.data)
+  }
+
+  useEffect(() => {
+    getContacts();
+  }, []);
+
   return (
     <Container>
-      <ButtonContainer>
+      <ButtonContainer 
+        onPress={ () => {
+          navigation.push("AddContact")
+        }}
+      >
         <Image source={require("../../../assets/plusicon.png")} />
       </ButtonContainer>
-      <CardContacts />
+      <TouchableOpacity onPress={() => {
+        getContacts();
+      }}>
+        <Text>Atualizar</Text>
+      </TouchableOpacity>
+      <CardContacts contacts={contacts} />
     </Container>
   );
 }
+
+export default Contatos;

@@ -7,28 +7,12 @@ import Conversas from "../talks";
 import Contatos from "../contact";
 import SeeContact from "../seeContact";
 import AddContact from "../../screens/addContact";
+import { ContatoStackNavigator, ConversasStackNavigator } from "../../routes/app/stack.routes";
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
 
   const Tab = createBottomTabNavigator();
-  const Stack = createStackNavigator();
-
-  // Defina a navegação para as abas Configurações
-  function ConfiguracoesStack() {
-    return (
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen
-          name="AddContact"
-          component={AddContact}
-        />
-        <Stack.Screen
-          name="SeeContact"
-          component={SeeContact}
-        />
-      </Stack.Navigator>
-    );
-  }
 
   return (
     <NavigationContainer>
@@ -49,9 +33,10 @@ export default function BottomTabNavigator() {
         }}
       >
         <Tab.Screen
-          name="Conversas"
-          component={Conversas}
+          name="ConversasNavigator"
+          component={ConversasStackNavigator}
           options={{
+            headerTitle: "Conversas",
             tabBarIcon: ({ size = 150, color }) => (
               <Feather name="message-square" size={size} color={color} />
             ),
@@ -74,18 +59,20 @@ export default function BottomTabNavigator() {
         />
 
         <Tab.Screen
-          name="Contatos"
-          component={Contatos}
+          name="ContatoNavigator"
+          component={ContatoStackNavigator}
           options={{
             tabBarIcon: ({ size, color }) => (
               <Feather name="users" size={size} color={color} />
             ),
+            tabBarLabel: "Contatos",
+            headerTitle: "Contatos"
           }}
         />
 
         <Tab.Screen
           name="Configurações"
-          component={ConfiguracoesStack}
+          component={SeeContact}
           options={{
             tabBarIcon: ({ size, color }) => (
               <Feather name="settings" size={size} color={color} />

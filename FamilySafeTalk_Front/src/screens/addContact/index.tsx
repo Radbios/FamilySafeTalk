@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  Text,
 } from "react-native";
 import { IconButton } from "react-native-paper";
 import { Feather } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native"
+
 
 import {
   InputsBox,
@@ -20,23 +22,45 @@ import {
   TitleContainer,
   TitleText,
 } from "./styles";
+import api from "../../services/api";
 
 export default function AddContact() {
   const navigation = useNavigation();
+
+  const [email, setEmail] = useState(null);
+  const [name, setName] = useState(null);
   
   const handleArrowPress = () => {};
 
-  const handleCheckPress = () => {
-    navigation.navigate('SeeContact');
-  };
+  async function contactCreate(){
+    const response = await api.post("/contact", 
+      {
+        email: email,
+        name: name
+      }
+    );
+    setName(null)
+    setEmail(null)
+    navigation.pop();
+    
+  }
 
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: 'white' }}>
+      <View>
+        <TouchableOpacity onPress={() => {
+            navigation.pop();
+        }}>
+            <Text>
+              Voltar
+            </Text>
+        </TouchableOpacity>
+      </View> 
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
           <Container>
             <ContentsBox>
               <TitleContainer>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={contactCreate}>
                   <IconButton
                     icon={() => (
                       <Feather name="plus" size={54} color="#FF69B4" />
@@ -51,13 +75,18 @@ export default function AddContact() {
                   />
                 </TouchableOpacity>
                 <TitleText>Adicionar contato</TitleText>
-                <SubTitleText>Perfil de Bernardo</SubTitleText>
               </TitleContainer>
               <InputsContainer>
-                <InputsBox placeholder="Nome" />
-                <InputsBox placeholder="Sobrenome" />
-                <InputsBox placeholder="Telefone Celular" />
-                <InputsBox placeholder="E-mail" />
+                <InputsBox 
+                  placeholder="Nome" 
+                  onChangeText={setName}
+                  value={name}
+                />
+                <InputsBox 
+                  placeholder="E-mail" 
+                  onChangeText={setEmail}
+                  value={email}
+                />
               </InputsContainer>
               <View
                 style={{
@@ -81,7 +110,9 @@ export default function AddContact() {
                   bottom: -60,
                 }}
               >
-                <TouchableOpacity onPress={handleCheckPress}>
+                <TouchableOpacity onPress={() => {
+                  console.log("foi")
+                }}>
                   <IconButton
                     icon={() => (
                       <Feather name="check" size={30} color="#4169E1" />

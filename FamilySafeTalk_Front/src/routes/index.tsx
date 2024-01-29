@@ -1,41 +1,31 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { View, ActivityIndicator, StyleSheet, Text} from "react-native";
+import AuthRoutes from "./auth.routes";
+import AppRoutes from "./app.routes";
+import {useAuth} from "../contexts/auth";
 
-import Login from "../screens/login/index";
-import Register from "../screens/cadastro/cadastro1/index";
-import Register2 from "../screens/cadastro/cadastro2/index";
-import Register3 from "../screens/cadastro/cadastro3/index";
 
-const Stack = createNativeStackNavigator();
+const styles = StyleSheet.create({
+    loading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: "center"
+    }
+});
 
 const Routes = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register2"
-          component={Register2}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register3"
-          component={Register3}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
+    const {signed, loading} = useAuth();
+
+    if(loading){
+        return (
+            <View style={styles.loading}>
+                <ActivityIndicator size="large" color="#666" />
+            </View>
+        );
+    }
+    
+    return signed ?
+                <AppRoutes /> : <AuthRoutes/> 
+}
 
 export default Routes;
