@@ -19,6 +19,6 @@ class MessageController extends Controller
             "content" => $request->content
         ]);
 
-        return new MessageResource(response()->json($message));
+        return response()->json(new MessageResource($message));
     }
 }
