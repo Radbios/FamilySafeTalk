@@ -37,6 +37,7 @@ export default function BottomTabNavigator() {
           component={ConversasStackNavigator}
           options={{
             headerTitle: "Conversas",
+            tabBarLabel: "Conversas",
             tabBarIcon: ({ size = 150, color }) => (
               <Feather name="message-square" size={size} color={color} />
             ),
