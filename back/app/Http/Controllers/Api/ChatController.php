@@ -22,8 +22,8 @@ class ChatController extends Controller
 
     public function show($chat_id)
     {
-        $data = Chat::findOrFail($chat_id);
+        $data = new ChatResource(Chat::findOrFail($chat_id));
 
-        return response()->json(new ChatResource($data));
+        return response()->json($data);
     }
 }
