@@ -15,7 +15,7 @@
             padding: 0;
         }
         body {
-            height: 100%;
+            height: 100vh;
             background: linear-gradient(to bottom right, #4751dd, #f34a83);
         }
         .content{
@@ -59,6 +59,7 @@
             body {
                 background: linear-gradient(to right, #4751dd, #f34a83);
                 margin-bottom: 40px;
+                height: 100%;
             }
             p{
                 font-size: 17px;
