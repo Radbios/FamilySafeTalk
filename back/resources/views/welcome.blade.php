@@ -67,7 +67,7 @@
         </div>
         <div id="obs">
             <p>
-                Ainda em desenvolvimento
+                EM DESENVOLVIMENTO
             </p>
         </div>
     </div>
