@@ -71,12 +71,12 @@ export default function Chat({navigation}) {
   }
 
   useEffect(() => {
-    getChats();
+    // getChats();
   }, []);
 
   return (
     <View>
-      {chats && chats.length > 0 ? (
+      {chats ? (
         <FlatList
           data={chats}
           keyExtractor={(item) => item.id.toString()} // Certifique-se de converter o ID para string
