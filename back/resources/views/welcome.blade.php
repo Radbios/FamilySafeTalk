@@ -65,7 +65,6 @@
                 font-size: 17px;
             }
             #obs{
-                margin-block: 100px;
                 font-size: 19px;
             }
         }
