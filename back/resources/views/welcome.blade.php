@@ -12,11 +12,10 @@
     <style>
         *{
             margin: 0;
-            padding: 0
+            padding: 0;
         }
         body {
-            width: 100vw;
-            height: 100vh;
+            height: 100%;
             background: linear-gradient(to bottom right, #4751dd, #f34a83);
         }
         .content{
@@ -66,6 +65,7 @@
             }
             #obs{
                 font-size: 19px;
+                height: 100px;
             }
         }
     </style>
