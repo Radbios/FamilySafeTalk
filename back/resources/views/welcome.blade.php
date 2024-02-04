@@ -47,6 +47,15 @@
             body {
                 background: linear-gradient(to right, #4751dd, #f34a83);
             }
+            p{
+                font-size: 17px;
+            }
+            #obs{
+                text-align: justify;
+                color: white;
+                font-family: "Times New Roman", Times, serif;
+                font-size: 19px;
+            }
         }
     </style>
 </head>
@@ -66,9 +75,7 @@
             </p>
         </div>
         <div id="obs">
-            <p>
-                EM DESENVOLVIMENTO
-            </p>
+            EM DESENVOLVIMENTO
         </div>
     </div>
 </body>
