@@ -10,6 +10,10 @@
     <title>Family Safe Talk</title>
 
     <style>
+        *{
+            margin: 0;
+            padding: 0
+        }
         body {
             width: 100vw;
             height: 100vh;
@@ -17,6 +21,9 @@
         }
         .content{
             margin-inline: 10%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         img{
             max-width: 600px;
@@ -38,6 +45,12 @@
             font-weight: bold;
             display: flex;
             justify-content: center;
+            text-align: justify;
+            color: white;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 25px;
+            height: 100%;
+            align-items: center
         }
         .bold{
             font-weight: bold;
@@ -46,14 +59,13 @@
         @media (max-width: 600px) {
             body {
                 background: linear-gradient(to right, #4751dd, #f34a83);
+                margin-bottom: 40px;
             }
             p{
                 font-size: 17px;
             }
             #obs{
-                text-align: justify;
-                color: white;
-                font-family: "Times New Roman", Times, serif;
+                margin-block: 100px;
                 font-size: 19px;
             }
         }
