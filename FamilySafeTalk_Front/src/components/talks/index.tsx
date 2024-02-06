@@ -71,7 +71,7 @@ export default function Chat({navigation}) {
   }
 
   useEffect(() => {
-    // getChats();
+    getChats();
   }, []);
 
   return (

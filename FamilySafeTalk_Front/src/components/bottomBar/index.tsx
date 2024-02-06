@@ -3,7 +3,7 @@ import { Image } from "react-native";
 import { Bar, ButtonSend, InputsBox, InputsContainer } from "./styles";
 import api from "../../services/api";
 
-export default function BottomBar({chatId}) {
+export default function BottomBar({chatId, onSendMessage}) {
   const [message, setMessage] = useState(null);
   async function sendMessage(){
     const response = await api.post("/message", 
@@ -12,6 +12,7 @@ export default function BottomBar({chatId}) {
       type: "text",
       chat_id: chatId
     });
+    onSendMessage(message);
     setMessage(null)
   }
 
