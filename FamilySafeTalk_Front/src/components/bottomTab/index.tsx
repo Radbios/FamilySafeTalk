@@ -8,6 +8,7 @@ import Contatos from "../contact";
 import SeeContact from "../seeContact";
 import AddContact from "../../screens/addContact";
 import { ContatoStackNavigator, ConversasStackNavigator } from "../../routes/app/stack.routes";
+import Preferences from "../../screens/preferences";
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
@@ -73,7 +74,8 @@ export default function BottomTabNavigator() {
 
         <Tab.Screen
           name="Configurações"
-          component={SeeContact}
+          //Voltar SeeContacts depois
+          component={Preferences}
           options={{
             tabBarIcon: ({ size, color }) => (
               <Feather name="settings" size={size} color={color} />
