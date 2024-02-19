@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, ImageSourcePropType, View } from 'react-native';
+import { FlatList, ImageSourcePropType, Text, View } from 'react-native';
 import {
   ItemContainer,
   Avatar,
@@ -84,6 +84,9 @@ export default function Chat({navigation}) {
         />
       ) : (
         <View>
+            <Text>
+              Loading
+            </Text>
         </View>
       )}
     </View>

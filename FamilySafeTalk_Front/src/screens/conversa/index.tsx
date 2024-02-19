@@ -31,7 +31,7 @@ export default function Conversa({navigation}) {
   }
 
   useEffect(() => {
-    socketRef.current = io("http://15.228.35.128:3000");
+    socketRef.current = io("https://radbios.com:3000");
 
     socketRef.current.on("message", msg => {
       getChat();
