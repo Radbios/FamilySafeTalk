@@ -22,7 +22,7 @@ export const ContentsBox = styled(TouchableOpacity)`
 export const InfosBox = styled(View)`
   align-items: center;
   justify-content: center;
-  margin-left: 5%;
+  margin-left: 1%;
 `;
 
 export const NameText = styled(Text)`
