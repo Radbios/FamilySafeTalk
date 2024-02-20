@@ -11,6 +11,7 @@ import {
 import { chatData } from '../../data/chatData';
 import api from '../../services/api';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useAuth } from '../../contexts/auth';
 
 interface LastMessageProps {
   content: string;
@@ -68,10 +69,12 @@ export default function Chat({navigation}) {
   async function getChats(){
     const response = await api.get("/chat");
     setChats(response.data)
+    console.log(chats);
   }
-
   useEffect(() => {
-    getChats();
+    setTimeout(() => {
+      getChats();
+    });
   }, []);
 
   return (
@@ -85,7 +88,7 @@ export default function Chat({navigation}) {
       ) : (
         <View>
             <Text>
-              Loading
+              Loading2
             </Text>
         </View>
       )}
