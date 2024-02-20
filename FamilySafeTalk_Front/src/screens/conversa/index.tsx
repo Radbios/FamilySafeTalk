@@ -35,6 +35,7 @@ export default function Conversa({navigation}) {
 
     socketRef.current.on("message", msg => {
       getChat();
+      console.log(msg)
     });
 
     getChat();
