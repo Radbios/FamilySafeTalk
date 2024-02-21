@@ -38,6 +38,14 @@ export default function Conversa({navigation}) {
       console.log(msg)
     });
 
+    socketRef.current.on("connect", () => {
+      console.log("Conectado ao socket")
+    });
+
+    socketRef.current.on("disconnect", () => {
+      console.log("Desconectado do socket")
+    });
+
     getChat();
 
     return () => {
