@@ -7,12 +7,15 @@ import Conversas from "../talks";
 import Contatos from "../contact";
 import SeeContact from "../seeContact";
 import AddContact from "../../screens/addContact";
-import { ContatoStackNavigator, ConversasStackNavigator } from "../../routes/app/stack.routes";
+import {
+  ContatoStackNavigator,
+  ConversasStackNavigator,
+} from "../../routes/app/stack.routes";
 import Preferences from "../../screens/preferences";
+import ListBlocks from "../../screens/listBlocks";
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
-
   const Tab = createBottomTabNavigator();
 
   return (
@@ -68,14 +71,14 @@ export default function BottomTabNavigator() {
               <Feather name="users" size={size} color={color} />
             ),
             tabBarLabel: "Contatos",
-            headerTitle: "Contatos"
+            headerTitle: "Contatos",
           }}
         />
 
         <Tab.Screen
           name="Configurações"
-          //Voltar SeeContacts depois
-          component={Preferences}
+          //Voltar SeeContact depois
+          component={ListBlocks}
           options={{
             tabBarIcon: ({ size, color }) => (
               <Feather name="settings" size={size} color={color} />

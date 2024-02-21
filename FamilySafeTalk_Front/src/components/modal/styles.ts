@@ -2,11 +2,11 @@ import { View, Text, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
 export const ModalContainer = styled(View)`
-  background-color: transparent;
   align-items: center;
   justify-content: center;
   height: 100%;
   position: absolute;
+  width: 100%;
 `;
 
 export const ModalBox = styled(View)`
@@ -14,8 +14,9 @@ export const ModalBox = styled(View)`
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 80%;
 `;
+
 export const ImageContainer = styled(View)`
   align-items: center;
 `;
@@ -49,7 +50,7 @@ export const CancelButton = styled(TouchableOpacity)`
   padding: 10px;
   background-color: #adb5bd;
   border-radius: 16px;
-  width: 30%;
+  width: 32%;
   align-items: center;
 `;
 
@@ -57,7 +58,7 @@ export const DeleteButton = styled(TouchableOpacity)`
   padding: 10px;
   background-color: #ffafcc;
   border-radius: 16px;
-  width: 30%;
+  width: 32%;
   align-items: center;
 `;
 
