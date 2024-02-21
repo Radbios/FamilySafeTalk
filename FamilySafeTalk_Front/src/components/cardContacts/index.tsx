@@ -36,7 +36,10 @@ export default function CardContacts({contacts}) {
                     </ContentsBox>
                     <Separator />
                     <ContentsBox key={index + 1}>
-                      <Image source={user.photo} />
+                      <Image 
+                        source={user.photo}
+                        style={{ width: 37, height: 37 }} 
+                      />
                       <InfosBox>
                         <NameText>{user.name}</NameText>
                       </InfosBox>
