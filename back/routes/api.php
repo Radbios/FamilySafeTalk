@@ -24,5 +24,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('/logout', [AuthController::class, "logout"]);
     Route::apiResource("/contact", ContactController::class);
     Route::apiResource("/message", MessageController::class)->only("store");
-    Route::apiResource("/chat", ChatController::class)->only("index", "show");
+    Route::apiResource("/chat", ChatController::class)->only("index", "show", "store");
+    Route::get("/chat/{chat_id}/lastMessage", [MessageController::class, "lastMessage"]);
+    Route::get("/chat/{user_id}/contact", [ChatController::class, "getChatByContact"]);
 });

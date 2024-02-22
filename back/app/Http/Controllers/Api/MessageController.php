@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Events\MessageEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\MessageResource;
+use App\Models\Chat;
 use App\Models\Message;
 use Illuminate\Http\Request;
 
@@ -23,5 +24,11 @@ class MessageController extends Controller
         event(new MessageEvent($request->chat_id, $request->content));
 
         return response()->json(new MessageResource($message));
+    }
+
+    public function lastMessage(int $chat_id)
+    {
+        $message = Chat::findOrFail($chat_id)->messages()->latest()->first();;
+        return new MessageResource($message);
     }
 }
