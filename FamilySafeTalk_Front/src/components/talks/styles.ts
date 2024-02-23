@@ -9,8 +9,8 @@ export const ItemContainer = styled.TouchableOpacity`
 `;
 
 export const Avatar = styled.Image`
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   border-radius: 20px;
   margin-left: 3%
 `;
@@ -20,7 +20,7 @@ export const TextContainer = styled.View`
 `;
 
 export const Name = styled.Text`
-  font-size: 18px;
+  font-size: 20px;
   margin-left: 3%;
   font-family: "Dosis_400Regular";
 `;
@@ -29,6 +29,7 @@ export const LastMessage = styled.Text`
   color: #888;
   margin-left: 3%;
   font-family: "Dosis_400Regular";
+  font-size: 20px;
 `;
 
 export const Time = styled.Text`

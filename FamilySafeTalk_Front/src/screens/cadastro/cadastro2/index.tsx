@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import useAppRoute from "../../../routes/hooks/types";
 import {
@@ -16,7 +16,7 @@ import {
 import { Image } from "react-native";
 import CardDependents from "../../../components/cardDependents";
 
-export default function Cadastro2() {
+export default function Cadastro2({route}) {
   const { navigate } = useAppRoute().navigation;
   return (
     <GestureHandlerRootView>

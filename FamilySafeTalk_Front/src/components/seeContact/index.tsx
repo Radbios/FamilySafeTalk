@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 import { IconButton } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
@@ -20,16 +20,32 @@ import {
   PlaceholderTextButton,
   ButtonText,
 } from "./styles";
+import Modal from "../modal";
 
 export default function SeeContact() {
-
   const navigation = useNavigation();
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalBlockVisible, setModalBlockVisible] = useState(false);
 
   const handleArrowPress = () => {
-    navigation.navigate('AddContact');
-  }
+    navigation.navigate("AddContact");
+  };
 
-  const handlePencilPress = () => {}
+  const handlePencilPress = () => {};
+
+  const handleDeletePress = () => {
+    setModalVisible(true);
+  };
+  const handleModalDeleteClose = () => {
+    setModalVisible(false);
+  };
+
+  const handleBlockPress = () => {
+    setModalBlockVisible(true);
+  };
+  const handleModalBlockClose = () => {
+    setModalBlockVisible(false);
+  };
 
   return (
     <GestureHandlerRootView>
@@ -78,7 +94,7 @@ export default function SeeContact() {
               <ButtonTextMSG>Enviar mensagem</ButtonTextMSG>
             </ButtonBox>
 
-            <ButtonBox>
+            <ButtonBox onPress={handleDeletePress}>
               <IconButton
                 icon={() => <Feather name="trash" size={25} color="#7DA3E1" />}
                 style={{
@@ -93,7 +109,7 @@ export default function SeeContact() {
               <ButtonTextTrash>Excluir contato</ButtonTextTrash>
             </ButtonBox>
 
-            <ButtonBox>
+            <ButtonBox onPress={handleBlockPress}>
               <IconButton
                 icon={() => <Feather name="slash" size={25} color="#FF69B4" />}
                 style={{
@@ -138,6 +154,14 @@ export default function SeeContact() {
             </TouchableOpacity>
           </View>
         </ContentsBox>
+
+        {isModalVisible && (
+          <Modal onClose={handleModalDeleteClose} deleteMessage="Excluir" />
+        )}
+
+        {isModalBlockVisible && (
+          <Modal onClose={handleModalBlockClose} deleteMessage="Bloquear" />
+        )}
       </Container>
     </GestureHandlerRootView>
   );

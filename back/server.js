@@ -1,11 +1,14 @@
 import express from "express";
-import http from "http";
+import https from "https";
 import { Server as SocketIoServer } from "socket.io";
-
+import fs from "fs";
 
 const app = express();
 
-const server = http.createServer(app);
+const server = https.createServer({
+    key: fs.readFileSync('/etc/letsencrypt/live/radbios.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/radbios.com/cert.pem'),
+}, app);
 
 
 const io = new SocketIoServer(server, {
