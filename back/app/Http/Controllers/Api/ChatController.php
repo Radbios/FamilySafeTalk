@@ -16,7 +16,9 @@ class ChatController extends Controller
         $data = ChatResource::collection(
             Chat::whereHas('participants', function ($query) {
                 $query->where('user_id', Auth::user()->id);
-            })->get()
+            })
+            ->whereHas('messages')
+            ->get()
         );
         return response()->json($data);
     }
