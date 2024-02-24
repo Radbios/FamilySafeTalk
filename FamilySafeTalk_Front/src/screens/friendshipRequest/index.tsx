@@ -37,7 +37,7 @@ import CardFriendshipRequest from "../../components/cardFriendshipRequest";
     return (
       <Container>
         <ImageContainer>
-          <Image source={require("../../../assets/iconBlocks.png")} />
+          <Image source={require("../../../assets/iconFriend.png")} />
         </ImageContainer>
         <TitleBox>
           <TitleText>Solicitações de Amizade</TitleText>
