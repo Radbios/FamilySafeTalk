@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { FlatList, ImageSourcePropType, Text, View } from 'react-native';
 import {
   ItemContainer,
@@ -12,6 +12,8 @@ import { chatData } from '../../data/chatData';
 import api from '../../services/api';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useAuth } from '../../contexts/auth';
+import io, { Socket } from 'socket.io-client';
+
 
 interface LastMessageProps {
   content: string;
@@ -47,11 +49,11 @@ const renderDateTime = (createdAt) => {
   return "Data inválida";
 };
 
-const ChatItem: React.FC<ChatItemProps> = ({id , image, lastMessage, navigation, name}) => (
+const ChatItem: React.FC<ChatItemProps> = ({id , image, lastMessage, navigation, name, socket}) => (
   // <TouchableOpacity
   //   // onPress={navigation.push("Chat", {testando: "okok"})}
   // >
-    <ItemContainer onPress={() =>  navigation.push("Chat", {chatId: id})}>
+    <ItemContainer onPress={() =>  navigation.push("Chat", {chatId: id, socket: socket})}>
       <Avatar />
       <TextContainer>
         <Name>{name}</Name>
@@ -63,6 +65,7 @@ const ChatItem: React.FC<ChatItemProps> = ({id , image, lastMessage, navigation,
 );
 
 export default function Chat({navigation}) {
+  const socketRef = useRef(null);
 
   const [chats, setChats] = useState(null);
 
@@ -71,9 +74,27 @@ export default function Chat({navigation}) {
     setChats(response.data)
   }
   useEffect(() => {
+    socketRef.current = io("https://radbios.com:3000");
+
+    // socketRef.current.on("message", msg => {
+    //   console.log(msg)
+    // });
+
+    socketRef.current.on("connect", () => {
+      console.log("Conectado ao socket")
+    });
+
+    socketRef.current.on("disconnect", () => {
+      console.log("Desconectado do socket")
+    });
+
     setTimeout(() => {
       getChats();
     });
+
+    return () => {
+      socketRef.current.disconnect();
+    };
   }, []);
 
   return (
@@ -82,7 +103,7 @@ export default function Chat({navigation}) {
         <FlatList
           data={chats}
           keyExtractor={(item) => item.id.toString()} // Certifique-se de converter o ID para string
-          renderItem={({ item }) => <ChatItem {...item} navigation={navigation} />}
+          renderItem={({ item }) => <ChatItem {...item} navigation={navigation} socket={socketRef} />}
         />
       ) : (
         <View>

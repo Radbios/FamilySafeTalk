@@ -7,6 +7,8 @@ import { useFocusEffect } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Contatos = ({navigation}) => {
+
+
   
   const [contacts, setContacts] = useState(null);
 

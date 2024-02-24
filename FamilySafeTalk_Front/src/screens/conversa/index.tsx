@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
 import { Container, Talks } from "./styles";
 import TopBar from "../../components/topBar";
@@ -7,15 +7,14 @@ import Conversation from "../../components/conversation";
 import api from "../../services/api";
 import { useRoute } from "@react-navigation/native";
 import { View } from "react-native";
-import io from 'socket.io-client';
 
 
 export default function Conversa({navigation}) {
 
   const route = useRoute();
   const chatId = route.params.chatId;
+  const socket = route.params.socket;
 
-  const socketRef = useRef(null);
   
   const [chat, setChat] = useState(null);
 
@@ -27,30 +26,16 @@ export default function Conversa({navigation}) {
 
   function sendMessage(message)
   {
-    socketRef.current.emit("message", message)
+    socket.current.emit("message", message)
   }
 
   useEffect(() => {
-    socketRef.current = io("https://radbios.com:3000");
-
-    socketRef.current.on("message", msg => {
+    socket.current.on("message", msg => {
       getChat();
-      console.log(msg)
     });
-
-    socketRef.current.on("connect", () => {
-      console.log("Conectado ao socket")
-    });
-
-    socketRef.current.on("disconnect", () => {
-      console.log("Desconectado do socket")
-    });
-
-    getChat();
-
-    return () => {
-      socketRef.current.disconnect();
-    };
+    
+    getChat();    
+   
   }, []);
   
 
