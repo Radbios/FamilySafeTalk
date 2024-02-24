@@ -13,6 +13,7 @@ import {
 } from "../../routes/app/stack.routes";
 import Preferences from "../../screens/preferences";
 import ListBlocks from "../../screens/listBlocks";
+import FriendshipRequestList from "../../screens/friendshipRequest";
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
@@ -78,7 +79,7 @@ export default function BottomTabNavigator() {
         <Tab.Screen
           name="Configurações"
           //Voltar SeeContact depois
-          component={ListBlocks}
+          component={FriendshipRequestList}
           options={{
             tabBarIcon: ({ size, color }) => (
               <Feather name="settings" size={size} color={color} />
