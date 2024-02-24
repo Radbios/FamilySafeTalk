@@ -7,6 +7,9 @@ import Conversas from "../talks";
 import Contatos from "../contact";
 import SeeContact from "../seeContact";
 import AddContact from "../../screens/addContact";
+import Responsavel1 from "../../screens/Responsavel_1";
+import Responsavel3 from "../../screens/Responsavel_3";
+import Responsavel4 from "../../screens/Responsavel_4";
 import {
   ContatoStackNavigator,
   ConversasStackNavigator,
@@ -22,7 +25,7 @@ export default function BottomTabNavigator() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          tabBarLabelStyle: { fontSize: 14, fontFamily: "Dosis_400Regular" },
+          tabBarLabelStyle: { fontSize: 13, fontFamily: "Dosis_400Regular" },
           tabBarItemStyle: { width: 100 },
           tabBarStyle: {
             backgroundColor: "#a0c4ff",
@@ -72,6 +75,16 @@ export default function BottomTabNavigator() {
             ),
             tabBarLabel: "Contatos",
             headerTitle: "Contatos",
+          }}
+        />
+
+        <Tab.Screen
+          name="Dependentes"
+          component={Responsavel4}
+          options={{
+            tabBarIcon: ({ size, color }) => (
+              <Feather name="user" size={size} color={color} />
+            ),
           }}
         />
 
