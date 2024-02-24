@@ -33,7 +33,7 @@ const Contatos = ({navigation}) => {
       }}>
         <Text>Atualizar</Text>
       </TouchableOpacity>
-      <CardContacts contacts={contacts} />
+      <CardContacts contacts={contacts} navigation={navigation} />
     </Container>
   );
 }

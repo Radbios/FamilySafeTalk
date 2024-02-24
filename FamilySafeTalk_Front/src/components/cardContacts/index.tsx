@@ -10,13 +10,21 @@ import {
 import { contactsData } from "../../data/contacts";
 import api from "../../services/api";
 
-export default function CardContacts({contacts}) {
+export default function CardContacts({contacts, navigation}) {
 
   const sortedContacts = contacts != null ? contacts
     .slice()
     .sort((a, b) => a.name.localeCompare(b.name)) : null;
-
+    
   let currentLetter = "";
+
+  async function getChat(id)
+  {
+    const response = await api.get('/chat/' + id + "/contact");
+    console.log(response.data.data)
+    console.log(id)
+    navigation.navigate("Chat", {chatId: response.data.data.id})
+  }
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -35,7 +43,7 @@ export default function CardContacts({contacts}) {
                       </InfosBox>
                     </ContentsBox>
                     <Separator />
-                    <ContentsBox key={index + 1}>
+                    <ContentsBox key={user.id} onPress={() => getChat(user.contact.id)}>
                       <Image 
                         source={user.photo}
                         style={{ width: 37, height: 37 }} 
@@ -48,7 +56,7 @@ export default function CardContacts({contacts}) {
                 );
               } else {
                 return (
-                  <ContentsBox key={index}>
+                  <ContentsBox key={user.id}>
                     <Image source={user.photo} />
                     <InfosBox>
                       <NameText>{user.name}</NameText>

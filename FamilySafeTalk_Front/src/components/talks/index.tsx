@@ -47,17 +47,17 @@ const renderDateTime = (createdAt) => {
   return "Data inválida";
 };
 
-const ChatItem: React.FC<ChatItemProps> = ({id , image, lastMessage, navigation}) => (
+const ChatItem: React.FC<ChatItemProps> = ({id , image, lastMessage, navigation, name}) => (
   // <TouchableOpacity
   //   // onPress={navigation.push("Chat", {testando: "okok"})}
   // >
     <ItemContainer onPress={() =>  navigation.push("Chat", {chatId: id})}>
       <Avatar />
       <TextContainer>
-        <Name>{lastMessage.sender.name}</Name>
-        <LastMessage>{lastMessage.content}</LastMessage>
+        <Name>{name}</Name>
+        {lastMessage ? <LastMessage>{lastMessage.sender.name + ": " + lastMessage.content}</LastMessage> : ""}
       </TextContainer>
-      <Time>{renderDateTime(lastMessage.date)}</Time>
+      <Time>{lastMessage ? renderDateTime(lastMessage.date) : ""}</Time>
     </ItemContainer>
   // </TouchableOpacity>
 );
@@ -69,7 +69,6 @@ export default function Chat({navigation}) {
   async function getChats(){
     const response = await api.get("/chat");
     setChats(response.data)
-    console.log(chats);
   }
   useEffect(() => {
     setTimeout(() => {
