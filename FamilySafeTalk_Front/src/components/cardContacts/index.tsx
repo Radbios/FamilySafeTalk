@@ -21,8 +21,6 @@ export default function CardContacts({contacts, navigation}) {
   async function getChat(id)
   {
     const response = await api.get('/chat/' + id + "/contact");
-    console.log(response.data.data)
-    console.log(id)
     navigation.navigate("Chat", {chatId: response.data.data.id})
   }
 

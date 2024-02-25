@@ -10,10 +10,9 @@ import { View } from "react-native";
 
 
 export default function Conversa({navigation}) {
-
   const route = useRoute();
   const chatId = route.params.chatId;
-  const socket = route.params.socket;
+  // const socket = route.params.socket;
 
   
   const [chat, setChat] = useState(null);
@@ -26,13 +25,13 @@ export default function Conversa({navigation}) {
 
   function sendMessage(message)
   {
-    socket.current.emit("message", message)
+    // socket.current.emit("message", message)
   }
 
   useEffect(() => {
-    socket.current.on("message", msg => {
-      getChat();
-    });
+    // socket.current.on("message", msg => {
+    //   getChat();
+    // });
     
     getChat();    
    
