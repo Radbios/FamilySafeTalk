@@ -21,6 +21,7 @@ class MessageResource extends JsonResource
             'type' => $this->type,
             'is_read'=> $this->is_read,
             'sender' => new UserResource($this->sender),
+            'receiver' => ParticipantResource::collection($this->chat->participants()->where("user_id", "<>", Auth()->user()->id)->get()),
             'date' => $this->created_at,
         ];
 
