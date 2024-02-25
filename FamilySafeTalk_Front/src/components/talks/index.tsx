@@ -56,7 +56,7 @@ const ChatItem: React.FC<ChatItemProps> = ({id , image, lastMessage, navigation,
     <ItemContainer onPress={() =>  navigation.push("Chat", {chatId: id})}>
       <Avatar />
       <TextContainer>
-        <Name>{name}</Name>
+        <Name>{id + " - " + name}</Name>
         {lastMessage ? <LastMessage>{lastMessage.sender.name + ": " + lastMessage.content}</LastMessage> : ""}
       </TextContainer>
       <Time>{lastMessage ? renderDateTime(lastMessage.date) : ""}</Time>
@@ -74,11 +74,19 @@ export default function Chat({navigation}) {
     const response = await api.get("/chat");
     setChats(response.data)
   }
-  useEffect(() => {
+
+  useEffect( () => {
+    // 'escutar' as mensagens apenas quando o socket estiver ligado
+    if(socket.current)
+    {
+      socket.current.on('message', msg => {
+        console.log("vish")
+      })
+    }
     setTimeout(() => {
       getChats();
     });
-  }, []);
+  }, [])
 
   return (
     <View>

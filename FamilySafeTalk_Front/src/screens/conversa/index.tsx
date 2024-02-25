@@ -25,13 +25,17 @@ export default function Conversa({navigation}) {
 
   function sendMessage(message)
   {
+    console.log(chat)
     socket.current.emit("message", message)
   }
 
   useEffect(() => {
-    socket.current.on("message", msg => {
-      getChat();
-    });
+    if(socket.current)
+    {
+      socket.current.on("message", msg => {
+        getChat();
+      });
+    }
     
     getChat();    
    

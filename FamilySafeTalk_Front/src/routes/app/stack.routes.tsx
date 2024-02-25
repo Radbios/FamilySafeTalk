@@ -31,16 +31,16 @@ export function ConversasStackNavigator() {
     const {socket} = route.params;
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen
-            name="Conversas"
-            initialParams={{socket:socket}}
-            component={Chat}
-        />
-        <Stack.Screen
-            name="Chat"
-            initialParams={{socket:socket}}
-            component={Conversa}
-        />
+            <Stack.Screen
+                name="Conversas"
+                initialParams={{socket:socket}}
+                component={Chat}
+            />
+            <Stack.Screen
+                name="Chat"
+                initialParams={{socket:socket}}
+                component={Conversa}
+            />
         </Stack.Navigator>
     );
 }
