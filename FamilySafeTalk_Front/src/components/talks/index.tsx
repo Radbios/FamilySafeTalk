@@ -66,8 +66,7 @@ const ChatItem: React.FC<ChatItemProps> = ({id , image, lastMessage, navigation,
 
 export default function Chat({navigation}) {
 
-  const route = useRoute();
-  const {socket} = route.params;
+  const {socket, loading} = useAuth();
   const [chats, setChats] = useState(null);
 
   async function getChats(){
@@ -76,13 +75,10 @@ export default function Chat({navigation}) {
   }
 
   useEffect( () => {
-    // 'escutar' as mensagens apenas quando o socket estiver ligado
-    if(socket.current)
-    {
-      socket.current.on('message', msg => {
-        console.log("vish")
-      })
-    }
+    socket.current.on('message', msg => {
+      console.log("vish")
+    });
+
     setTimeout(() => {
       getChats();
     });
@@ -99,7 +95,7 @@ export default function Chat({navigation}) {
       ) : (
         <View>
             <Text>
-              Loading2
+              Loading
             </Text>
         </View>
       )}

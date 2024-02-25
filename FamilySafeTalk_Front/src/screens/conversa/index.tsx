@@ -7,16 +7,17 @@ import Conversation from "../../components/conversation";
 import api from "../../services/api";
 import { useRoute } from "@react-navigation/native";
 import { View } from "react-native";
+import { useAuth } from "../../contexts/auth";
 
 
 export default function Conversa({navigation}) {
+
+  const {socket} = useAuth();
+
   const route = useRoute();
+
   const chatId = route.params.chatId;
-  const socket = route.params.socket;
-
-  
   const [chat, setChat] = useState(null);
-
 
   async function getChat(){
     const response = await api.get("/chat/" + chatId);
@@ -25,17 +26,13 @@ export default function Conversa({navigation}) {
 
   function sendMessage(message)
   {
-    console.log(chat)
     socket.current.emit("message", message)
   }
 
   useEffect(() => {
-    if(socket.current)
-    {
-      socket.current.on("message", msg => {
-        getChat();
-      });
-    }
+    socket.current.on("message", msg => {
+      getChat();
+    });
     
     getChat();    
    

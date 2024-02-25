@@ -10,8 +10,6 @@ const Stack = createStackNavigator();
 
 // Defina a navegação para as abas Configurações
 export function ContatoStackNavigator() {
-    const route = useRoute();
-    const {socket} = route.params;
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen
@@ -27,18 +25,14 @@ export function ContatoStackNavigator() {
 }
 
 export function ConversasStackNavigator() {
-    const route = useRoute();
-    const {socket} = route.params;
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
                 name="Conversas"
-                initialParams={{socket:socket}}
                 component={Chat}
             />
             <Stack.Screen
                 name="Chat"
-                initialParams={{socket:socket}}
                 component={Conversa}
             />
         </Stack.Navigator>
