@@ -3,13 +3,10 @@ import { ButtonContainer, Container } from "./styles";
 import CardContacts from "../cardContacts";
 import React, { useEffect, useState } from "react";
 import api from "../../services/api";
-import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect, useRoute } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Contatos = ({navigation}) => {
-
-
-  
   const [contacts, setContacts] = useState(null);
 
   async function getContacts(){

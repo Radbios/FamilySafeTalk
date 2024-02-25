@@ -18,7 +18,7 @@ import Preferences from "../../screens/preferences";
 import ListBlocks from "../../screens/listBlocks";
 const Tab = createBottomTabNavigator();
 
-export default function BottomTabNavigator() {
+export default function BottomTabNavigator({socket}) {
   const Tab = createBottomTabNavigator();
 
   return (
@@ -42,6 +42,7 @@ export default function BottomTabNavigator() {
         <Tab.Screen
           name="ConversasNavigator"
           component={ConversasStackNavigator}
+          initialParams={{socket:socket}}
           options={{
             headerTitle: "Conversas",
             tabBarLabel: "Conversas",
@@ -69,6 +70,8 @@ export default function BottomTabNavigator() {
         <Tab.Screen
           name="ContatoNavigator"
           component={ContatoStackNavigator}
+          initialParams={{socket:socket}}
+
           options={{
             tabBarIcon: ({ size, color }) => (
               <Feather name="users" size={size} color={color} />
