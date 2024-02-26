@@ -1,10 +1,22 @@
 #Pre-Process
-import import_data
 import spacy
+import re
+from metaphone import doublemetaphone
+from fuzzywuzzy import fuzz
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
 nlp = spacy.load("pt_core_news_sm", disable=["tokenizer", "parser", "ner"])
+
+#Lista das substituições dos fonemas
+substituicoes = {
+        'a': 'ah', 'e': 'eh', 'i': 'ee', 'o': 'oh', 'u': 'oo',
+        'ae': 'aheh', 'ai': 'ahee', 'ao': 'ahoh', 'au': 'ahoo',
+        'ea': 'ehah', 'ei': 'ehee', 'eo': 'ehoh', 'eu': 'ehoo',
+        'ia': 'eeah', 'ie': 'eeeh', 'io': 'eeoh', 'iu': 'eeoo',
+        'oa': 'ohah', 'oe': 'oheh', 'oi': 'ohee', 'ou': 'ohoo',
+        'ua': 'ooah', 'ue': 'ooeh', 'ui': 'ooee', 'uo': 'oooh'
+    }
 
 #Modelo
 import joblib
@@ -37,16 +49,92 @@ def pre_process(texto):
 
   return frase_processed
 
+def palavra_fonema(palavra):
+
+  for k, v in substituicoes.items():
+      palavra = palavra.replace(k, v)
+
+  #print(palavra)
+  return palavra
+
+def palavra_fonema_reverse(palavra):
+
+  for k, v in substituicoes.items():
+      palavra = palavra.replace(v, k)
+
+  #print(palavra)
+  return palavra
+
+def pre_process_keywords(texto):
+  tokens = word_tokenize(texto)
+
+  stop_words = set(stopwords.words('portuguese'))
+  stop_words.discard('não')
+  tokens_sem_stopwords = [token for token in tokens if token.lower() not in stop_words]
+
+  fonemas = []
+  for i in tokens_sem_stopwords:
+    fonemas.append(palavra_fonema(i))
+  fonemas = ' '.join(fonemas)
+
+  return fonemas
+
+def preprocessar_palavroes(palavroes):
+  palavroes_process = []
+  for i in palavroes:
+    palavroes_process.append(palavra_fonema(i))
+  #print(palavroes_process)
+  return palavroes_process
+
+with open("storage/classifier/keywords.txt", "r") as arquivo:
+    conteudo = arquivo.read()
+    palavroes = conteudo.split()
+
+palavroes_process = preprocessar_palavroes(palavroes)
+
 def carregar_modelo():
-    model = joblib.load('./back/storage/classifier/trained_Model')
+    model = joblib.load('storage/classifier/trained_Model')
     return model
 
 def classificar(texto, model):
-   vectorizer = joblib.load('./back/storage/classifier/vetorizador')
+   vectorizer = joblib.load('storage/classifier/vetorizador')
    msg_vector = vectorizer.transform(texto)
    result = model.predict(msg_vector)
 
    return result[0]
+
+def verificar_palavra(frase, palavra_nova, palavroes_process):
+    for palavra in palavroes_process:
+        distancia = fuzz.ratio(palavra_nova, palavra)
+        #print(distancia, palavra_nova)
+        if distancia >= 95:
+          palavra_achada = palavra
+          #print(palavra_achada)
+          return frase, palavra_achada
+        if distancia > 85:
+            metaphone_code = doublemetaphone(palavra_nova)
+            #print(metaphone_code)
+            for code in metaphone_code:
+                if code in doublemetaphone(palavra) and code != "":
+                    palavra_achada = palavra
+                    #print(palavra_achada)
+                    return frase, palavra_achada
+    return None, None
+
+mensagens = [("Hoje eu vou viajar"), ("chupa meu pau"), ("filho da Puta"), ("Vc é uma escrota")]
+msgs = []
+for msg in mensagens:
+  msgs.append(([pre_process_keywords(msg), msg]))
+#print(msgs)
+
+for i in msgs:
+  tokens = word_tokenize(i[0])
+
+  for j in tokens:
+    frase, palavra_achada = verificar_palavra(i[1], j.lower(), palavroes_process)
+
+    if palavra_achada != None:
+        print("A palavra", palavra_fonema_reverse(j), "na frase", frase, "é semelhante a", palavra_fonema_reverse(palavra_achada))
 
 msg = "Podemos conversar? Mas não pode falar pros seus pais"
 model = carregar_modelo()
