@@ -18,19 +18,22 @@ export default function Conversa({navigation}) {
 
   const chatId = route.params.chatId;
   const [chat, setChat] = useState(null);
+  const [messages, setMessages] = useState(null);
 
   async function getChat(){
     const response = await api.get("/chat/" + chatId);
     setChat(response.data)
+    setMessages(response.data.messages)
   }
 
-  function sendMessage(message)
+  function sendMessage(data)
   {
-    socket.current.emit("message", message)
+    setMessages([...messages, data.info]);
+    socket.current.emit("message", data)
   }
 
   useEffect(() => {
-    socket.current.on("message", msg => {
+    socket.current.on("message", data => {
       getChat();
     });
     
@@ -41,13 +44,13 @@ export default function Conversa({navigation}) {
 
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: 'white' }}>
-      { chat ? 
+      { (chat && messages) ? 
           <Container>
             <TopBar name={chat.name} image={chat.image} navigation={navigation}/>
             <Talks>
-              <Conversation messages={chat.messages}/>
+              <Conversation messages={messages}/>
             </Talks>
-            <BottomBar chatId={chat.id} onSendMessage={sendMessage}/>
+            <BottomBar messages={messages} chatId={chat.id} onSendMessage={sendMessage}/>
           </Container>
         : 
         <View></View>

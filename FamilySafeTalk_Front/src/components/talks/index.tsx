@@ -75,10 +75,9 @@ export default function Chat({navigation}) {
   }
 
   useEffect( () => {
-    socket.current.on('message', msg => {
-      console.log("vish")
+    socket.current.on('message', data => {
+      console.log("talks")
     });
-
     setTimeout(() => {
       getChats();
     });

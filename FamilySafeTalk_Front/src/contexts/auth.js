@@ -20,39 +20,37 @@ export const AuthProvider = ({ children }) => {
         async function loadStorageData(){
             const storagedUser = await AsyncStorage.getItem('@FST-Auth:user');
             const storagedToken = await AsyncStorage.getItem('@FST-Auth:token');
-
-            // AsyncStorage.clear().then(() => {
-            //     setUser(null);
-            // });
-
-            if(storagedUser && storagedToken){
+            
+            if(storagedUser){
+                setUser(JSON.parse(storagedUser));
                 api.defaults.headers['Authorization'] = `Bearer ${storagedToken}`;
 
-                setUser(JSON.parse(storagedUser));
-                console.log(user)
-                socketRef.current = io("https://radbios.com:3000");
-    
-                socketRef.current.on("connect", () => {
-                    console.log("Conectado ao socket")
-                    setLoading(false);
-                });
-        
-                socketRef.current.on("disconnect", () => {
-                    console.log("Desconectado do socket")
-                });
-                
             }
             else{
                 setLoading(false)
             }
-
-            return () => {
-                socketRef.current.disconnect();
-            };
         }
 
         loadStorageData();
     }, []);
+
+    useEffect( () => {
+        socketRef.current = io("https://radbios.com:3000");
+
+        socketRef.current.on("connect", () => {
+            console.log("Conectado ao socket");
+            socketRef.current.emit('user-connect', user.id);
+            setLoading(false);
+        });
+
+        socketRef.current.on("disconnect", () => {
+            console.log("Desconectado do socket")
+        });
+
+        return () => {
+            socketRef.current.disconnect();
+        };
+    }, [user])
 
     async function singIn(email, password) {
         setLoading(true)
