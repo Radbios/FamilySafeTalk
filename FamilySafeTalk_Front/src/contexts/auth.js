@@ -16,40 +16,45 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const socketRef = useRef(null);
 
-    useEffect( () => {
-        async function loadStorageData(){
-            const storagedUser = await AsyncStorage.getItem('@FST-Auth:user');
-            const storagedToken = await AsyncStorage.getItem('@FST-Auth:token');
-            
-            if(storagedUser){
-                setUser(JSON.parse(storagedUser));
-                api.defaults.headers['Authorization'] = `Bearer ${storagedToken}`;
+    async function loadStorageData(){
+        const storagedUser = await AsyncStorage.getItem('@FST-Auth:user');
+        const storagedToken = await AsyncStorage.getItem('@FST-Auth:token');
+        
+        if(storagedUser){
+            setUser(JSON.parse(storagedUser));
+            api.defaults.headers['Authorization'] = `Bearer ${storagedToken}`;
 
-            }
-            else{
-                setLoading(false)
-            }
+        }
+        else{
+            setLoading(false)
         }
 
+        
+    }
+    useEffect( () => {
         loadStorageData();
     }, []);
 
     useEffect( () => {
-        socketRef.current = io("https://radbios.com:3000");
+        if(user)
+        {
+            socketRef.current = io("https://radbios.com:3000");
 
-        socketRef.current.on("connect", () => {
-            console.log("Conectado ao socket");
-            socketRef.current.emit('user-connect', user.id);
+            socketRef.current.on("connect", () => {
+                console.log("Conectado ao socket");
+                socketRef.current.emit('user-connect', user.id);
+            });
+    
+            socketRef.current.on("disconnect", () => {
+                console.log("Desconectado do socket")
+            });
+
             setLoading(false);
-        });
-
-        socketRef.current.on("disconnect", () => {
-            console.log("Desconectado do socket")
-        });
-
-        return () => {
-            socketRef.current.disconnect();
-        };
+    
+            return () => {
+                socketRef.current.disconnect();
+            };
+        }
     }, [user])
 
     async function singIn(email, password) {
@@ -62,22 +67,6 @@ export const AuthProvider = ({ children }) => {
 
         await AsyncStorage.setItem('@FST-Auth:user', JSON.stringify(response.user));
         await AsyncStorage.setItem('@FST-Auth:token', response.token);
-
-        socketRef.current = io("https://radbios.com:3000");
-    
-        socketRef.current.on("connect", () => {
-            console.log("Conectado ao socket")
-            socketRef.current.emit('user-connect', response.user.id);
-            setLoading(false);
-        });
-
-        socketRef.current.on("disconnect", () => {
-            console.log("Desconectado do socket")
-        });
-
-        return () => {
-            socketRef.current.disconnect();
-        };
     }
 
     async function singOut() {
