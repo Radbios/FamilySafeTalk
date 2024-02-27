@@ -66,17 +66,17 @@ const ChatItem: React.FC<ChatItemProps> = ({id , image, lastMessage, navigation,
 
 export default function Chat({navigation}) {
 
-  const {socket, loading} = useAuth();
+  const {socket} = useAuth();
   const [chats, setChats] = useState(null);
 
   async function getChats(){
     const response = await api.get("/chat");
-    setChats(response.data)
+    setChats(response.data.data)
   }
 
   useEffect( () => {
     socket.current.on('message', data => {
-      console.log("talks")
+      getChats();
     });
     setTimeout(() => {
       getChats();

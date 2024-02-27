@@ -17,8 +17,10 @@ export default function Conversa({navigation}) {
   const route = useRoute();
 
   const chatId = route.params.chatId;
+
   const [chat, setChat] = useState(null);
   const [messages, setMessages] = useState(null);
+  const [newMessages, setNewMessages] = useState(null);
 
   async function getChat(){
     const response = await api.get("/chat/" + chatId);
@@ -26,18 +28,30 @@ export default function Conversa({navigation}) {
     setMessages(response.data.messages)
   }
 
+  // async function getLastMessage(){
+  //   const response = await api.get("/chat/" + chatId + "/lastMessage");
+  //   if(newMessages)
+  //   {
+  //     setNewMessages([...newMessages, response.data.data]);
+  //   }
+  //   else
+  //   {
+  //     setNewMessages([response.data.data]);
+  //   }
+  // }
+
   function sendMessage(data)
   {
-    setMessages([...messages, data.info]);
-    socket.current.emit("message", data)
+    console.log("sendMessage")
+    socket.current.emit("message", data);
   }
 
   useEffect(() => {
+    getChat();
     socket.current.on("message", data => {
+      // getLastMessage()
       getChat();
     });
-    
-    getChat();    
    
   }, []);
   
@@ -48,9 +62,9 @@ export default function Conversa({navigation}) {
           <Container>
             <TopBar name={chat.name} image={chat.image} navigation={navigation}/>
             <Talks>
-              <Conversation messages={messages}/>
+              <Conversation messages={messages} newMessages={newMessages}/>
             </Talks>
-            <BottomBar messages={messages} chatId={chat.id} onSendMessage={sendMessage}/>
+            <BottomBar chatId={chat.id} onSendMessage={sendMessage}/>
           </Container>
         : 
         <View></View>
