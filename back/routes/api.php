@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ChatController;
 use App\Http\Controllers\Api\ContactController;
+use App\Http\Controllers\Api\Guardian\DependentController;
 use App\Http\Controllers\Api\MessageController;
-use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +29,5 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get("/chat/{chat_id}/lastMessage", [MessageController::class, "lastMessage"]);
     Route::get("/chat/{user_id}/contact", [ChatController::class, "getChatByContact"]);
 
-    Route::apiResource("user", UserController::class);
+    Route::apiResource("/guardian/dependent", DependentController::class);
 });
