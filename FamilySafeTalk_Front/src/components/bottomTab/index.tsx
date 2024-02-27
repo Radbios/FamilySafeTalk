@@ -17,11 +17,12 @@ import {
 import Preferences from "../../screens/preferences";
 import ListBlocks from "../../screens/listBlocks";
 import FriendshipRequestList from "../../screens/friendshipRequest";
+import { useAuth } from "../../contexts/auth";
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
   const Tab = createBottomTabNavigator();
-
+  const {user} = useAuth();
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -80,15 +81,17 @@ export default function BottomTabNavigator() {
           }}
         />
 
-        <Tab.Screen
-          name="Dependentes"
-          component={Responsavel4}
-          options={{
-            tabBarIcon: ({ size, color }) => (
-              <Feather name="user" size={size} color={color} />
-            ),
-          }}
-        />
+        {
+          user.role == 1 && <Tab.Screen
+            name="Dependentes"
+            component={Responsavel4}
+            options={{
+              tabBarIcon: ({ size, color }) => (
+                <Feather name="user" size={size} color={color} />
+              ),
+            }}
+          />
+        }
 
         <Tab.Screen
           name="Configurações"
