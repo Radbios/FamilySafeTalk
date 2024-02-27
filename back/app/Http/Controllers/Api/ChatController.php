@@ -19,7 +19,7 @@ class ChatController extends Controller
                 $query->where('user_id', Auth::user()->id);
             })
             ->whereHas('messages')
-            ->orderBy('updated_at', 'asc')
+            ->orderBy('updated_at', 'desc')
             ->get()
         );
         return response()->json($data);
