@@ -24,37 +24,28 @@ export default function Conversa({navigation}) {
 
   async function getChat(){
     const response = await api.get("/chat/" + chatId);
+    console.log("Ok")
     setChat(response.data)
     setMessages(response.data.messages)
   }
 
-  // async function getLastMessage(){
-  //   const response = await api.get("/chat/" + chatId + "/lastMessage");
-  //   if(newMessages)
-  //   {
-  //     setNewMessages([...newMessages, response.data.data]);
-  //   }
-  //   else
-  //   {
-  //     setNewMessages([response.data.data]);
-  //   }
-  // }
+  async function getLastMessage(){
+    const response = await api.get("/chat/" + chatId + "/lastMessage");
+    setMessages((prevMessages) => [...prevMessages, response.data.data])
+  }
 
   function sendMessage(data)
   {
-    console.log("sendMessage")
     socket.current.emit("message", data);
   }
 
   useEffect(() => {
     getChat();
+
     socket.current.on("message", data => {
-      // getLastMessage()
-      getChat();
+      getLastMessage()
     });
-   
   }, []);
-  
 
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: 'white' }}>
