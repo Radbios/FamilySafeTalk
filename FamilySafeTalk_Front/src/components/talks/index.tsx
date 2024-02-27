@@ -37,9 +37,9 @@ const renderDateTime = (createdAt) => {
         now.getMonth() === createdDate.getMonth() &&
         now.getFullYear() === createdDate.getFullYear()
       ) {
-        return createdDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric' });
+        return createdDate.toLocaleTimeString('pt-BR', { hour: 'numeric', minute: 'numeric'});
       } else {
-        return createdDate.toLocaleDateString('en-US');
+        return createdDate.toLocaleDateString('pt-BR');
       }
     }
   } catch (error) {
