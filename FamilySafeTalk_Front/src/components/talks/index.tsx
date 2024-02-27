@@ -56,7 +56,7 @@ const ChatItem: React.FC<ChatItemProps> = ({id , image, lastMessage, navigation,
     <ItemContainer onPress={() =>  navigation.push("Chat", {chatId: id})}>
       <Avatar />
       <TextContainer>
-        <Name>{id + " - " + name}</Name>
+        <Name>{name}</Name>
         {lastMessage ? <LastMessage>{lastMessage.sender.name + ": " + lastMessage.content}</LastMessage> : ""}
       </TextContainer>
       <Time>{lastMessage ? renderDateTime(lastMessage.date) : ""}</Time>
@@ -69,15 +69,48 @@ export default function Chat({navigation}) {
   const {socket} = useAuth();
   const [chats, setChats] = useState(null);
 
+  function orderData(data)
+  {
+    const d = data ? data.sort((a, b) => {
+      return new Date(b.lastMessage.date) - new Date(a.lastMessage.date);
+    }): null;
+
+    setChats(d)
+  }
+
+  const updateLastMessageById = (id, updatedLastMessage) => {
+    setChats(prevChats => {
+      const updatedIndex = prevChats.findIndex(chat => chat.id === id);
+      if (updatedIndex === -1) return prevChats;
+  
+      const updatedChat = { ...prevChats[updatedIndex], lastMessage: updatedLastMessage };
+  
+      const newChats = [
+        updatedChat,
+        ...prevChats.slice(0, updatedIndex),
+        ...prevChats.slice(updatedIndex + 1)
+      ];
+  
+      return newChats;
+    });
+  };
+
   async function getChats(){
     const response = await api.get("/chat");
-    setChats(response.data.data)
+
+    orderData(response.data.data);
+  }
+
+  async function getLastMessage(chatId){
+    const response = await api.get("/chat/" + chatId + "/lastMessage");
+    updateLastMessageById(chatId, response.data.data)
   }
 
   useEffect( () => {
     socket.current.on('message', data => {
-      getChats();
+      getLastMessage(data.chat)
     });
+
     setTimeout(() => {
       getChats();
     });

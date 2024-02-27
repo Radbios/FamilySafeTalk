@@ -53,7 +53,7 @@ export default function Conversa({navigation}) {
           <Container>
             <TopBar name={chat.name} image={chat.image} navigation={navigation}/>
             <Talks>
-              <Conversation messages={messages} newMessages={newMessages}/>
+              <Conversation messages={messages}/>
             </Talks>
             <BottomBar chatId={chat.id} onSendMessage={sendMessage}/>
           </Container>
