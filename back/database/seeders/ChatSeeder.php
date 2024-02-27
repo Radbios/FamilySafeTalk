@@ -25,10 +25,6 @@ class ChatSeeder extends Seeder
             "user_id" => 2,
         ]);
 
-        $chat->participants()->create([
-            "user_id" => 3,
-        ]);
-
         $chat->messages()->create([
             'sender_id' => 1,
             'type' => 'text',
@@ -39,12 +35,6 @@ class ChatSeeder extends Seeder
             'sender_id' => 2,
             'type' => 'text',
             'content' => 'olares',
-        ]);
-
-        $chat->messages()->create([
-            'sender_id' => 3,
-            'type' => 'text',
-            'content' => 'Dale, pessoas',
         ]);
     }
 }
