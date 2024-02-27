@@ -22,11 +22,11 @@ export default function Responsavel1() {
 
   const navigation = useNavigation();
 
-  const [dependents, setDependents] = useState([]);
+  const [relationships, setRelationships] = useState([]);
 
-  async function getDependents(){
+  async function getRelationships(){
     const response = await api.get("/guardian/dependent");
-    setDependents(response.data.data)
+    setRelationships(response.data.data)
   }
 
   const handlePlusPress = () => {}
@@ -34,8 +34,8 @@ export default function Responsavel1() {
   const handleArrowLeftPress = () => {}
 
   useEffect( () => {
-    getDependents();
-  });
+    getRelationships();
+  }, []);
   
 
   return (
@@ -65,20 +65,23 @@ export default function Responsavel1() {
           </DependentIndex>
 
           <ButtonsContainer>
-            <ButtonBox>
-              <IconButton
-                icon={() => <FontAwesome name="user" size={25} color="#FFFFFF" />}
-                style={{
-                  backgroundColor: "#000000",
-                  borderRadius: 20,
-                  padding: 1,
-                  width: 35,
-                  height: 35,
-                  marginLeft: 15,
-                }}
-              />
-              <ButtonName>Bernardo</ButtonName>
-            </ButtonBox>
+            {
+            relationships.map((e) => (
+              <ButtonBox key={e.dependent.id} onPress={() => console.log(e.dependent)}>
+                <IconButton
+                  icon={() => <FontAwesome name="user" size={25} color="#FFFFFF" />}
+                  style={{
+                    backgroundColor: "#000000",
+                    borderRadius: 20,
+                    padding: 1,
+                    width: 35,
+                    height: 35,
+                    marginLeft: 15,
+                  }}
+                />
+                <ButtonName>{e.dependent.name}</ButtonName>
+              </ButtonBox>
+            ))}
           </ButtonsContainer>
 
           <View
