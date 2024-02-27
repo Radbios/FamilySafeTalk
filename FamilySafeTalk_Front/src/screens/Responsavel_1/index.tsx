@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 import { IconButton } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
@@ -16,14 +16,27 @@ import {
   ButtonName,
   DependentIndex
 } from "./styles";
+import api from "../../services/api";
 
 export default function Responsavel1() {
 
   const navigation = useNavigation();
 
+  const [dependents, setDependents] = useState([]);
+
+  async function getDependents(){
+    const response = await api.get("/guardian/dependent");
+    setDependents(response.data.data)
+  }
+
   const handlePlusPress = () => {}
 
   const handleArrowLeftPress = () => {}
+
+  useEffect( () => {
+    getDependents();
+  });
+  
 
   return (
     <GestureHandlerRootView>

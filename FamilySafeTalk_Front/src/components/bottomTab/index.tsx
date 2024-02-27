@@ -84,7 +84,7 @@ export default function BottomTabNavigator() {
         {
           user.role == 1 && <Tab.Screen
             name="Dependentes"
-            component={Responsavel4}
+            component={Responsavel1}
             options={{
               tabBarIcon: ({ size, color }) => (
                 <Feather name="user" size={size} color={color} />
