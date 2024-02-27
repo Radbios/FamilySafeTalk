@@ -49,4 +49,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Contact::class, 'user_id');
     }
+
+    public function dependents()
+    {
+        return $this->hasMany(UserParentRelationship::class, 'guardian_id');
+    }
+
+    public function guardian()
+    {
+        return $this->hasOne(UserParentRelationship::class, 'child_id');
+    }
 }

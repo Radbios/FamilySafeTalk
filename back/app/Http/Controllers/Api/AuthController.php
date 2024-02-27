@@ -40,7 +40,8 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role_id' => $request->role_id
+            'role_id' => $request->role_id,
+            'tel' => $request->tel
         ]);
 
         return new UserResource($user);
