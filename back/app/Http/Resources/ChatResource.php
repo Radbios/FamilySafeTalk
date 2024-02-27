@@ -32,6 +32,7 @@ class ChatResource extends JsonResource
             'lastMessage' => $lastMessage,
             'messages' => MessageResource::collection($this->messages()->orderBy('created_at')->orderBy('id')->get()),
             'name' => $name,
+            'date' => $lastMessage->created_at
         ];
     }
 }
