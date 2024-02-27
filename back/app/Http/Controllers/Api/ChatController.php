@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ChatCollection;
 use App\Http\Resources\ChatResource;
 use App\Models\Chat;
 use App\Models\Participant;
@@ -13,7 +14,7 @@ class ChatController extends Controller
 {
     public function index()
     {
-        $data = ChatResource::collection(
+        $data = new ChatCollection(
             Chat::whereHas('participants', function ($query) {
                 $query->where('user_id', Auth::user()->id);
             })
