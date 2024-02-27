@@ -16,9 +16,15 @@ const io = new SocketIoServer(server, {
 });
 
 io.on('connection', (socket) => {
-    socket.on('message', (message) => {
-        console.log(message);
-        io.emit('message', message);
+        socket.on("user-connect", (user) => {
+                console.log("user " + user + " conectado");
+                socket.join(user);
+        });
+    socket.on('message', (data) => {
+        data.users.forEach( (element) => {
+                console.log("mensagem enviada para o usuario "+ element.id);
+                io.to(element.id).emit('message', data);
+        })
     });
 
     socket.on('disconnect', (socket) => {
