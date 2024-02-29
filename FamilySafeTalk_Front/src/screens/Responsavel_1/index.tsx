@@ -17,8 +17,11 @@ import {
   DependentIndex
 } from "./styles";
 import api from "../../services/api";
+import { useAuth } from "../../contexts/auth";
 
 export default function Responsavel1() {
+
+  const {user} = useAuth();
 
   const navigation = useNavigation();
 
@@ -57,7 +60,7 @@ export default function Responsavel1() {
                 }}
               />
             </TouchableOpacity>
-            <TitleText>Judite</TitleText>
+            <TitleText>{user.name}</TitleText>
           </TitleContainer>
 
           <DependentIndex>
@@ -67,19 +70,23 @@ export default function Responsavel1() {
           <ButtonsContainer>
             {
             relationships.map((e) => (
-              <ButtonBox key={e.dependent.id} onPress={() => console.log(e.dependent)}>
-                <IconButton
-                  icon={() => <FontAwesome name="user" size={25} color="#FFFFFF" />}
-                  style={{
-                    backgroundColor: "#000000",
-                    borderRadius: 20,
-                    padding: 1,
-                    width: 35,
-                    height: 35,
-                    marginLeft: 15,
-                  }}
-                />
-                <ButtonName>{e.dependent.name}</ButtonName>
+              <ButtonBox key={e.dependent.id} 
+                onPress={ () => {
+                  navigation.push("Ver Dependente", {dependent: e.dependent})
+                }}
+              >
+                  <IconButton
+                    icon={() => <FontAwesome name="user" size={25} color="#FFFFFF" />}
+                    style={{
+                      backgroundColor: "#000000",
+                      borderRadius: 20,
+                      padding: 1,
+                      width: 35,
+                      height: 35,
+                      marginLeft: 15,
+                    }}
+                  />
+                  <ButtonName>{e.dependent.name}</ButtonName>
               </ButtonBox>
             ))}
           </ButtonsContainer>

@@ -1,10 +1,10 @@
 import React from "react";
-import { TouchableOpacity, Image } from "react-native";
+import { TouchableOpacity, Image, View, Text } from "react-native";
 import { IconButton } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import {
   Container,
@@ -22,6 +22,9 @@ import {
 
 export default function Responsavel3() {
 
+  const route = useRoute();
+  const dependent = route.params.dependent;
+
   const navigation = useNavigation();
 
   {/* const handleArrowPress = () => {}
@@ -30,10 +33,19 @@ export default function Responsavel3() {
 
   return (
     <GestureHandlerRootView>
+      <View>
+        <TouchableOpacity onPress={() => {
+            navigation.pop();
+        }}>
+            <Text>
+              Voltar
+            </Text>
+        </TouchableOpacity>
+      </View>
       <Container>
         <ContentsBox>
           <TitleContainer>
-            <TitleText>Perfil de Bernardo</TitleText>
+            <TitleText>Perfil de {dependent.name}</TitleText>
             <TouchableOpacity>
               <IconButton
                 icon={() => (
@@ -76,7 +88,7 @@ export default function Responsavel3() {
                     top: 4
                   }}
                 />
-                <ButtonTextCVS>Conversas de Bernardo</ButtonTextCVS>
+                <ButtonTextCVS>Conversas de {dependent.name}</ButtonTextCVS>
             </ButtonBox>
 
             <ButtonBox>

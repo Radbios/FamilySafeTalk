@@ -5,6 +5,8 @@ import AddContact from '../../screens/addContact';
 import Conversa from '../../screens/conversa';
 import Chat from '../../components/talks';
 import { useRoute } from '@react-navigation/native';
+import Responsavel1 from '../../screens/Responsavel_1';
+import Responsavel3 from '../../screens/Responsavel_3';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +36,21 @@ export function ConversasStackNavigator() {
             <Stack.Screen
                 name="Chat"
                 component={Conversa}
+            />
+        </Stack.Navigator>
+    );
+}
+
+export function DependenteStackNavigator() {
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen
+                name="Dependentes"
+                component={Responsavel1}
+            />
+            <Stack.Screen
+                name="Ver Dependente"
+                component={Responsavel3}
             />
         </Stack.Navigator>
     );

@@ -13,6 +13,7 @@ import Responsavel4 from "../../screens/Responsavel_4";
 import {
   ContatoStackNavigator,
   ConversasStackNavigator,
+  DependenteStackNavigator,
 } from "../../routes/app/stack.routes";
 import Preferences from "../../screens/preferences";
 import ListBlocks from "../../screens/listBlocks";
@@ -83,12 +84,14 @@ export default function BottomTabNavigator() {
 
         {
           user.role == 1 && <Tab.Screen
-            name="Dependentes"
-            component={Responsavel1}
+            name="DependenteNavigator"
+            component={DependenteStackNavigator}
             options={{
               tabBarIcon: ({ size, color }) => (
                 <Feather name="user" size={size} color={color} />
               ),
+              tabBarLabel: "Dependentes",
+              headerTitle: "Dependentes",
             }}
           />
         }
@@ -96,7 +99,7 @@ export default function BottomTabNavigator() {
         <Tab.Screen
           name="Configurações"
           //Voltar SeeContact depois
-          component={FriendshipRequestList}
+          component={Responsavel1}
           options={{
             tabBarIcon: ({ size, color }) => (
               <Feather name="settings" size={size} color={color} />
