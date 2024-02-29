@@ -19,6 +19,8 @@ import Preferences from "../../screens/preferences";
 import ListBlocks from "../../screens/listBlocks";
 import FriendshipRequestList from "../../screens/friendshipRequest";
 import { useAuth } from "../../contexts/auth";
+import Cadastro2 from "../../screens/cadastro/cadastro2";
+import Cadastro3 from "../../screens/cadastro/cadastro3";
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
@@ -99,7 +101,7 @@ export default function BottomTabNavigator() {
         <Tab.Screen
           name="Configurações"
           //Voltar SeeContact depois
-          component={Responsavel1}
+          component={Cadastro3}
           options={{
             tabBarIcon: ({ size, color }) => (
               <Feather name="settings" size={size} color={color} />

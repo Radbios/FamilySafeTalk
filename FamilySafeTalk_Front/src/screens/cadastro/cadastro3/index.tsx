@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import useAppRoute from "../../../routes/hooks/types";
 import {
@@ -25,9 +25,27 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import api from "../../../services/api";
 
 export default function Cadastro3() {
-  const { navigate } = useAppRoute().navigation;
+
+  const navigation = useNavigation();
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  
+
+  async function submit(){
+    const response = await api.post("/guardian/dependent",{
+      name: name,
+      email: email,
+      password: password,
+    });
+    navigation.pop();
+  }
+
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: "#a0c4ff" }}>
       <KeyboardAvoidingView
@@ -46,27 +64,46 @@ export default function Cadastro3() {
                 <SubTitleText>CADASTRO DE DEPENDENTE:</SubTitleText>
               </SubTitleBox>
               <InputsContainer>
-                <InputsBox placeholder="Nome Completo" />
-                <InputsBox placeholder="E-mail" />
-                <InputsBox placeholder="Senha" />
-                <InputsBox placeholder="Parentesco" />
+                <InputsBox 
+                  placeholder="Nome Completo"
+                  onChangeText={setName}
+                  value={name}
+                 />
+                <InputsBox 
+                  placeholder="E-mail"
+                  onChangeText={setEmail}
+                  value={email}
+                />
+                <InputsBox
+                  placeholder="Senha"
+                  onChangeText={setPassword}
+                  value={password}
+                  secureTextEntry={true}
+                />
+                {/* <InputsBox placeholder="Parentesco" /> */}
               </InputsContainer>
-              <BirthInputsContainer>
+              {/* <BirthInputsContainer>
                 <BirthInputsBox placeholder="Data de Nascimento" />
                 <IconInputsContainer>
                   <Icon
                     source={require("../../../../assets/icons8-calendário-32.png")}
                   />
                 </IconInputsContainer>
-              </BirthInputsContainer>
+              </BirthInputsContainer> */}
               <ButtonsContainer>
                 <ButtonBox1>
-                  <ButtonText onPress={() => navigate("Register2")}>
+                  <ButtonText onPress={() => {
+                    navigation.pop();
+                  }}>
                     Voltar
                   </ButtonText>
                 </ButtonBox1>
                 <ButtonBox2>
-                  <ButtonText>Próximo</ButtonText>
+                  <ButtonText
+                    onPress={submit}
+                  >
+                    Próximo
+                  </ButtonText>
                 </ButtonBox2>
               </ButtonsContainer>
             </ContentsBox>

@@ -7,6 +7,7 @@ import Chat from '../../components/talks';
 import { useRoute } from '@react-navigation/native';
 import Responsavel1 from '../../screens/Responsavel_1';
 import Responsavel3 from '../../screens/Responsavel_3';
+import Cadastro3 from '../../screens/cadastro/cadastro3';
 
 const Stack = createStackNavigator();
 
@@ -51,6 +52,10 @@ export function DependenteStackNavigator() {
             <Stack.Screen
                 name="Ver Dependente"
                 component={Responsavel3}
+            />
+             <Stack.Screen
+                name="Criar Dependente"
+                component={Cadastro3}
             />
         </Stack.Navigator>
     );

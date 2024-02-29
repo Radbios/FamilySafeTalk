@@ -32,10 +32,11 @@ export default function Responsavel1() {
     setRelationships(response.data.data)
   }
 
-  const handlePlusPress = () => {}
+  function handlePlusPress(){
+    navigation.push('Criar Dependente')
+  }
 
   const handleArrowLeftPress = () => {}
-
   useEffect( () => {
     getRelationships();
   }, []);
@@ -66,6 +67,14 @@ export default function Responsavel1() {
           <DependentIndex>
             Dependentes
           </DependentIndex>
+
+          <View>
+            <ButtonBox
+              onPress={getRelationships}
+            >
+              <Text>Atualizar</Text>
+            </ButtonBox>
+          </View>
 
           <ButtonsContainer>
             {
@@ -98,7 +107,7 @@ export default function Responsavel1() {
               top: 235,
             }}
           >
-            <TouchableOpacity onPress={handlePlusPress}>
+            <TouchableOpacity onPress={handleArrowLeftPress}>
               <IconButton
                 icon={() => (
                   <Feather name="arrow-right" size={25} color="#000" />
@@ -113,7 +122,7 @@ export default function Responsavel1() {
               top: 170,
             }}
           >
-            <TouchableOpacity onPress={handleArrowLeftPress}>
+            <TouchableOpacity onPress={handlePlusPress}>
               <IconButton
                 icon={() => <Feather name="plus" size={25} color="#888" />}
               />
