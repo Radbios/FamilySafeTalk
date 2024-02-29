@@ -54,6 +54,19 @@
         .bold{
             font-weight: bold;
         }
+        .apk-content{
+            display: flex;
+            justify-content: center;
+            margin-top: 30px
+        }
+        .apk-content a{
+            color: white;
+            text-decoration: none;
+            border: 1px white solid;
+            width: max-content;
+            padding: 10px;
+            border-radius: 10px
+        }
 
         @media (max-width: 600px) {
             body {
@@ -85,6 +98,11 @@
                 A interface destinada às crianças contará com recursos básicos de chat, enquanto os responsáveis serão notificados instantaneamente em situações de perigo, proporcionando a capacidade de gerenciar remotamente as configurações de segurança.
                 A acessibilidade é uma prioridade, com o acesso gratuito ao aplicativo, e o custo de desenvolvimento será cuidadosamente calculado para garantir eficiência, segurança robusta e escalabilidade, refletindo no compromisso com a segurança online e o bem-estar das crianças que utilizam o app.
             </p>
+        </div>
+        <div class="apk-content">
+            <a href="{{asset("assets/file/FamilySafeTalk-dev.apk")}}" download>
+                Última versão do APK
+            </a>
         </div>
         <div id="obs">
             EM DESENVOLVIMENTO
