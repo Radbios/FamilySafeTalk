@@ -1,6 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import { Image } from 'react-native';
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 import Conversas from "../talks";
@@ -50,8 +51,11 @@ export default function BottomTabNavigator() {
           options={{
             headerTitle: "Conversas",
             tabBarLabel: "Conversas",
-            tabBarIcon: ({ size = 150, color }) => (
-              <Feather name="message-square" size={size} color={color} />
+            tabBarIcon: ({ color }) => (
+              <Image
+                source={require('../../../assets/message.png')}
+                style={{ width: 33, height: 27, tintColor: color }}
+              />
             ),
             headerRight: () => (
               <FontAwesome
@@ -74,10 +78,12 @@ export default function BottomTabNavigator() {
         <Tab.Screen
           name="ContatoNavigator"
           component={ContatoStackNavigator}
-
           options={{
-            tabBarIcon: ({ size, color }) => (
-              <Feather name="users" size={size} color={color} />
+            tabBarIcon: ({ color }) => (
+              <Image
+                source={require('../../../assets/people.png')}
+                style={{ width: 33, height: 27, tintColor: color }}
+              />
             ),
             tabBarLabel: "Contatos",
             headerTitle: "Contatos",
@@ -89,8 +95,11 @@ export default function BottomTabNavigator() {
             name="DependenteNavigator"
             component={DependenteStackNavigator}
             options={{
-              tabBarIcon: ({ size, color }) => (
-                <Feather name="user" size={size} color={color} />
+              tabBarIcon: ({ color }) => (
+                <Image
+                  source={require('../../../assets/escalator_warning.png')}
+                  style={{ width: 33, height: 27, tintColor: color }}
+                />
               ),
               tabBarLabel: "Dependentes",
               headerTitle: "Dependentes",
@@ -103,8 +112,11 @@ export default function BottomTabNavigator() {
           //Voltar SeeContact depois
           component={Cadastro3}
           options={{
-            tabBarIcon: ({ size, color }) => (
-              <Feather name="settings" size={size} color={color} />
+            tabBarIcon: ({ color }) => (
+              <Image
+                source={require('../../../assets/settings.png')}
+                style={{ width: 33, height: 27, tintColor: color }}
+              />
             ),
           }}
         />

@@ -27,21 +27,14 @@ export default function Responsavel3() {
 
   const navigation = useNavigation();
 
-  {/* const handleArrowPress = () => {}
+  const handleArrowPress = () => {
+    navigation.pop();
+  }
 
-      const handlePencilPress = () => {} */}
+  {/*     const handlePencilPress = () => {} */}
 
   return (
     <GestureHandlerRootView>
-      <View>
-        <TouchableOpacity onPress={() => {
-            navigation.pop();
-        }}>
-            <Text>
-              Voltar
-            </Text>
-        </TouchableOpacity>
-      </View>
       <Container>
         <ContentsBox>
           <TitleContainer>
@@ -165,6 +158,21 @@ export default function Responsavel3() {
               <ButtonTextPref>Preferências</ButtonTextPref>
             </ButtonBox>
           </ButtonsContainer>
+            <View
+              style={{
+                position: "absolute",
+                left: -25,
+                top: -20,
+              }}
+            >
+            <TouchableOpacity onPress={handleArrowPress}>
+              <IconButton
+                icon={() => (
+                  <Feather name="arrow-left" size={30} color="#000" />
+                )}
+              />
+            </TouchableOpacity>
+          </View>
         </ContentsBox>
       </Container>
     </GestureHandlerRootView>

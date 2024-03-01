@@ -44,12 +44,12 @@ export const ButtonsContainer = styled(View)`
   align-items: center;
   justify-content: center;
   width: 92%;
-`;
-
-export const ButtonBox = styled(TouchableOpacity)`
-  width: 115%;
+  `;
+  
+  export const ButtonBox = styled(TouchableOpacity)`
+  width: 110%;
   padding-vertical: 1%;
-  margin-top: 5%;
+  margin-top: 1%;
   border-radius: 10px;
   font-family: "Dosis_400Regular";
 `;
