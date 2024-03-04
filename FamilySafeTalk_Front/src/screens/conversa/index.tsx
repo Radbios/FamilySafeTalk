@@ -24,7 +24,6 @@ export default function Conversa({navigation}) {
 
   async function getChat(){
     const response = await api.get("/chat/" + chatId);
-    console.log("Ok")
     setChat(response.data)
     setMessages(response.data.messages)
   }

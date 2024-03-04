@@ -55,7 +55,10 @@ export default function CardContacts({contacts, navigation}) {
               } else {
                 return (
                   <ContentsBox key={user.id}>
-                    <Image source={user.photo} />
+                    <Image 
+                        source={user.photo}
+                        style={{ width: 37, height: 37 }} 
+                    />
                     <InfosBox>
                       <NameText>{user.name}</NameText>
                     </InfosBox>

@@ -78,12 +78,12 @@ export default function Chat({navigation}) {
     setChats(d)
   }
 
-  const updateLastMessageById = (id, updatedLastMessage) => {
+  const updateChats = (id, chat) => {
     setChats(prevChats => {
       const updatedIndex = prevChats.findIndex(chat => chat.id === id);
-      if (updatedIndex === -1) return prevChats;
+      if (updatedIndex === -1) return [chat, ...prevChats];
   
-      const updatedChat = { ...prevChats[updatedIndex], lastMessage: updatedLastMessage };
+      const updatedChat = {...prevChats[updatedIndex]};
   
       const newChats = [
         updatedChat,
@@ -101,14 +101,14 @@ export default function Chat({navigation}) {
     orderData(response.data.data);
   }
 
-  async function getLastMessage(chatId){
-    const response = await api.get("/chat/" + chatId + "/lastMessage");
-    updateLastMessageById(chatId, response.data.data)
+  async function getChat(chatId){
+    const response = await api.get("/chat/" + chatId);
+    updateChats(chatId, response.data)
   }
 
   useEffect( () => {
     socket.current.on('message', data => {
-      getLastMessage(data.chat)
+      getChat(data.chat)
     });
 
     setTimeout(() => {
