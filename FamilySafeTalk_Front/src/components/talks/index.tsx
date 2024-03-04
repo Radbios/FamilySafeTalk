@@ -83,14 +83,13 @@ export default function Chat({navigation}) {
       const updatedIndex = prevChats.findIndex(chat => chat.id === id);
       if (updatedIndex === -1) return [chat, ...prevChats];
   
-      const updatedChat = {...prevChats[updatedIndex]};
-  
+      const updatedChat = chat;
+      console.log(chat)
       const newChats = [
         updatedChat,
         ...prevChats.slice(0, updatedIndex),
         ...prevChats.slice(updatedIndex + 1)
       ];
-  
       return newChats;
     });
   };
