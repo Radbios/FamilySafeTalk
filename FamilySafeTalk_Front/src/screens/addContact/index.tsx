@@ -30,7 +30,7 @@ export default function AddContact() {
   const [email, setEmail] = useState(null);
   const [name, setName] = useState(null);
   
-  const handleArrowPress = () => {};
+  const handleArrowPress = () => {navigation.pop();};
 
   async function contactCreate(){
     const response = await api.post("/contact", 
@@ -46,16 +46,7 @@ export default function AddContact() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: 'white' }}>
-      <View>
-        <TouchableOpacity onPress={() => {
-            navigation.pop();
-        }}>
-            <Text>
-              Voltar
-            </Text>
-        </TouchableOpacity>
-      </View> 
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: 'white' }}> 
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
           <Container>
             <ContentsBox>
@@ -92,7 +83,7 @@ export default function AddContact() {
                 style={{
                   position: "absolute",
                   left: 6,
-                  bottom: -60,
+                  bottom: 5,
                 }}
               >
                 <TouchableOpacity onPress={handleArrowPress}>
@@ -106,13 +97,11 @@ export default function AddContact() {
               <View
                 style={{
                   position: "absolute",
-                  right: 6,
-                  bottom: -60,
+                  right: 8,
+                  bottom: 5,
                 }}
               >
-                <TouchableOpacity onPress={() => {
-                  console.log("foi")
-                }}>
+                <TouchableOpacity onPress={contactCreate}>
                   <IconButton
                     icon={() => (
                       <Feather name="check" size={30} color="#4169E1" />
