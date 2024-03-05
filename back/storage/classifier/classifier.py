@@ -8,19 +8,22 @@ from nltk.corpus import stopwords
 
 nlp = spacy.load("pt_core_news_sm", disable=["tokenizer", "parser", "ner"])
 
-#Lista das substituições dos fonemas
-substituicoes = {
-        'a': 'ah', 'e': 'eh', 'i': 'ee', 'o': 'oh', 'u': 'oo',
-        'ae': 'aheh', 'ai': 'ahee', 'ao': 'ahoh', 'au': 'ahoo',
-        'ea': 'ehah', 'ei': 'ehee', 'eo': 'ehoh', 'eu': 'ehoo',
-        'ia': 'eeah', 'ie': 'eeeh', 'io': 'eeoh', 'iu': 'eeoo',
-        'oa': 'ohah', 'oe': 'oheh', 'oi': 'ohee', 'ou': 'ohoo',
-        'ua': 'ooah', 'ue': 'ooeh', 'ui': 'ooee', 'uo': 'oooh'
-    }
-
 #Modelo
 import joblib
 from sklearn.feature_extraction.text import CountVectorizer
+
+#Lista das substituições dos fonemas
+substituicoes = {
+        'quinho' : 'co', 'quinha' : 'ca',
+        'zinho': ' ', 'zinha' : ' ', 'zão' : ' ', 'zona' : ' ',
+        'inho' : 'oh', 'inha' : 'ah', 'ão' : 'oh', 'ona': 'ah', 
+        'ae': 'aheh', 'ai': 'ahee', 'ao': 'ahoh', 'au': 'ahl',
+        'ea': 'ehah', 'ei': 'ehee', 'eo': 'ehoh', 'eu': 'ehl',
+        'ia': 'eeah', 'ie': 'eeeh', 'io': 'eeoh', 'iu': 'eel',
+        'oa': 'ohah', 'oe': 'oheh', 'oi': 'ohee', 'ou': 'ohl',
+        'ua': 'ooah', 'ue': 'ooeh', 'ui': 'ooee', 'uo': 'oooh',
+        'a': 'ah', 'e': 'eh', 'i': 'ee', 'o': 'oh', 'u': 'oo'
+    }
 
 def tokenizar(texto):
   tokens = word_tokenize(texto)
@@ -57,14 +60,6 @@ def palavra_fonema(palavra):
   #print(palavra)
   return palavra
 
-def palavra_fonema_reverse(palavra):
-
-  for k, v in substituicoes.items():
-      palavra = palavra.replace(v, k)
-
-  #print(palavra)
-  return palavra
-
 def pre_process_keywords(texto):
   tokens = word_tokenize(texto)
 
@@ -82,7 +77,7 @@ def pre_process_keywords(texto):
 def preprocessar_palavroes(palavroes):
   palavroes_process = []
   for i in palavroes:
-    palavroes_process.append(palavra_fonema(i))
+    palavroes_process.append((palavra_fonema(i), i))
   #print(palavroes_process)
   return palavroes_process
 
@@ -105,7 +100,7 @@ def classificar(texto, model):
 
 def verificar_palavra(frase, palavra_nova, palavroes_process):
     for palavra in palavroes_process:
-        distancia = fuzz.ratio(palavra_nova, palavra)
+        distancia = fuzz.ratio(palavra_nova, palavra[0])
         #print(distancia, palavra_nova)
         if distancia >= 95:
           palavra_achada = palavra
@@ -134,7 +129,7 @@ for i in msgs:
     frase, palavra_achada = verificar_palavra(i[1], j.lower(), palavroes_process)
 
     if palavra_achada != None:
-        print("A palavra", palavra_fonema_reverse(j), "na frase", frase, "é semelhante a", palavra_fonema_reverse(palavra_achada))
+        print("A palavra", i[1], "na frase", frase, "é semelhante a", palavra_achada[1])
 
 msg = "Podemos conversar? Mas não pode falar pros seus pais"
 model = carregar_modelo()
