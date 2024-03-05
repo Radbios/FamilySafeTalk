@@ -6,7 +6,7 @@ export const Container = styled(View)`
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 8px 0;
+  padding: 0%;
 `;
 
 export const ContentsBox = styled(View)`
