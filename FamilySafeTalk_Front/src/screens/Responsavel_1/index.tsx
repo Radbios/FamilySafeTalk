@@ -68,14 +68,6 @@ export default function Responsavel1() {
               Dependentes
             </DependentIndex>
 
-            <View>
-              <ButtonBox
-                onPress={getRelationships}
-              >
-                <Text>Atualizar</Text>
-              </ButtonBox>
-            </View>
-
             <ButtonsContainer>
               {
               relationships.map((e) => (
@@ -109,7 +101,20 @@ export default function Responsavel1() {
             >
               <TouchableOpacity onPress={handlePlusPress}>
                 <IconButton
-                  icon={() => <Feather name="plus" size={25} color="#888" />}
+                  icon={() => <Feather name="plus" size={35} color="#888" />}
+                />
+              </TouchableOpacity>
+            </View>
+            <View
+              style={{
+                position: "absolute",
+                right: 55,
+                top: 160,
+              }}
+            >
+              <TouchableOpacity onPress={getRelationships}>
+                <IconButton
+                  icon={() => <Feather name="loader" size={30} color="#888" />}
                 />
               </TouchableOpacity>
             </View>
