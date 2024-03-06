@@ -10,6 +10,7 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -31,6 +32,19 @@ class AuthController extends Controller
             'token' => $user->createToken("auth_token")->plainTextToken,
             'user' => new UserResource($user)
         ];
+    }
+
+    public function register(Request $request)
+    {
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => $request->role_id,
+            'tel' => $request->tel
+        ]);
+
+        return new UserResource($user);
     }
 
     public function logout(Request $request){

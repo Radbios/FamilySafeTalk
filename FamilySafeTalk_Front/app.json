@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FamilySafeTalk_Front",
-    "slug": "FamilySafeTalk_Front",
+    "name": "Family Safe Talk",
+    "slug": "familysafetalk",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -26,6 +26,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "19dc054e-0e2d-47c3-9c4a-1b1589749896"
+      }
     }
   }
 }

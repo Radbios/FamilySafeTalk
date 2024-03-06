@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
+        'image',
     ];
 
     /**
@@ -42,4 +44,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class, 'user_id');
+    }
+
+    public function dependents()
+    {
+        return $this->hasMany(UserParentRelationship::class, 'guardian_id');
+    }
+
+    public function guardian()
+    {
+        return $this->hasOne(UserParentRelationship::class, 'child_id');
+    }
 }
