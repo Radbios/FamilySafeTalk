@@ -27,6 +27,7 @@ const Tab = createBottomTabNavigator();
 export default function BottomTabNavigator() {
   const Tab = createBottomTabNavigator();
   const {user} = useAuth();
+  
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -45,12 +46,13 @@ export default function BottomTabNavigator() {
           headerTitleStyle: { fontSize: 20, fontFamily: "Dosis_400Regular" },
         }}
       >
-        <Tab.Screen
+      <Tab.Screen
           name="ConversasNavigator"
           component={ConversasStackNavigator}
           options={{
             headerTitle: "Conversas",
             tabBarLabel: "Conversas",
+
             tabBarIcon: ({ color }) => (
               <Image
                 source={require('../../../assets/message.png')}
@@ -65,11 +67,11 @@ export default function BottomTabNavigator() {
                 style={{
                   marginRight: 25,
                   marginTop: 4,
-                  backgroundColor: "#FFAFCC",
                   borderRadius: 50,
                   padding: 8,
+                  /* backgroundColor: "#FFAFCC", */
                 }}
-                onPress={() => {}}
+                onPress={() => {console.log('Ícone clicado!');}}
               />
             ),
           }}
