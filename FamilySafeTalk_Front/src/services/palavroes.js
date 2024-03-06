@@ -1,0 +1,23 @@
+export const palavrasChave = [
+    "arrombado",
+    "vagabunda",
+    "viado",
+    "caralho",
+    "poha",
+    "porra",
+    "pau",
+    "babaca",
+    "brocha",
+    "bicha",
+    "boiola",
+    "cracudo",
+    "puta",
+    "vagabundo",
+    "pau",
+    "cu",
+    "corno",
+    "fodido",
+    "canalha",
+    "escroto",
+    "trouxa"
+  ];

@@ -8,9 +8,9 @@ from nltk.corpus import stopwords
 
 nlp = spacy.load("pt_core_news_sm", disable=["tokenizer", "parser", "ner"])
 
-#Modelo
-import joblib
-from sklearn.feature_extraction.text import CountVectorizer
+# #Modelo
+# import joblib
+# from sklearn.feature_extraction.text import CountVectorizer
 
 #Lista das substituições dos fonemas
 substituicoes = {
@@ -37,20 +37,20 @@ def stop_words(tokens):
   #print(tokens_sem_stopwords)
   return tokens_sem_stopwords
 
-def lematizar(tokens):
-  tokens = nlp(tokens, disable=["tokenizer", "parser", "ner"])
-  lemas = [token.lemma_ for token in tokens]
-  return lemas
+# def lematizar(tokens):
+#   tokens = nlp(tokens, disable=["tokenizer", "parser", "ner"])
+#   lemas = [token.lemma_ for token in tokens]
+#   return lemas
 
-def pre_process(texto):
+# def pre_process(texto):
 
-  tokens = tokenizar(texto)
-  tokens_no_stop_words = stop_words(tokens)
-  frase = ' '.join(tokens_no_stop_words)
-  frase_processed = lematizar(frase)
-  #frase_processed = ' '.join(frase_processed)
+#   tokens = tokenizar(texto)
+#   tokens_no_stop_words = stop_words(tokens)
+#   frase = ' '.join(tokens_no_stop_words)
+#   frase_processed = lematizar(frase)
+#   #frase_processed = ' '.join(frase_processed)
 
-  return frase_processed
+#  return frase_processed
 
 def palavra_fonema(palavra):
 
@@ -87,36 +87,38 @@ with open("storage/classifier/keywords.txt", "r") as arquivo:
 
 palavroes_process = preprocessar_palavroes(palavroes)
 
-def carregar_modelo():
-    model = joblib.load('storage/classifier/trained_Model')
-    return model
+# def carregar_modelo():
+#     model = joblib.load('storage/classifier/trained_Model')
+#     return model
 
-def classificar(texto, model):
-   vectorizer = joblib.load('storage/classifier/vetorizador')
-   msg_vector = vectorizer.transform(texto)
-   result = model.predict(msg_vector)
+# def classificar(texto, model):
+#    vectorizer = joblib.load('storage/classifier/vetorizador')
+#    msg_vector = vectorizer.transform(texto)
+#    result = model.predict(msg_vector)
 
-   return result[0]
+#    return result[0]
 
 def verificar_palavra(frase, palavra_nova, palavroes_process):
     for palavra in palavroes_process:
         distancia = fuzz.ratio(palavra_nova, palavra[0])
-        #print(distancia, palavra_nova)
+        #print(distancia, palavra[0], palavra_nova)
         if distancia >= 95:
           palavra_achada = palavra
           #print(palavra_achada)
           return frase, palavra_achada
-        if distancia > 85:
+        if distancia > 80:
             metaphone_code = doublemetaphone(palavra_nova)
-            #print(metaphone_code)
+            metaphone_code_key1 = doublemetaphone(palavra[0])[0]
+            metaphone_code_key2 = doublemetaphone(palavra[0])[1]
             for code in metaphone_code:
-                if code in doublemetaphone(palavra) and code != "":
+                if ((fuzz.ratio(code, metaphone_code_key1) >= 85) or (fuzz.ratio(code, metaphone_code_key1) >= 85)) and code!= "":
                     palavra_achada = palavra
                     #print(palavra_achada)
                     return frase, palavra_achada
     return None, None
 
-mensagens = [("Hoje eu vou viajar"), ("chupa meu pau"), ("filho da Puta"), ("Vc é uma escrota")]
+
+mensagens = [("Vc é uma escrota")]
 msgs = []
 for msg in mensagens:
   msgs.append(([pre_process_keywords(msg), msg]))
@@ -124,17 +126,15 @@ for msg in mensagens:
 
 for i in msgs:
   tokens = word_tokenize(i[0])
-
   for j in tokens:
     frase, palavra_achada = verificar_palavra(i[1], j.lower(), palavroes_process)
-
     if palavra_achada != None:
-        print("A palavra", i[1], "na frase", frase, "é semelhante a", palavra_achada[1])
+        print("Na frase", frase, "há uma palavra semelhante a", palavra_achada[1])
 
-msg = "Podemos conversar? Mas não pode falar pros seus pais"
-model = carregar_modelo()
+# msg = "Podemos conversar? Mas não pode falar pros seus pais"
+# model = carregar_modelo()
 
-msg = pre_process(msg)
+# msg = pre_process(msg)
 
-print("Mensagem: ", msg)
-print("Classificação: ", classificar(msg, model))
+# print("Mensagem: ", msg)
+# print("Classificação: ", classificar(msg, model))

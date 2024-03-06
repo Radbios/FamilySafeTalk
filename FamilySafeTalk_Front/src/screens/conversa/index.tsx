@@ -8,7 +8,7 @@ import api from "../../services/api";
 import { useRoute } from "@react-navigation/native";
 import { View } from "react-native";
 import { useAuth } from "../../contexts/auth";
-
+import {classificar} from "../../services/classificador"
 
 export default function Conversa({navigation}) {
 
@@ -35,6 +35,7 @@ export default function Conversa({navigation}) {
 
   function sendMessage(data)
   {
+    classificar(data)
     socket.current.emit("message", data);
   }
 

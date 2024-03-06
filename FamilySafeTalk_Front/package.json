@@ -23,6 +23,8 @@
     "expo-google-fonts": "^0.0.0",
     "expo-splash-screen": "~0.26.4",
     "expo-status-bar": "~1.11.1",
+    "fuzzyset": "^1.0.7",
+    "natural": "^6.10.5",
     "react": "18.2.0",
     "react-native": "0.73.2",
     "react-native-gesture-handler": "~2.14.0",
@@ -34,6 +36,7 @@
     "react-native-status-bar-height": "^2.6.0",
     "react-native-web": "~0.19.6",
     "socket.io-client": "^4.7.4",
+    "stopwords-pt": "^0.3.0",
     "styled-components": "^6.1.8"
   },
   "devDependencies": {
