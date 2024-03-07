@@ -22,11 +22,17 @@ import FriendshipRequestList from "../../screens/friendshipRequest";
 import { useAuth } from "../../contexts/auth";
 import Cadastro2 from "../../screens/cadastro/cadastro2";
 import Cadastro3 from "../../screens/cadastro/cadastro3";
+import { useIsCurrentScreen } from "../../utils/context";
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
   const Tab = createBottomTabNavigator();
   const {user} = useAuth();
+
+  const {
+    selectedCurrentScreen,
+    setSelectedCurrentScreen
+  } = useIsCurrentScreen()
   
   return (
     <NavigationContainer>
@@ -46,13 +52,20 @@ export default function BottomTabNavigator() {
           headerTitleStyle: { fontSize: 20, fontFamily: "Dosis_400Regular" },
         }}
       >
+        <>
+        {console.log(`teste: `, selectedCurrentScreen)}
+        </>
       <Tab.Screen
           name="ConversasNavigator"
           component={ConversasStackNavigator}
           options={{
             headerTitle: "Conversas",
             tabBarLabel: "Conversas",
-
+            headerShown: selectedCurrentScreen !== "Chat",
+            tabBarStyle: {
+              display: selectedCurrentScreen !== "Chat" ? "flex" : "none",
+              backgroundColor: "#a0c4ff",
+            },
             tabBarIcon: ({ color }) => (
               <Image
                 source={require('../../../assets/message.png')}
