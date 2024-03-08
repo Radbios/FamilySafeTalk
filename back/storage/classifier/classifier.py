@@ -1,13 +1,18 @@
 #Pre-Process
 import spacy
-import re
+import nltk
 from metaphone import doublemetaphone
 from fuzzywuzzy import fuzz
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
-nlp = spacy.load("pt_core_news_sm", disable=["tokenizer", "parser", "ner"])
 
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('wordnet')
+
+nlp = spacy.load("pt_core_news_sm", disable=["tokenizer", "parser", "ner"])
+nltk
 # #Modelo
 # import joblib
 # from sklearn.feature_extraction.text import CountVectorizer
@@ -81,7 +86,7 @@ def preprocessar_palavroes(palavroes):
   #print(palavroes_process)
   return palavroes_process
 
-with open("storage/classifier/keywords.txt", "r") as arquivo:
+with open("back/storage/classifier/keywords.txt", "r") as arquivo:
     conteudo = arquivo.read()
     palavroes = conteudo.split()
 
@@ -129,7 +134,8 @@ for i in msgs:
   for j in tokens:
     frase, palavra_achada = verificar_palavra(i[1], j.lower(), palavroes_process)
     if palavra_achada != None:
-        print("Na frase", frase, "há uma palavra semelhante a", palavra_achada[1])
+        print("Na frase:", frase, "\nTem uma palavra semelhante a", palavra_achada[1])
+        #print("keyword")
 
 # msg = "Podemos conversar? Mas não pode falar pros seus pais"
 # model = carregar_modelo()
