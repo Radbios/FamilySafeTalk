@@ -17,7 +17,9 @@ class ContactController extends Controller
     public function index()
     {
         $data = ContactResource::collection(
-            Contact::where("user_id", Auth::user()->id)->get()
+            Contact::where("user_id", Auth::user()->id)
+            ->where('is_blocked', false)
+            ->get()
         );
         return response()->json($data);
     }
