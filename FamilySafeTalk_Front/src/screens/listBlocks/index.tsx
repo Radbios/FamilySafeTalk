@@ -10,19 +10,45 @@ import {
 
 import { Image } from "react-native";
 import CardBlock from "../../components/cardBlock";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../../components/modal";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import api from "../../services/api";
 
 export default function ListBlocks() {
   const [isModalVisible, setModalVisible] = useState(false);
 
-  const openModal = () => {
+  const openModal = (contact) => {
     setModalVisible(true);
   };
 
   const closeModal = () => {
     setModalVisible(false);
   };
+
+  const [contacts, setContacts] = useState([]);
+
+  const navigation = useNavigation();
+
+  const route = useRoute();
+  const dependent = route.params.dependent;
+
+  async function getBlockedContacts(id) {
+    const response = await api.get("/guardian/dependent/" + id + "/blockedContacts");
+    setContacts(response.data.data);
+  }
+
+  async function unblockContact(contact) {
+    const response = await api.put('/contact/' + contact.id, 
+    {
+      is_blocked: false,
+      name: contact.name
+    });
+  }
+
+  useEffect( () => {
+    getBlockedContacts(dependent.id);
+  }, [])
 
   return (
     <Container>
@@ -33,10 +59,10 @@ export default function ListBlocks() {
         <TitleText>Contatos Bloqueados</TitleText>
       </TitleBox>
       <SubtitleBox>
-        <SubtitleText>Conta de Fabiano</SubtitleText>
+        <SubtitleText>Conta de {dependent.name}</SubtitleText>
       </SubtitleBox>
       <ContentsContainer>
-        <CardBlock openModal={openModal} />
+        <CardBlock contacts={contacts} openModal={openModal} />
       </ContentsContainer>
       {isModalVisible && (
         <Modal
