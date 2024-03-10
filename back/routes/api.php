@@ -30,4 +30,5 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get("/chat/{user_id}/contact", [ChatController::class, "getChatByContact"]);
 
     Route::apiResource("/guardian/dependent", DependentController::class);
+    Route::get("/guardian/dependent/{dependent_id}/blockedContacts", [DependentController::class, "blockedContacts"]);
 });

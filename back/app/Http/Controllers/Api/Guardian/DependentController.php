@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Guardian;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ContactResource;
 use App\Http\Resources\UserParentRelationshipResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
@@ -33,6 +34,18 @@ class DependentController extends Controller
         ]);
 
         return new UserResource($user);
+    }
+
+    public function blockedContacts(string $child_id)
+    {
+        $dependent = Auth()->user()->dependents()->where('child_id', $child_id)->first();
+
+        if($dependent)
+        {
+            return ContactResource::collection($dependent->info_dependent->contacts()->where("is_blocked", true)->get());
+        }
+
+        return null;
     }
 
 }
