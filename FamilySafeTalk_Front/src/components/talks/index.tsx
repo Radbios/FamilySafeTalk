@@ -84,7 +84,6 @@ export default function Chat({navigation}) {
       if (updatedIndex === -1) return [chat, ...prevChats];
   
       const updatedChat = chat;
-      console.log(chat)
       const newChats = [
         updatedChat,
         ...prevChats.slice(0, updatedIndex),
@@ -114,7 +113,6 @@ export default function Chat({navigation}) {
       getChats();
     });
   }, [])
-
   return (
     <View>
       {chats ? (

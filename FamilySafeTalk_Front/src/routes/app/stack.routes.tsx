@@ -23,6 +23,10 @@ export function ContatoStackNavigator() {
             name="AddContact"
             component={AddContact}
         />
+        <Stack.Screen
+            name="Ver Contato"
+            component={SeeContact}
+        />
         </Stack.Navigator>
     );
 }
@@ -37,6 +41,10 @@ export function ConversasStackNavigator() {
             <Stack.Screen
                 name="Chat"
                 component={Conversa}
+            />
+            <Stack.Screen
+                name="Ver Contato"
+                component={SeeContact}
             />
         </Stack.Navigator>
     );

@@ -4,7 +4,7 @@ import { IconButton } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import {
   Container,
@@ -24,11 +24,14 @@ import Modal from "../modal";
 
 export default function SeeContact() {
   const navigation = useNavigation();
+  const route = useRoute();
   const [isModalVisible, setModalVisible] = useState(false);
   const [isModalBlockVisible, setModalBlockVisible] = useState(false);
+  
+  const contact = route.params.contact;
 
   const handleArrowPress = () => {
-    navigation.navigate("AddContact");
+    navigation.pop();
   };
 
   const handlePencilPress = () => {};
@@ -66,7 +69,7 @@ export default function SeeContact() {
                 }}
               />
             </TouchableOpacity>
-            <TitleText>Papai</TitleText>
+            <TitleText>{contact.name}</TitleText>
           </TitleContainer>
 
           <ButtonsContainer>
@@ -76,7 +79,7 @@ export default function SeeContact() {
             </ButtonBox1>
             <ButtonBox1>
               <PlaceholderTextButton>E-mail</PlaceholderTextButton>
-              <ButtonText>example@mail.com</ButtonText>
+              <ButtonText>{contact.contact.email}</ButtonText>
             </ButtonBox1>
 
             <ButtonBox>

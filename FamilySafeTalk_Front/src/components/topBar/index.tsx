@@ -11,17 +11,26 @@ import {
 
 export default function TopBar({navigation, name, image}) {
   const urlImg = "../../../assets/" + image;
-  console.log(urlImg);
+  
+  async function getChat(chatId){
+    // const response = await api.get("/chat/" + chatId);
+    // updateChats(chatId, response.data)
+  }
+
+  const handleSeeContact = () => {
+    navigation.push("Ver Contato");
+  }
+
   return (
     <Bar>
       <LeftContents>
         <TouchableOpacity onPress={() => navigation.pop()}>
           <Image source={require("../../../assets/navigate_before.png")} />
         </TouchableOpacity>
-        <UserContent>
-          <Image source={{uri:urlImg}} />
-          <TextUser>{name}</TextUser>
-        </UserContent>
+          <UserContent>
+            <Image source={{uri:urlImg}} />
+            <TextUser>{name}</TextUser>
+          </UserContent>
       </LeftContents>
       <RightContent>
         <TouchableOpacity>

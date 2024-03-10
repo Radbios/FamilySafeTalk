@@ -18,10 +18,15 @@ export default function CardContacts({contacts, navigation}) {
     
   let currentLetter = "";
 
-  async function getChat(id)
+  // async function getChat(id)
+  // {
+  //   const response = await api.get('/chat/' + id + "/contact");
+  //   navigation.navigate("Chat", {chatId: response.data.data.id})
+  // }
+
+  function showContact(user)
   {
-    const response = await api.get('/chat/' + id + "/contact");
-    navigation.navigate("Chat", {chatId: response.data.data.id})
+    navigation.push("Ver Contato", {contact: user})
   }
 
   return (
@@ -41,7 +46,7 @@ export default function CardContacts({contacts, navigation}) {
                       </InfosBox>
                     </ContentsBox>
                     <Separator />
-                    <ContentsBox key={user.id} onPress={() => getChat(user.contact.id)}>
+                    <ContentsBox key={user.id} onPress={() => showContact(user)}>
                       <Image 
                         source={user.photo}
                         style={{ width: 37, height: 37 }} 

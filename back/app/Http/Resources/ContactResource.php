@@ -17,7 +17,7 @@ class ContactResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'contact' => new UserResource($this->info),
+            'user' => new UserResource($this->info),
             'is_blocked' => $this->is_blocked
         ];
     }

@@ -17,7 +17,6 @@ const Contatos = ({navigation}) => {
   useEffect(() => {
     getContacts();
   }, []);
-
   return (
     <Container>
       <ButtonContainer 
