@@ -11,11 +11,6 @@ import {
 
 export default function TopBar({navigation, name, image}) {
   const urlImg = "../../../assets/" + image;
-  
-  async function getChat(chatId){
-    // const response = await api.get("/chat/" + chatId);
-    // updateChats(chatId, response.data)
-  }
 
   const handleSeeContact = () => {
     navigation.push("Ver Contato");

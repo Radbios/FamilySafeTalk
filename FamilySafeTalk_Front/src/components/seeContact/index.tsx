@@ -21,6 +21,7 @@ import {
   ButtonText,
 } from "./styles";
 import Modal from "../modal";
+import api from "../../services/api";
 
 export default function SeeContact() {
   const navigation = useNavigation();
@@ -33,6 +34,13 @@ export default function SeeContact() {
   const handleArrowPress = () => {
     navigation.pop();
   };
+
+  async function getChat(id)
+  {
+    const response = await api.get('/chat/' + id + "/contact");
+    navigation.pop();
+    navigation.navigate("Chat", {chatId: response.data.data.id})
+  }
 
   const handlePencilPress = () => {};
 
@@ -75,14 +83,14 @@ export default function SeeContact() {
           <ButtonsContainer>
             <ButtonBox1>
               <PlaceholderTextButton>Telefone celular</PlaceholderTextButton>
-              <ButtonText>(99) 9999-9999</ButtonText>
+              <ButtonText>{contact.user.tel}</ButtonText>
             </ButtonBox1>
             <ButtonBox1>
               <PlaceholderTextButton>E-mail</PlaceholderTextButton>
-              <ButtonText>{contact.contact.email}</ButtonText>
+              <ButtonText>{contact.user.email}</ButtonText>
             </ButtonBox1>
 
-            <ButtonBox>
+            <ButtonBox onPress={() => getChat(contact.user.id)}>
               <IconButton
                 icon={() => <Feather name="send" size={25} color="#FF69B4" />}
                 style={{
