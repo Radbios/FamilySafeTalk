@@ -30,7 +30,6 @@ export default function SeeContact() {
   const [isModalBlockVisible, setModalBlockVisible] = useState(false);
   
   const contact = route.params.contact;
-
   const handleArrowPress = () => {
     navigation.pop();
   };
@@ -57,6 +56,22 @@ export default function SeeContact() {
   const handleModalBlockClose = () => {
     setModalBlockVisible(false);
   };
+
+  async function deleteContact(id) {
+    const response = await api.delete('/contact/' + id);
+    handleModalDeleteClose();
+    navigation.pop();
+  }
+
+  async function blockContact(id) {
+    const response = await api.put('/contact/' + id, 
+    {
+      is_blocked: true,
+      name: contact.name
+    });
+    handleModalDeleteClose();
+    navigation.pop();
+  }
 
   return (
     <GestureHandlerRootView>
@@ -167,11 +182,11 @@ export default function SeeContact() {
         </ContentsBox>
 
         {isModalVisible && (
-          <Modal onClose={handleModalDeleteClose} deleteMessage="Excluir" />
+          <Modal onClose={handleModalDeleteClose} onSubmit={() => deleteContact(contact.id)} deleteMessage="Excluir" />
         )}
 
         {isModalBlockVisible && (
-          <Modal onClose={handleModalBlockClose} deleteMessage="Bloquear" />
+          <Modal onClose={handleModalBlockClose} onSubmit={() => blockContact(contact.id)} deleteMessage="Bloquear" />
         )}
       </Container>
     </GestureHandlerRootView>

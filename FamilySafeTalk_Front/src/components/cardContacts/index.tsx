@@ -18,12 +18,6 @@ export default function CardContacts({contacts, navigation}) {
     
   let currentLetter = "";
 
-  // async function getChat(id)
-  // {
-  //   const response = await api.get('/chat/' + id + "/contact");
-  //   navigation.navigate("Chat", {chatId: response.data.data.id})
-  // }
-
   function showContact(contact)
   {
     navigation.push("Ver Contato", {contact})
