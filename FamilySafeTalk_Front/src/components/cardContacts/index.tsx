@@ -3,8 +3,8 @@ import { ScrollView, Image, View, ActivityIndicator } from "react-native";
 import {
   Container,
   ContentsBox,
+  InfoBox,
   InfosBox1,
-  InfosBox2,
   NameText,
   Separator,
 } from "./styles";
