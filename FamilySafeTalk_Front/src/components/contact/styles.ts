@@ -7,11 +7,3 @@ export const Container = styled(View)`
   justify-content: center;
   width: 100%;
 `;
-
-export const ButtonContainer = styled(TouchableOpacity)`
-  align-items: flex-end;
-  justify-content: end;
-  width: 100%;
-  margin-top: 2%;
-  padding-right: 5%;
-`;
