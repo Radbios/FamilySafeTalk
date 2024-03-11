@@ -3,7 +3,8 @@ import { ScrollView, Image, View, ActivityIndicator } from "react-native";
 import {
   Container,
   ContentsBox,
-  InfosBox,
+  InfosBox1,
+  InfosBox2,
   NameText,
   Separator,
 } from "./styles";
@@ -36,9 +37,9 @@ export default function CardContacts({contacts, navigation}) {
                 return (
                   <React.Fragment key={index}>
                     <ContentsBox>
-                      <InfosBox>
+                      <InfosBox1>
                         <NameText>{currentLetter}</NameText>
-                      </InfosBox>
+                      </InfosBox1>
                     </ContentsBox>
                     <Separator />
                     <ContentsBox key={user.id} onPress={() => getChat(user.contact.id)}>
@@ -46,9 +47,9 @@ export default function CardContacts({contacts, navigation}) {
                         source={user.photo}
                         style={{ width: 37, height: 37 }} 
                       />
-                      <InfosBox>
+                      <InfosBox2>
                         <NameText>{user.name}</NameText>
-                      </InfosBox>
+                      </InfosBox2>
                     </ContentsBox>
                   </React.Fragment>
                 );
