@@ -136,7 +136,7 @@ export default function Dependent1() {
             onPress={() => setShowModal(false)}
           >
             <Image
-              source={require("../../../assets/modal.png")}
+              source={require("../../../assets/modal2.png")}
               style={{ width: '80%', height: '80%', borderRadius: 20 }}
               resizeMode="contain"
             />
