@@ -109,10 +109,10 @@ export default function BottomTabNavigator() {
           />
         }
 
-        <Tab.Screen
+        {/* <Tab.Screen
           name="Configurações"
           //Voltar SeeContact depois
-          component={Cadastro3}
+          component={ListBlocks}
           options={{
             tabBarIcon: ({ color }) => (
               <Image
@@ -121,7 +121,7 @@ export default function BottomTabNavigator() {
               />
             ),
           }}
-        />
+        /> */}
       </Tab.Navigator>
     </NavigationContainer>
   );

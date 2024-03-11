@@ -4,7 +4,7 @@ import { IconButton } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import {
   Container,
@@ -21,15 +21,25 @@ import {
   ButtonText,
 } from "./styles";
 import Modal from "../modal";
+import api from "../../services/api";
 
 export default function SeeContact() {
   const navigation = useNavigation();
+  const route = useRoute();
   const [isModalVisible, setModalVisible] = useState(false);
   const [isModalBlockVisible, setModalBlockVisible] = useState(false);
-
+  
+  const contact = route.params.contact;
   const handleArrowPress = () => {
-    navigation.navigate("AddContact");
+    navigation.pop();
   };
+
+  async function getChat(id)
+  {
+    const response = await api.get('/chat/' + id + "/contact");
+    navigation.pop();
+    navigation.navigate("Chat", {chatId: response.data.data.id})
+  }
 
   const handlePencilPress = () => {};
 
@@ -46,6 +56,22 @@ export default function SeeContact() {
   const handleModalBlockClose = () => {
     setModalBlockVisible(false);
   };
+
+  async function deleteContact(id) {
+    const response = await api.delete('/contact/' + id);
+    handleModalDeleteClose();
+    navigation.pop();
+  }
+
+  async function blockContact(id) {
+    const response = await api.put('/contact/' + id, 
+    {
+      is_blocked: true,
+      name: contact.name
+    });
+    handleModalDeleteClose();
+    navigation.pop();
+  }
 
   return (
     <GestureHandlerRootView>
@@ -66,20 +92,20 @@ export default function SeeContact() {
                 }}
               />
             </TouchableOpacity>
-            <TitleText>Papai</TitleText>
+            <TitleText>{contact.name}</TitleText>
           </TitleContainer>
 
           <ButtonsContainer>
             <ButtonBox1>
               <PlaceholderTextButton>Telefone celular</PlaceholderTextButton>
-              <ButtonText>(99) 9999-9999</ButtonText>
+              <ButtonText>{contact.user.tel}</ButtonText>
             </ButtonBox1>
             <ButtonBox1>
               <PlaceholderTextButton>E-mail</PlaceholderTextButton>
-              <ButtonText>example@mail.com</ButtonText>
+              <ButtonText>{contact.user.email}</ButtonText>
             </ButtonBox1>
 
-            <ButtonBox>
+            <ButtonBox onPress={() => getChat(contact.user.id)}>
               <IconButton
                 icon={() => <Feather name="send" size={25} color="#FF69B4" />}
                 style={{
@@ -156,11 +182,11 @@ export default function SeeContact() {
         </ContentsBox>
 
         {isModalVisible && (
-          <Modal onClose={handleModalDeleteClose} deleteMessage="Excluir" />
+          <Modal onClose={handleModalDeleteClose} onSubmit={() => deleteContact(contact.id)} deleteMessage="Excluir" />
         )}
 
         {isModalBlockVisible && (
-          <Modal onClose={handleModalBlockClose} deleteMessage="Bloquear" />
+          <Modal onClose={handleModalBlockClose} onSubmit={() => blockContact(contact.id)} deleteMessage="Bloquear" />
         )}
       </Container>
     </GestureHandlerRootView>

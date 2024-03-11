@@ -8,6 +8,9 @@ import { useRoute } from '@react-navigation/native';
 import Responsavel1 from '../../screens/Responsavel_1';
 import Responsavel3 from '../../screens/Responsavel_3';
 import Cadastro3 from '../../screens/cadastro/cadastro3';
+import Responsavel4 from '../../screens/Responsavel_4';
+import Preferences from '../../screens/preferences';
+import ListBlocks from '../../screens/listBlocks';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +25,10 @@ export function ContatoStackNavigator() {
         <Stack.Screen
             name="AddContact"
             component={AddContact}
+        />
+        <Stack.Screen
+            name="Ver Contato"
+            component={SeeContact}
         />
         </Stack.Navigator>
     );
@@ -38,6 +45,10 @@ export function ConversasStackNavigator() {
                 name="Chat"
                 component={Conversa}
             />
+            <Stack.Screen
+                name="Ver Contato"
+                component={SeeContact}
+            />
         </Stack.Navigator>
     );
 }
@@ -52,6 +63,18 @@ export function DependenteStackNavigator() {
             <Stack.Screen
                 name="Ver Dependente"
                 component={Responsavel3}
+            />
+            <Stack.Screen
+                name="Gerenciar Contatos do Dependente"
+                component={Responsavel4}
+            />
+            <Stack.Screen
+                name="Contatos Bloqueados"
+                component={ListBlocks}
+            />
+            <Stack.Screen
+                name="Preferencias do Dependente"
+                component={Preferences}
             />
              <Stack.Screen
                 name="Criar Dependente"
