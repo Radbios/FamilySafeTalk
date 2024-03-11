@@ -27,7 +27,7 @@ export const Container = styled(View)`
   margin-top: 3%;
 `;
 
-export const InfosBox2 = styled(View)`
+export const InfosBox = styled(View)`
   align-items: center;
   justify-content: center;
   margin-left: 1%;
