@@ -11,6 +11,7 @@ import Cadastro3 from '../../screens/cadastro/cadastro3';
 import Responsavel4 from '../../screens/Responsavel_4';
 import Preferences from '../../screens/preferences';
 import ListBlocks from '../../screens/listBlocks';
+import Dependent1 from '../../screens/addDependent';
 
 const Stack = createStackNavigator();
 
@@ -78,7 +79,7 @@ export function DependenteStackNavigator() {
             />
              <Stack.Screen
                 name="Criar Dependente"
-                component={Cadastro3}
+                component={Dependent1}
             />
         </Stack.Navigator>
     );
