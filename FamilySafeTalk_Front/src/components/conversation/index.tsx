@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Keyboard, ScrollView } from "react-native";
 import { Container } from "./styles";
 import Messages from "../messages";
+import MessagesAudio from '../messagesAudio';
 
 export default function Conversation({ messages }) {
   const scrollRef = useRef<ScrollView>(null);
@@ -34,6 +35,7 @@ export default function Conversation({ messages }) {
             text={message.content}
           />
         ))}
+        <MessagesAudio />
       </Container>
     </ScrollView>
   );
