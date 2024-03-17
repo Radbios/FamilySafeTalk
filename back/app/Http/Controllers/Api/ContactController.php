@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ContactResource;
 use App\Models\Contact;
+use App\Models\ContactPermission;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $contact = User::where('email', $request->email)->first();
+
         if(!$contact)
         {
             return response()->json([
@@ -37,6 +39,20 @@ class ContactController extends Controller
                 'message' => "Usuário não existe"
             ]);
         }
+
+        if(Auth()->user()->role_id == 2 && !Auth()->user()->preferences->add_contact_permission) // SE FOR O PROTEGIDO E NÃO TIVER PERMISSÃO
+        {
+            ContactPermission::create([
+                'user_id' => Auth()->user()->id,
+                'contact_id' => $contact->id,
+                'name' => $request->name
+            ]);
+
+            return response()->json([
+                'success' => 'Solicitação enviada com sucesso!'
+            ]);
+        }
+
         $data = Contact::create([
             "user_id" => Auth::user()->id,
             "contact_id" => $contact->id,

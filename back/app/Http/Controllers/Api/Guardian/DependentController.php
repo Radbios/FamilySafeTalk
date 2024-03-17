@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Api\Guardian;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ContactPermissionRequest;
 use App\Http\Resources\ContactResource;
+use App\Http\Resources\PreferenceResource;
 use App\Http\Resources\UserParentRelationshipResource;
 use App\Http\Resources\UserResource;
 use App\Models\Contact;
+use App\Models\ContactPermission;
+use App\Models\Preference;
 use App\Models\User;
 use App\Models\UserParentRelationship;
 use Illuminate\Http\Request;
@@ -30,6 +34,8 @@ class DependentController extends Controller
             // 'tel' => $request->tel
         ]);
 
+        $user->preferences()->create();
+
         $relationship = UserParentRelationship::create([
             'guardian_id' => Auth()->user()->id,
             'child_id' => $user->id
@@ -38,7 +44,7 @@ class DependentController extends Controller
         Contact::create([
             "user_id" => Auth::user()->id,
             "contact_id" => $user->id,
-            "name" => $request->name . " (Protegido)",
+            "name" => Auth()->user()->name . " (Protegido)",
             "is_blocked" => false
         ]);
 
@@ -64,4 +70,40 @@ class DependentController extends Controller
         return null;
     }
 
+    public function getPreference(string $child_id)
+    {
+        $dependent = Auth()->user()->dependents()->where('child_id', $child_id)->first()->info_dependent;
+        $preference = $dependent->preferences;
+        if($preference)
+        {
+            return new PreferenceResource($preference);
+        }
+
+        $preference = $dependent->preferences()->create([
+            'add_contact_permission' => 0
+        ]);
+        return new PreferenceResource($preference);
+    }
+
+    public function getContactPermissions(string $child_id)
+    {
+        $dependent = Auth()->user()->dependents()->where('child_id', $child_id)->first()->info_dependent;
+        $contacts = $dependent->contact_permissions;
+        return ContactPermissionRequest::collection($contacts);
+    }
+
+    public function AcceptContact(string $child_id, string $invite_id)
+    {
+        $dependent = Auth()->user()->dependents()->where('child_id', $child_id)->first()->info_dependent;
+        $invite = $dependent->contact_permissions()->findOrFail($invite_id);
+
+        $new_contact = $dependent->contacts()->create([
+            "name" => $invite->name,
+            "contact_id" => $invite->contact_id
+        ]);
+
+        $invite->delete();
+
+        return new ContactResource($new_contact);
+    }
 }

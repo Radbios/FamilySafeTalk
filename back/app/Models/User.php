@@ -60,4 +60,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserParentRelationship::class, 'child_id');
     }
+
+    public function contact_permissions()
+    {
+        return $this->hasMany(ContactPermission::class, 'user_id');
+    }
+
+    public function preferences()
+    {
+        return $this->hasOne(Preference::class, 'user_id');
+    }
 }
