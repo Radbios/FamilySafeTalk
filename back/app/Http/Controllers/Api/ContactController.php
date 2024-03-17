@@ -39,17 +39,31 @@ class ContactController extends Controller
                 'message' => "Usuário não existe"
             ]);
         }
+        else{
+            $contact_exist = Auth()->user()->contacts()->where("contact_id", $contact->id)->first();
+
+            if($contact_exist) return response()->json(['error' => "Você já o tem na lista de contatos"]);
+        }
 
         if(Auth()->user()->role_id == 2 && !Auth()->user()->preferences->add_contact_permission) // SE FOR O PROTEGIDO E NÃO TIVER PERMISSÃO
         {
-            ContactPermission::create([
-                'user_id' => Auth()->user()->id,
-                'contact_id' => $contact->id,
-                'name' => $request->name
-            ]);
+            $invite_exist = ContactPermission::where("user_id", Auth()->user()->id)
+                                                ->where("contact_id", $contact->id)->first();
+            if(!$invite_exist)
+            {
+                ContactPermission::create([
+                    'user_id' => Auth()->user()->id,
+                    'contact_id' => $contact->id,
+                    'name' => $request->name
+                ]);
+
+                return response()->json([
+                    'success' => 'Solicitação enviada com sucesso!'
+                ]);
+            }
 
             return response()->json([
-                'success' => 'Solicitação enviada com sucesso!'
+                "error" => 'Solicitação do contato já foi enviada!'
             ]);
         }
 
