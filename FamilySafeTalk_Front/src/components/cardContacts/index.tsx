@@ -3,7 +3,7 @@ import { ScrollView, Image, View, ActivityIndicator } from "react-native";
 import {
   Container,
   ContentsBox,
-  InfoBox,
+  InfosBox,
   InfosBox1,
   NameText,
   Separator,

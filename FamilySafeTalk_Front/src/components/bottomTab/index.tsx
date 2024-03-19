@@ -112,7 +112,7 @@ export default function BottomTabNavigator() {
         {/* <Tab.Screen
           name="Configurações"
           //Voltar SeeContact depois
-          component={ListBlocks}
+          component={}
           options={{
             tabBarIcon: ({ color }) => (
               <Image

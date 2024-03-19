@@ -62,7 +62,7 @@ export default function Responsavel3() {
               />
             </TouchableOpacity>
             <TouchableOpacity>
-            <SubTitleText>Adicionar ou alterar imagem</SubTitleText>
+            {/* <SubTitleText>Adicionar ou alterar imagem</SubTitleText> */}
             </TouchableOpacity>
           </TitleContainer>
 
