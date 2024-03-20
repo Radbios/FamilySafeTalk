@@ -51,20 +51,18 @@ export default function AddContact() {
           <Container>
             <ContentsBox>
               <TitleContainer>
-                <TouchableOpacity onPress={contactCreate}>
-                  <IconButton
-                    icon={() => (
-                      <Feather name="plus" size={54} color="#FF69B4" />
-                    )}
-                    style={{
-                      backgroundColor: "#ffb6c1",
-                      borderRadius: 8,
-                      padding: 8,
-                      width: 80,
-                      height: 80,
-                    }}
-                  />
-                </TouchableOpacity>
+              <IconButton
+                icon={() => (
+                  <Feather name="plus" size={54} color="#FF69B4" />
+                )}
+                style={{
+                  backgroundColor: "#ffb6c1",
+                  borderRadius: 8,
+                  padding: 8,
+                  width: 80,
+                  height: 80,
+                }}
+              />
                 <TitleText>Adicionar contato</TitleText>
               </TitleContainer>
               <InputsContainer>
