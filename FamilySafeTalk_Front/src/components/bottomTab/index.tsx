@@ -126,7 +126,7 @@ export default function BottomTabNavigator() {
         <Tab.Screen
           name="Configurações"
           //Voltar SeeContact depois
-          component={cardAudio}
+          component={SeeContact}
           options={{
             tabBarIcon: ({ color }) => (
               <Image

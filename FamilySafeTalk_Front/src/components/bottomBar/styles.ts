@@ -38,4 +38,5 @@ export const ButtonSend = styled(TouchableOpacity)`
   justify-content: center;
   text-align: center;
   margin-top: 1%;
+  margin-left: 2%;
 `;

@@ -33,7 +33,7 @@ export default function BottomBar({ chatId, onSendMessage }) {
   return (
     <Bar>
       <InputsContainer>
-        <CardAudio />
+        {/* <CardAudio /> */}
         <InputsBox
           onChangeText={setMessage}
           value={message}
