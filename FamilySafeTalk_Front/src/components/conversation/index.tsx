@@ -35,7 +35,7 @@ export default function Conversation({ messages }) {
             text={message.content}
           />
         ))}
-        <MessagesAudio />
+        {/* <MessagesAudio /> */}
       </Container>
     </ScrollView>
   );
