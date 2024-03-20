@@ -12,6 +12,7 @@ import Responsavel4 from '../../screens/Responsavel_4';
 import Preferences from '../../screens/preferences';
 import ListBlocks from '../../screens/listBlocks';
 import Dependent1 from '../../screens/addDependent';
+import EditContact from '../../screens/editContact';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,10 @@ export function ContatoStackNavigator() {
         <Stack.Screen
             name="Ver Contato"
             component={SeeContact}
+        />
+        <Stack.Screen
+            name="EditContact"
+            component={EditContact}
         />
         </Stack.Navigator>
     );
