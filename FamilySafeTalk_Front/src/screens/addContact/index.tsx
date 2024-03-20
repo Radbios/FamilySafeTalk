@@ -76,29 +76,33 @@ export default function AddContact() {
                   onChangeText={setEmail}
                   value={email}
                 />
-              </InputsContainer>
-              <View
-                style={{
-                  position: "absolute",
-                  left: 6,
-                  bottom: 5,
-                }}
-              >
-                <TouchableOpacity onPress={handleArrowPress}>
-                  <IconButton
-                    icon={() => (
-                      <Feather name="arrow-left" size={30} color="#000" />
-                    )}
-                  />
-                </TouchableOpacity>
-              </View>
-              <View
-                style={{
-                  position: "absolute",
-                  right: 8,
-                  bottom: 5,
-                }}
-              >
+
+                <View 
+                  style={{ 
+                    alignSelf: 'flex-end', 
+                    position: 'absolute', 
+                    flexDirection: 'row',
+                    left: -10,
+                    bottom: -55
+                    }}
+                  >
+                  <TouchableOpacity onPress={handleArrowPress}>
+                    <IconButton
+                      icon={() => (
+                        <Feather name="arrow-left" size={30} color="#000" />
+                      )}
+                      />
+                  </TouchableOpacity>
+                </View>
+                <View 
+                  style={{ 
+                    alignSelf: 'flex-end', 
+                    position: 'absolute', 
+                    flexDirection: 'row',
+                    right: -10,
+                    bottom: -55
+                    }}
+                >               
                 <TouchableOpacity onPress={contactCreate}>
                   <IconButton
                     icon={() => (
@@ -106,7 +110,8 @@ export default function AddContact() {
                     )}
                   />
                 </TouchableOpacity>
-              </View>
+                </View>
+              </InputsContainer>
             </ContentsBox>
           </Container>
         </ScrollView>
