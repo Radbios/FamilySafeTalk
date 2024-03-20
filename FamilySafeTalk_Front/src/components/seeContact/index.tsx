@@ -41,7 +41,9 @@ export default function SeeContact() {
     navigation.navigate("Chat", {chatId: response.data.data.id})
   }
 
-  const handlePencilPress = () => {};
+  const handlePencilPress = () => {
+    navigation.navigate("EditContact");
+  };
 
   const handleDeletePress = () => {
     setModalVisible(true);
