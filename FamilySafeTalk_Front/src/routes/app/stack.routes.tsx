@@ -44,8 +44,9 @@ export function ConversasStackNavigator() {
             />
             <Stack.Screen
                 name="Chat"
-                component={Conversa}
-            />
+            >
+                {props => <Conversa {...props} showBottomBar={true} />} 
+            </Stack.Screen>
             <Stack.Screen
                 name="Ver Contato"
                 component={SeeContact}
