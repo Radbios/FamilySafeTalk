@@ -10,9 +10,9 @@ import { View } from "react-native";
 import { useAuth } from "../../contexts/auth";
 
 
-export default function Conversa({navigation}) {
+export default function Conversa({ navigation, showBottomBar = true }) {
 
-  const {socket} = useAuth();
+  const { socket } = useAuth();
 
   const route = useRoute();
 
@@ -47,14 +47,14 @@ export default function Conversa({navigation}) {
   }, []);
 
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: 'white' }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#fffafa' }}>
       { (chat && messages) ? 
           <Container>
             <TopBar name={chat.name} image={chat.image} navigation={navigation}/>
-            <Talks>
+            <Talks style={{ height: showBottomBar ? '80%' : '90%'}}>
               <Conversation messages={messages}/>
             </Talks>
-            <BottomBar chatId={chat.id} onSendMessage={sendMessage}/>
+            {showBottomBar ? <BottomBar chatId={chat.id} onSendMessage={sendMessage}/> : null}
           </Container>
         : 
         <View></View>
