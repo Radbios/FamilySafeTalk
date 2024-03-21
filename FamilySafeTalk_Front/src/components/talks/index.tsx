@@ -23,7 +23,7 @@ interface LastMessageProps {
 
 interface ChatItemProps {
   lastMessage: LastMessageProps;
-  image: string;
+  userId: string;
 }
 
 const renderDateTime = (createdAt) => {
