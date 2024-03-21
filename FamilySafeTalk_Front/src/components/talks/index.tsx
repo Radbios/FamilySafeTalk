@@ -49,20 +49,45 @@ const renderDateTime = (createdAt) => {
   return "Data inválida";
 };
 
-const ChatItem: React.FC<ChatItemProps> = ({id , image, lastMessage, navigation, name}) => (
-  // <TouchableOpacity
-  //   // onPress={navigation.push("Chat", {testando: "okok"})}
-  // >
-    <ItemContainer onPress={() =>  navigation.push("Chat", {chatId: id})}>
-      <Avatar />
+const ChatItem: React.FC<ChatItemProps> = ({ id, userId, lastMessage, navigation, name }) => {
+  const [userImage, setUserImage] = useState<string | null>(null);
+
+  const getUserImage = async (userId: string) => {
+    try {
+      const response = await api.get(`/user/${userId}`);
+      return response.data.image; // Supondo que a resposta inclua a URL da imagem do usuário
+    } catch (error) {
+      //console.error('Erro ao obter a imagem do usuário:', error);
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    const fetchUserImage = async () => {
+      const image = await getUserImage(userId);
+      setUserImage(image);
+    };
+    fetchUserImage();
+  }, [userId]);
+
+  return (
+    <ItemContainer onPress={() => navigation.push("Chat", { chatId: id })}>
+      <Avatar source={userImage ? { uri: userImage } : require("../../../assets/usericon.png")} />
       <TextContainer>
-        <Name>{name}</Name>
-        {lastMessage ? <LastMessage>{lastMessage.sender.name + ": " + lastMessage.content}</LastMessage> : ""}
+        {lastMessage ? (
+          <Text>
+            <Name>{"  " + name}</Name>
+            {"\n"}
+            <LastMessage>{"  " + lastMessage.sender.name + ": " + lastMessage.content}</LastMessage>
+          </Text>
+        ) : (
+          <Name>{name}</Name> // Caso não haja última mensagem, apenas o nome é renderizado
+        )}
       </TextContainer>
       <Time>{lastMessage ? renderDateTime(lastMessage.date) : ""}</Time>
     </ItemContainer>
-  // </TouchableOpacity>
-);
+  );
+};
 
 export default function Chat({navigation}) {
 
