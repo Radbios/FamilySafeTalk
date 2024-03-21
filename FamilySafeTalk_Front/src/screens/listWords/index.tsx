@@ -18,7 +18,6 @@ import {
 } from "./styles";
 import api from "../../services/api";
 import { useAuth } from "../../contexts/auth";
-import ModalWords from "../../components/modalWords";
 
 export default function ListBlockedWords() {
   const { user } = useAuth();
