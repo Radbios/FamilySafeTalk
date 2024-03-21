@@ -5,7 +5,7 @@ export const Container = styled(View)`
   flex-grow: 1;
   align-items: center;
   justify-content: center;
-  height: 76%;
+  height: 5%;
 `;
 
 export const ContentsBox = styled(View)`
@@ -34,15 +34,6 @@ export const ButtonsContainer = styled(View)`
   width: 92%;
 `;
 
-export const ButtonBox = styled(TouchableOpacity)`
-  width: 110%;
-  padding-vertical: 1%;
-  margin-top: 2%;
-  background-color: #ced7e1;
-  border-radius: 10px;
-  font-family: "Dosis_400Regular";
-`;
-
 export const ButtonBox1 = styled(TouchableOpacity)`
   width: 110%;
   padding: 3%;
@@ -57,7 +48,7 @@ export const PlaceholderTextButton = styled(Text)`
   font-family: "Dosis_400Regular";
 
 `;
-export const ButtonText = styled(Text)`
+export const ButtonText = styled(TextInput)`
   font-family: "Dosis_400Regular";
   font-size: 15px;
   margin-top: 2%;
