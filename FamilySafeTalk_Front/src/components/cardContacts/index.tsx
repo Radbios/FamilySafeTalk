@@ -4,6 +4,7 @@ import {
   Container,
   ContentsBox,
   InfosBox,
+  InfosBox1,
   NameText,
   Separator,
 } from "./styles";
@@ -18,49 +19,50 @@ export default function CardContacts({contacts, navigation}) {
     
   let currentLetter = "";
 
-  async function getChat(id)
+  function showContact(contact)
   {
-    const response = await api.get('/chat/' + id + "/contact");
-    navigation.navigate("Chat", {chatId: response.data.data.id})
+    navigation.push("Ver Contato", {contact})
   }
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <Container>
         {
-            sortedContacts && sortedContacts.length > 0 ? (sortedContacts.map((user, index) => {
-              const firstLetter = user.name[0].toUpperCase();
+            sortedContacts && sortedContacts.length > 0 ? (sortedContacts.map((contact, index) => {
+              const firstLetter = contact.name[0].toUpperCase();
   
               if (firstLetter !== currentLetter) {
                 currentLetter = firstLetter;
                 return (
                   <React.Fragment key={index}>
                     <ContentsBox>
-                      <InfosBox>
+                      <InfosBox1>
                         <NameText>{currentLetter}</NameText>
-                      </InfosBox>
+                      </InfosBox1>
                     </ContentsBox>
                     <Separator />
-                    <ContentsBox key={user.id} onPress={() => getChat(user.contact.id)}>
+                    <ContentsBox key={contact.id} onPress={() => showContact(contact)}>
                       <Image 
-                        source={user.photo}
+                        source={contact.photo}
                         style={{ width: 37, height: 37 }} 
                       />
+                      
                       <InfosBox>
-                        <NameText>{user.name}</NameText>
+                        <NameText>{contact.name}</NameText>
                       </InfosBox>
+        
                     </ContentsBox>
                   </React.Fragment>
                 );
               } else {
                 return (
-                  <ContentsBox key={user.id}>
+                  <ContentsBox key={contact.id}>
                     <Image 
-                        source={user.photo}
+                        source={contact.photo}
                         style={{ width: 37, height: 37 }} 
                     />
                     <InfosBox>
-                      <NameText>{user.name}</NameText>
+                      <NameText>{contact.name}</NameText>
                     </InfosBox>
                   </ContentsBox>
                 );

@@ -8,6 +8,11 @@ import { useRoute } from '@react-navigation/native';
 import Responsavel1 from '../../screens/Responsavel_1';
 import Responsavel3 from '../../screens/Responsavel_3';
 import Cadastro3 from '../../screens/cadastro/cadastro3';
+import Responsavel4 from '../../screens/Responsavel_4';
+import Preferences from '../../screens/preferences';
+import ListBlocks from '../../screens/listBlocks';
+import Dependent1 from '../../screens/addDependent';
+import EditContact from '../../screens/editContact';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +28,14 @@ export function ContatoStackNavigator() {
             name="AddContact"
             component={AddContact}
         />
+        <Stack.Screen
+            name="Ver Contato"
+            component={SeeContact}
+        />
+        <Stack.Screen
+            name="EditContact"
+            component={EditContact}
+        />
         </Stack.Navigator>
     );
 }
@@ -36,7 +49,12 @@ export function ConversasStackNavigator() {
             />
             <Stack.Screen
                 name="Chat"
-                component={Conversa}
+            >
+                {props => <Conversa {...props} showBottomBar={true} />} 
+            </Stack.Screen>
+            <Stack.Screen
+                name="Ver Contato"
+                component={SeeContact}
             />
         </Stack.Navigator>
     );
@@ -53,9 +71,21 @@ export function DependenteStackNavigator() {
                 name="Ver Dependente"
                 component={Responsavel3}
             />
+            <Stack.Screen
+                name="Gerenciar Contatos do Dependente"
+                component={Responsavel4}
+            />
+            <Stack.Screen
+                name="Contatos Bloqueados"
+                component={ListBlocks}
+            />
+            <Stack.Screen
+                name="Preferencias do Dependente"
+                component={Preferences}
+            />
              <Stack.Screen
                 name="Criar Dependente"
-                component={Cadastro3}
+                component={Dependent1}
             />
         </Stack.Navigator>
     );

@@ -10,13 +10,11 @@ import {
 } from "./styles";
 import { BlockData } from "../../data/blockData";
 
-interface CardBlockProps {
-  openModal: () => void;
-}
-export default function CardBlock({ openModal }: CardBlockProps) {
+
+export default function CardBlock({ openModal, contacts }) {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      {BlockData.map((item: any) => (
+      {contacts.map((item: any) => (
         <ContentBox key={item.id}>
           <InfosBox>
             <Image source={item.avatar} style={{ width: 50, height: 50 }} />

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, TouchableOpacity, Settings, Image } from "react-native";
 import { IconButton } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import {
   Container,
@@ -18,15 +18,22 @@ import {
   ButtonTextCTT,
   SubTitleText
 } from "./styles";
+import api from "../../services/api";
 
 export default function Responsavel4() {
 
   const navigation = useNavigation();
 
+  const route = useRoute();
+  const dependent = route.params.dependent;
+
   { /* const handleArrowPress = () => {}
 
        const handlePencilPress = () => {} */}
-
+  
+  const handleBlockedContacts = () => {
+    navigation.push("Contatos Bloqueados", {dependent});
+  }
   return (
     <GestureHandlerRootView>
       <Container>
@@ -34,11 +41,11 @@ export default function Responsavel4() {
           <TitleContainer>
             <Image source={require("../../../assets/gerenciar.png")}/>
             <TitleText>Gerenciar contatos</TitleText>
-            <SubTitleText>Perfil de Bernardo</SubTitleText>
+            <SubTitleText>Perfil de {dependent.name}</SubTitleText>
           </TitleContainer>
 
           <ButtonsContainer>
-            <ButtonBox>
+            {/* <ButtonBox>
                 <IconButton
                     icon={() => <Feather name="users" size={25} color="#7DA3E1" />}
                     style={{
@@ -61,9 +68,9 @@ export default function Responsavel4() {
                 }}
               />
               <ButtonTextCVS>Ver contatos</ButtonTextCVS>
-            </ButtonBox>
+            </ButtonBox> */}
 
-            <ButtonBox>
+            <ButtonBox onPress={handleBlockedContacts}>
               <Image 
                 source={require("../../../assets/iconBlocks.png")}
                 style={{
@@ -87,7 +94,7 @@ export default function Responsavel4() {
               <ButtonTextCTT>Contatos bloqueados</ButtonTextCTT>
             </ButtonBox>
 
-            <ButtonBox>
+            {/* <ButtonBox>
               <IconButton
                 icon={() => <Feather name="user-plus" size={25} color="#7DA3E1" />}
                 style={{
@@ -110,7 +117,7 @@ export default function Responsavel4() {
                 }}
               />
               <ButtonTextPIN>Solicitações de amizade</ButtonTextPIN>
-            </ButtonBox>
+            </ButtonBox> */}
           </ButtonsContainer>
 
         </ContentsBox>

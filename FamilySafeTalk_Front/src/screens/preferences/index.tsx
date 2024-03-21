@@ -55,7 +55,7 @@ export default function Preferences() {
             </RadioBox>
           </InputContainer>
         </ContentBox>
-        <ContentBox>
+        {/* <ContentBox>
           <ContentText>Restrição de Horário</ContentText>
           <InputContainer>
             <RadioBox>
@@ -92,7 +92,7 @@ export default function Preferences() {
               </RadioButtonText>
             </RadioBox>
           </InputContainer>
-        </ContentBox>
+        </ContentBox> */}
         <ContentBox>
           <ContentText>Permissão para adicionar contato</ContentText>
           <InputContainer>
@@ -107,7 +107,7 @@ export default function Preferences() {
                 Sim
               </RadioButtonText>
             </RadioBox>
-            <RadioBox>
+            {/* <RadioBox>
               <RadioButton
                 value="opcao2"
                 status={
@@ -123,7 +123,7 @@ export default function Preferences() {
               >
                 Sim, mas solicitar aprovação
               </RadioButtonText>
-            </RadioBox>
+            </RadioBox> */}
             <RadioBox>
               <RadioButton
                 value="não"
