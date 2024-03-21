@@ -1,6 +1,4 @@
 import React from "react";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Image, Text } from "react-native";
 import {
   MessageContainer,
   MessageContents,

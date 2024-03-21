@@ -8,11 +8,19 @@ import api from "../../services/api";
 import { useRoute } from "@react-navigation/native";
 import { View } from "react-native";
 import { useAuth } from "../../contexts/auth";
+import { useIsCurrentScreen } from "../../utils/context";
 
 
 export default function Conversa({ navigation, showBottomBar = true }) {
 
-  const { socket } = useAuth();
+
+  const {
+    selectedCurrentScreen,
+    setSelectedCurrentScreen
+  } = useIsCurrentScreen()
+
+  const {socket} = useAuth();
+
 
   const route = useRoute();
 
@@ -37,8 +45,17 @@ export default function Conversa({ navigation, showBottomBar = true }) {
   {
     socket.current.emit("message", data);
   }
+  useEffect(() => {
+    setSelectedCurrentScreen("Chat");
+
+    return () => {
+      setSelectedCurrentScreen("Other");
+    };
+  }, []);
+
 
   useEffect(() => {
+
     getChat();
 
     socket.current.on("message", data => {

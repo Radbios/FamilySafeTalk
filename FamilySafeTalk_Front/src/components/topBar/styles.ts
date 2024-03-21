@@ -14,15 +14,13 @@ export const LeftContents = styled(View)`
   align-items: center;
   justify-content: start;
   padding: 0 0 0 2%;
-  width: 60%;
+  width: 80%;
 `;
 
 export const UserContent = styled(View)`
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  padding-left: 2%;
-  width: 50%;
+  width: 90%;
 `;
 
 export const TextUser = styled(Text)`
