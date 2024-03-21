@@ -114,7 +114,7 @@ export default function Responsavel1() {
             >
               <TouchableOpacity onPress={getRelationships}>
                 <IconButton
-                  icon={() => <Feather name="loader" size={30} color="#888" />}
+                  icon={() => <Feather name="rotate-ccw" size={30} color="#888" />}
                 />
               </TouchableOpacity>
             </View>

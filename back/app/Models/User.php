@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'role_id',
         'image',
+        'tel',
     ];
 
     /**
@@ -58,5 +59,15 @@ class User extends Authenticatable
     public function guardian()
     {
         return $this->hasOne(UserParentRelationship::class, 'child_id');
+    }
+
+    public function contact_permissions()
+    {
+        return $this->hasMany(ContactPermission::class, 'user_id');
+    }
+
+    public function preferences()
+    {
+        return $this->hasOne(Preference::class, 'user_id');
     }
 }

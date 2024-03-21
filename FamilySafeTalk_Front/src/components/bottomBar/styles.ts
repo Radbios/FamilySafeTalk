@@ -21,14 +21,13 @@ export const InputsContainer = styled(View)`
 `;
 
 export const InputsBox = styled(TextInput)`
-  width: 75%;
+  width: 70%;
   background-color: #edede9;
   border-radius: 40px;
   border-color: #a0c4ff;
   border-width: 1px;
   padding-vertical: 10px;
   margin-top: 2%;
-  margin-right: 4%;
   text-align: center;
   font-size: 22px;
   font-family: "Dosis_400Regular";
@@ -39,4 +38,5 @@ export const ButtonSend = styled(TouchableOpacity)`
   justify-content: center;
   text-align: center;
   margin-top: 1%;
+  margin-left: 2%;
 `;

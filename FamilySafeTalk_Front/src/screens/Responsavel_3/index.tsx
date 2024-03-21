@@ -31,6 +31,14 @@ export default function Responsavel3() {
     navigation.pop();
   }
 
+  const handleContatsManagement = () => {
+    navigation.push("Gerenciar Contatos do Dependente", {dependent})
+  }
+
+  const handlePreferences = () => {
+    navigation.push("Preferencias do Dependente", {dependent})
+  }
+
   {/*     const handlePencilPress = () => {} */}
 
   return (
@@ -54,12 +62,12 @@ export default function Responsavel3() {
               />
             </TouchableOpacity>
             <TouchableOpacity>
-            <SubTitleText>Adicionar ou alterar imagem</SubTitleText>
+            {/* <SubTitleText>Adicionar ou alterar imagem</SubTitleText> */}
             </TouchableOpacity>
           </TitleContainer>
 
           <ButtonsContainer>
-            <ButtonBox>
+            {/* <ButtonBox>
                 <IconButton
                     icon={() => <Feather name="message-square" size={25} color="#FF69B4" />}
                     style={{
@@ -82,9 +90,9 @@ export default function Responsavel3() {
                   }}
                 />
                 <ButtonTextCVS>Conversas de {dependent.name}</ButtonTextCVS>
-            </ButtonBox>
+            </ButtonBox> */}
 
-            <ButtonBox>
+            <ButtonBox onPress={handleContatsManagement}>
               <Image 
                   source={require("../../../assets/gerenciar.png")}
                   style={{
@@ -108,7 +116,7 @@ export default function Responsavel3() {
               <ButtonTextCTT>Gerenciar contatos</ButtonTextCTT>
             </ButtonBox>
 
-            <ButtonBox>
+            {/* <ButtonBox>
               <IconButton
                 icon={() => <Feather name="map-pin" size={25} color="#FF69B4" />}
                 style={{
@@ -131,9 +139,9 @@ export default function Responsavel3() {
                 }}
               />
               <ButtonTextPIN>Localização em tempo real</ButtonTextPIN>
-            </ButtonBox>
+            </ButtonBox> */}
 
-            <ButtonBox>
+            <ButtonBox onPress={handlePreferences}>
               <IconButton
                 icon={() => <Feather name="sliders" size={25} color="#7DA3E1" />}
                 style={{

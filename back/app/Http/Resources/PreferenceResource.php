@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ContactResource extends JsonResource
+class PreferenceResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,11 +14,11 @@ class ContactResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'user' => new UserResource($this->info),
-            'is_blocked' => $this->is_blocked
+
+        $rules = [
+            'add_contact_permission' => $this->add_contact_permission
         ];
+
+        return $rules;
     }
 }

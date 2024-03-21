@@ -8,10 +8,19 @@ import api from "../../services/api";
 import { useRoute } from "@react-navigation/native";
 import { View } from "react-native";
 import { useAuth } from "../../contexts/auth";
+import { useIsCurrentScreen } from "../../utils/context";
 
-export default function Conversa({navigation}) {
+
+export default function Conversa({ navigation, showBottomBar = true }) {
+
+  const {
+    selectedCurrentScreen,
+    setSelectedCurrentScreen
+  } = useIsCurrentScreen()
+
 
   const {socket} = useAuth();
+
 
   const route = useRoute();
 
@@ -36,8 +45,17 @@ export default function Conversa({navigation}) {
   {
     socket.current.emit("message", data);
   }
+  useEffect(() => {
+    setSelectedCurrentScreen("Chat");
+
+    return () => {
+      setSelectedCurrentScreen("Other");
+    };
+  }, []);
+
 
   useEffect(() => {
+
     getChat();
 
     socket.current.on("message", data => {
@@ -46,14 +64,14 @@ export default function Conversa({navigation}) {
   }, []);
 
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: 'white' }}>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#fffafa' }}>
       { (chat && messages) ? 
           <Container>
             <TopBar name={chat.name} image={chat.image} navigation={navigation}/>
-            <Talks>
+            <Talks style={{ height: showBottomBar ? '80%' : '90%'}}>
               <Conversation messages={messages}/>
             </Talks>
-            <BottomBar chatId={chat.id} onSendMessage={sendMessage}/>
+            {showBottomBar ? <BottomBar chatId={chat.id} onSendMessage={sendMessage}/> : null}
           </Container>
         : 
         <View></View>

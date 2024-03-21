@@ -30,4 +30,8 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get("/chat/{user_id}/contact", [ChatController::class, "getChatByContact"]);
 
     Route::apiResource("/guardian/dependent", DependentController::class);
+    Route::get("/guardian/dependent/{dependent_id}/blockedContacts", [DependentController::class, "blockedContacts"]);
+    Route::get("/guardian/dependent/{dependent_id}/preferences", [DependentController::class, "getPreference"]);
+    Route::get("/guardian/dependent/{dependent_id}/contactPermissions", [DependentController::class, "getContactPermissions"]);
+    Route::get("/guardian/dependent/{dependent_id}/acceptContact/{invite_id}", [DependentController::class, "acceptContact"]);
 });
