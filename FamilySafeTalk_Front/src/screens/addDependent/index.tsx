@@ -106,14 +106,6 @@ export default function Dependent1() {
                 />
 
               </InputsContainer>
-              <BirthInputsContainer>
-                <BirthInputsBox placeholder="Data de Nascimento" />
-                <IconInputsContainer>
-                  <Icon
-                    source={require("../../../assets/calendar_month.png")}
-                  />
-                </IconInputsContainer>
-              </BirthInputsContainer>
               <ButtonsContainer>
                 <ButtonBox1 onPress={() => {navigation.pop();}}>
                   <ButtonText>Voltar</ButtonText>
