@@ -1,21 +1,24 @@
 #Pre-Process
 import spacy
 import nltk
+import sys
+import warnings
 from metaphone import doublemetaphone
 from fuzzywuzzy import fuzz
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
-
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('wordnet')
+# nltk.download('stopwords')
+# nltk.download('punkt')
+# nltk.download('wordnet')
 
 nlp = spacy.load("pt_core_news_sm", disable=["tokenizer", "parser", "ner"])
-nltk
-# #Modelo
-# import joblib
-# from sklearn.feature_extraction.text import CountVectorizer
+
+#Modelo
+import joblib
+from sklearn.feature_extraction.text import CountVectorizer
+
+warnings.filterwarnings("ignore")
 
 #Lista das substituições dos fonemas
 substituicoes = {
@@ -42,20 +45,20 @@ def stop_words(tokens):
   #print(tokens_sem_stopwords)
   return tokens_sem_stopwords
 
-# def lematizar(tokens):
-#   tokens = nlp(tokens, disable=["tokenizer", "parser", "ner"])
-#   lemas = [token.lemma_ for token in tokens]
-#   return lemas
+def lematizar(tokens):
+  tokens = nlp(tokens, disable=["tokenizer", "parser", "ner"])
+  lemas = [token.lemma_ for token in tokens]
+  return lemas
 
-# def pre_process(texto):
+def pre_process(texto):
 
-#   tokens = tokenizar(texto)
-#   tokens_no_stop_words = stop_words(tokens)
-#   frase = ' '.join(tokens_no_stop_words)
-#   frase_processed = lematizar(frase)
-#   #frase_processed = ' '.join(frase_processed)
+  tokens = tokenizar(texto)
+  tokens_no_stop_words = stop_words(tokens)
+  frase = ' '.join(tokens_no_stop_words)
+  frase_processed = lematizar(frase)
+  #frase_processed = ' '.join(frase_processed)
 
-#  return frase_processed
+  return frase_processed
 
 def palavra_fonema(palavra):
 
@@ -86,22 +89,22 @@ def preprocessar_palavroes(palavroes):
   #print(palavroes_process)
   return palavroes_process
 
-with open("back/storage/classifier/keywords.txt", "r") as arquivo:
+with open("keywords.txt", "r") as arquivo:
     conteudo = arquivo.read()
     palavroes = conteudo.split()
 
 palavroes_process = preprocessar_palavroes(palavroes)
 
-# def carregar_modelo():
-#     model = joblib.load('storage/classifier/trained_Model')
-#     return model
+def carregar_modelo():
+    model = joblib.load('trained_Model')
+    return model
 
-# def classificar(texto, model):
-#    vectorizer = joblib.load('storage/classifier/vetorizador')
-#    msg_vector = vectorizer.transform(texto)
-#    result = model.predict(msg_vector)
+def classificar(texto, model):
+   vectorizer = joblib.load('vetorizador')
+   msg_vector = vectorizer.transform(texto)
+   result = model.predict(msg_vector)
 
-#    return result[0]
+   return result[0]
 
 def verificar_palavra(frase, palavra_nova, palavroes_process):
     for palavra in palavroes_process:
@@ -122,25 +125,32 @@ def verificar_palavra(frase, palavra_nova, palavroes_process):
                     return frase, palavra_achada
     return None, None
 
+key = False
+risk = False
 
-mensagens = [("Vc é uma escrota")]
-msgs = []
-for msg in mensagens:
-  msgs.append(([pre_process_keywords(msg), msg]))
-#print(msgs)
+if len(sys.argv) > 1:
+  mensagem = sys.argv[1]
 
-for i in msgs:
-  tokens = word_tokenize(i[0])
-  for j in tokens:
-    frase, palavra_achada = verificar_palavra(i[1], j.lower(), palavroes_process)
+  msg = ([pre_process_keywords(mensagem), mensagem])
+
+  tokens = word_tokenize(msg[0])
+  for i in tokens:
+    frase, palavra_achada = verificar_palavra(msg[1], i.lower(), palavroes_process)
     if palavra_achada != None:
-        print("Na frase:", frase, "\nTem uma palavra semelhante a", palavra_achada[1])
-        #print("keyword")
+        key = True
+        print("Na frase", frase, "há uma palavra semelhante a", palavra_achada[1])
 
-# msg = "Podemos conversar? Mas não pode falar pros seus pais"
-# model = carregar_modelo()
+  msg = mensagem
+  model = carregar_modelo()
 
-# msg = pre_process(msg)
+  msg = pre_process(msg)
+  classe = classificar(msg, model)
+  if classe == "perigo":
+     risk = True
+  
+  print(mensagem, "\n", key, risk)
 
-# print("Mensagem: ", msg)
-# print("Classificação: ", classificar(msg, model))
+
+  # print("Key:", key)
+  # print("Risk:", risk)
+  # print("Class:", classe)
