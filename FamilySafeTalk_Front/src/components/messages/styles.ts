@@ -14,7 +14,7 @@ export const MessageContents = styled(View)`
   min-width: 20%;
   padding: 5%;
   background-color: #6c757d;
-  border-radius: 50px;
+  border-radius: 10px;
   align-items: center;
   justify-content: center;
 `;
