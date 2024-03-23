@@ -22,7 +22,7 @@ export default function App() {
   return (
     <SafeAreaView style={[styles.safeArea, { marginTop: statusBarHeight }]}>
       <View style={styles.container}>
-        <StatusBar style="auto" />
+        <StatusBar style="dark" />
         <AuthProvider>
           <Routes />
         </AuthProvider>

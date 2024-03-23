@@ -21,12 +21,12 @@ export const InputsContainer = styled(View)`
 `;
 
 export const InputsBox = styled(TextInput)`
-  width: 70%;
+  width: 80%;
   background-color: #edede9;
-  border-radius: 40px;
+  border-radius: 5px;
   border-color: #a0c4ff;
   border-width: 1px;
-  padding-vertical: 10px;
+  padding-vertical: 1px;
   margin-top: 2%;
   text-align: center;
   font-size: 22px;
@@ -37,6 +37,6 @@ export const ButtonSend = styled(TouchableOpacity)`
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 1%;
+  margin-top: 2%;
   margin-left: 2%;
 `;

@@ -13,11 +13,11 @@ import { useIsCurrentScreen } from "../../utils/context";
 
 export default function Conversa({ navigation, showBottomBar = true }) {
 
-
   const {
     selectedCurrentScreen,
     setSelectedCurrentScreen
   } = useIsCurrentScreen()
+
 
   const {socket} = useAuth();
 
