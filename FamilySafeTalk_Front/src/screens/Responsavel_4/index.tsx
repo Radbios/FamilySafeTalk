@@ -55,6 +55,7 @@ export default function Responsavel4() {
       <BackContainer onPress={handleArrowPress}>
         <IconButton
           icon={() => <Feather name="arrow-left" size={30} color="#000" />}
+          style={{top: 10}}
         />
       </BackContainer>
         <ContentsBox>

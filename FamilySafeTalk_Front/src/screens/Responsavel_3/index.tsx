@@ -183,6 +183,7 @@ export default function Responsavel3() {
                 icon={() => (
                   <Feather name="arrow-left" size={30} color="#000" />
                 )}
+                style={{top: 10, left: 5}}
               />
             </TouchableOpacity>
           </View>
