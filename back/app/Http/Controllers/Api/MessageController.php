@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Events\MessageEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\MessageResource;
+use App\Jobs\SendMessageJob;
 use App\Models\Chat;
 use App\Models\Message;
 use Illuminate\Http\Request;
@@ -20,8 +21,9 @@ class MessageController extends Controller
             "is_suspected" => false,
             "content" => $request->content
         ]);
+        $guardian = $message->chat->participants()->where("user_id", "<>", auth()->user()->id)->first()->user->guardian;
 
-        event(new MessageEvent($request->chat_id, $request->content));
+        if($guardian) SendMessageJob::dispatch($message, $guardian->guardian_id);
 
         return response()->json(new MessageResource($message));
     }

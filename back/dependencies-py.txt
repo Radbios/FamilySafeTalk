@@ -1,0 +1,6 @@
+pip install nltk
+pip install Metaphone
+pip install fuzzywuzzy
+pip install python-levenshtein
+pip install spacy
+python3 -m spacy download pt_core_news_sm

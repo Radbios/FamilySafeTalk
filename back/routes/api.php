@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\ChatController;
 use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\Guardian\DependentController;
 use App\Http\Controllers\Api\MessageController;
+use App\Models\Teste;
+use Illuminate\Support\Facades\Process;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +36,16 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get("/guardian/dependent/{dependent_id}/preferences", [DependentController::class, "getPreference"]);
     Route::get("/guardian/dependent/{dependent_id}/contactPermissions", [DependentController::class, "getContactPermissions"]);
     Route::get("/guardian/dependent/{dependent_id}/acceptContact/{invite_id}", [DependentController::class, "acceptContact"]);
+});
+
+
+Route::get("/teste", function(){
+        $process = Process::input(env('DB_CONNECTION'))->start('python3 ' . storage_path('app/scripts/teste.py'));
+    $result = $process->wait();
+
+    $new = new Teste;
+    $new->name = "asçdnsa";
+
+    $new->save();
+    return $result->output();
 });
