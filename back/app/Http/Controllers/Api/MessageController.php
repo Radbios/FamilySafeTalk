@@ -21,9 +21,11 @@ class MessageController extends Controller
             "is_suspected" => false,
             "content" => $request->content
         ]);
-        $guardian = $message->chat->participants()->where("user_id", "<>", auth()->user()->id)->first()->user->guardian;
 
-        if($guardian) SendMessageJob::dispatch($message, $guardian->guardian_id);
+        $child = $message->chat->participants()->where("user_id", "<>", auth()->user()->id)->first()->user;
+        $guardian = $child->guardian->info_guardian;
+
+        if($guardian) SendMessageJob::dispatch($message, $guardian, $child);
 
         return response()->json(new MessageResource($message));
     }
