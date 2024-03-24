@@ -36,7 +36,7 @@ export default function Preferences({ navigation }) {
         <TitleText>Preferências</TitleText>
       </TitleBox>
       <SubtitleBox>
-        <SubtitleText>Conta de Fabiano</SubtitleText>
+        <SubtitleText>Conta de Fulano</SubtitleText>
       </SubtitleBox>
       <ContentsContainer>
         <ContentBox>

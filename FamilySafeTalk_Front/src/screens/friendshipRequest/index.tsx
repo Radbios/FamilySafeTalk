@@ -43,7 +43,7 @@ import CardFriendshipRequest from "../../components/cardFriendshipRequest";
           <TitleText>Solicitações de Amizade</TitleText>
         </TitleBox>
         <SubtitleBox>
-          <SubtitleText>Conta de Fabiano</SubtitleText>
+          <SubtitleText>Conta de Fulano</SubtitleText>
         </SubtitleBox>
         <ContentsContainer>
           <CardFriendshipRequest openModal={openModal} openModalRefuse={openModalRefuse} />
