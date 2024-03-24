@@ -8,7 +8,7 @@ export const Container = styled(View)`
 export const TitleBox = styled(View)`
   align-items: center;
   justify-content: center;
-  margin-top: 10%;
+  margin-top: 2%;
 `;
 export const TitleText = styled(Text)`
   font-family: "Dosis_600SemiBold";
@@ -60,4 +60,9 @@ export const RadioButtonText = styled(Text)`
   font-size: 20px;
   margin-left: 8px;
   font-family: "Dosis_400Regular";
+`;
+
+export const BackContainer = styled(TouchableOpacity)`
+  width: 100%;
+  align-items: start;
 `;

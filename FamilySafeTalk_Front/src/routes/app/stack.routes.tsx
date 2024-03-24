@@ -13,6 +13,8 @@ import Preferences from '../../screens/preferences';
 import ListBlocks from '../../screens/listBlocks';
 import Dependent1 from '../../screens/addDependent';
 import EditContact from '../../screens/editContact';
+import ListTalksDependents from '../../screens/listTalksDependent';
+import ListContactsDependents from '../../screens/listContactsDependents';
 
 const Stack = createStackNavigator();
 
@@ -87,6 +89,24 @@ export function DependenteStackNavigator() {
                 name="Criar Dependente"
                 component={Dependent1}
             />
-        </Stack.Navigator>
+            <Stack.Screen
+                name="Ver Conversas do Dependente"
+                component={ListTalksDependents}
+            />
+
+            <Stack.Screen
+                name="Ver Contatos do Dependente"
+                component={ListContactsDependents}
+            />
+             <Stack.Screen
+                name="Ver Contato"
+                component={SeeContact}
+            />
+            <Stack.Screen
+                name="Chat"
+            >
+                {props => <Conversa {...props} showBottomBar={false} />} 
+            </Stack.Screen>
+            </Stack.Navigator>
     );
 }

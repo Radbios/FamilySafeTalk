@@ -8,7 +8,6 @@ import {
   NameText,
   Separator,
 } from "./styles";
-import { contactsData } from "../../data/contacts";
 import api from "../../services/api";
 
 export default function CardContacts({contacts, navigation}) {

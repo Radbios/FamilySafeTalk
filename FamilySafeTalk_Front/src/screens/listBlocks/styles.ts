@@ -7,7 +7,7 @@ export const Container = styled(View)`
 `;
 
 export const ImageContainer = styled(View)`
-  margin-top: 10%;
+  margin-top: 2%;
   align-items: center;
 `;
 
@@ -33,9 +33,18 @@ export const SubtitleText = styled(Text)`
 
 export const ContentsContainer = styled(View)`
   align-items: start;
-  justify-content: center;
   margin-top: 10%;
   width: 100%;
   height: 60%;
   padding: 0 5% 0 5%;
+`;
+
+export const BackContainer = styled(TouchableOpacity)`
+  width: 100%;
+  align-items: start;
+`;
+
+export const NoBlockedContactsText = styled(Text)`
+  font-family: "Dosis_400Regular";
+  font-size: 25px;
 `;

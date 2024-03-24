@@ -10,17 +10,28 @@ import {
   InputContainer,
   RadioButtonText,
   RadioBox,
+  BackContainer,
 } from "./styles";
-import { RadioButton } from "react-native-paper";
+import { IconButton, RadioButton } from "react-native-paper";
 import { useState } from "react";
+import { Feather } from "@expo/vector-icons";
 
-export default function Preferences() {
+export default function Preferences({ navigation }) {
   const [checked, setChecked] = useState("sim");
   const [checked2, setChecked2] = useState("livre");
   const [checkedPermission, setCheckedPermission] = useState("não");
 
+  const handleArrowPress = () => {
+    navigation.pop();
+  };
+
   return (
     <Container>
+      <BackContainer onPress={handleArrowPress}>
+        <IconButton
+          icon={() => <Feather name="arrow-left" size={30} color="#000" />}
+        />
+      </BackContainer>
       <TitleBox>
         <TitleText>Preferências</TitleText>
       </TitleBox>

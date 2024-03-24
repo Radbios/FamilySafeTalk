@@ -39,6 +39,11 @@ export default function Responsavel3() {
     navigation.push("Preferencias do Dependente", {dependent})
   }
 
+
+  const handleTalks = () => {
+    navigation.push("Ver Conversas do Dependente", {dependent})
+  }
+
   {/*     const handlePencilPress = () => {} */}
 
   return (
@@ -116,9 +121,9 @@ export default function Responsavel3() {
               <ButtonTextCTT>Gerenciar contatos</ButtonTextCTT>
             </ButtonBox>
 
-            {/* <ButtonBox>
+            <ButtonBox onPress={handleTalks}>
               <IconButton
-                icon={() => <Feather name="map-pin" size={25} color="#FF69B4" />}
+                icon={() => <Feather name="message-circle" size={25} color="#FF69B4" />}
                 style={{
                   backgroundColor: "#FFAFCC",
                   borderRadius: 8,
@@ -138,8 +143,8 @@ export default function Responsavel3() {
                   top: 4
                 }}
               />
-              <ButtonTextPIN>Localização em tempo real</ButtonTextPIN>
-            </ButtonBox> */}
+              <ButtonTextPIN>Ver Conversas</ButtonTextPIN>
+            </ButtonBox> 
 
             <ButtonBox onPress={handlePreferences}>
               <IconButton

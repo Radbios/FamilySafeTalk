@@ -72,3 +72,8 @@ export const ButtonTextPIN = styled(Text)`
   margin-left: 18%;
   font-family: "Dosis_400Regular";
 `;
+
+export const BackContainer = styled(TouchableOpacity)`
+  width: 100%;
+  align-items: start;
+`;

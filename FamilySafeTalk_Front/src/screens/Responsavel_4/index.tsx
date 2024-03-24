@@ -16,7 +16,8 @@ import {
   ButtonTextPIN,
   ButtonTextCVS,
   ButtonTextCTT,
-  SubTitleText
+  SubTitleText,
+  BackContainer
 } from "./styles";
 import api from "../../services/api";
 
@@ -34,9 +35,24 @@ export default function Responsavel4() {
   const handleBlockedContacts = () => {
     navigation.push("Contatos Bloqueados", {dependent});
   }
+
+  const handleListContacts = () => {
+    navigation.push("Ver Contatos do Dependente", {dependent});
+  }
+
+  const handleArrowPress = () => {
+    navigation.pop();
+  };
+
+  
   return (
     <GestureHandlerRootView>
       <Container>
+      <BackContainer onPress={handleArrowPress}>
+        <IconButton
+          icon={() => <Feather name="arrow-left" size={30} color="#000" />}
+        />
+      </BackContainer>
         <ContentsBox>
           <TitleContainer>
             <Image source={require("../../../assets/gerenciar.png")}/>
@@ -45,7 +61,7 @@ export default function Responsavel4() {
           </TitleContainer>
 
           <ButtonsContainer>
-            {/* <ButtonBox>
+             <ButtonBox onPress={handleListContacts}>
                 <IconButton
                     icon={() => <Feather name="users" size={25} color="#7DA3E1" />}
                     style={{
@@ -68,7 +84,7 @@ export default function Responsavel4() {
                 }}
               />
               <ButtonTextCVS>Ver contatos</ButtonTextCVS>
-            </ButtonBox> */}
+            </ButtonBox>
 
             <ButtonBox onPress={handleBlockedContacts}>
               <Image 
@@ -94,7 +110,7 @@ export default function Responsavel4() {
               <ButtonTextCTT>Contatos bloqueados</ButtonTextCTT>
             </ButtonBox>
 
-            {/* <ButtonBox>
+             <ButtonBox>
               <IconButton
                 icon={() => <Feather name="user-plus" size={25} color="#7DA3E1" />}
                 style={{
@@ -117,7 +133,7 @@ export default function Responsavel4() {
                 }}
               />
               <ButtonTextPIN>Solicitações de amizade</ButtonTextPIN>
-            </ButtonBox> */}
+            </ButtonBox>
           </ButtonsContainer>
 
         </ContentsBox>
