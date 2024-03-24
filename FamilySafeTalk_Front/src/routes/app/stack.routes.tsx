@@ -15,6 +15,7 @@ import Dependent1 from '../../screens/addDependent';
 import EditContact from '../../screens/editContact';
 import ListTalksDependents from '../../screens/listTalksDependent';
 import ListContactsDependents from '../../screens/listContactsDependents';
+import FriendshipRequestList from '../../screens/friendshipRequest';
 
 const Stack = createStackNavigator();
 
@@ -80,6 +81,10 @@ export function DependenteStackNavigator() {
             <Stack.Screen
                 name="Contatos Bloqueados"
                 component={ListBlocks}
+            />
+            <Stack.Screen
+                name="Solicitacoes de Amizades"
+                component={FriendshipRequestList}
             />
             <Stack.Screen
                 name="Preferencias do Dependente"

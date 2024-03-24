@@ -40,6 +40,10 @@ export default function Responsavel4() {
     navigation.push("Ver Contatos do Dependente", {dependent});
   }
 
+  const handleListFriends = () => {
+    navigation.push("Solicitacoes de Amizades", {dependent});
+  }
+
   const handleArrowPress = () => {
     navigation.pop();
   };
@@ -110,7 +114,7 @@ export default function Responsavel4() {
               <ButtonTextCTT>Contatos bloqueados</ButtonTextCTT>
             </ButtonBox>
 
-             <ButtonBox>
+             <ButtonBox onPress={handleListFriends}>
               <IconButton
                 icon={() => <Feather name="user-plus" size={25} color="#7DA3E1" />}
                 style={{

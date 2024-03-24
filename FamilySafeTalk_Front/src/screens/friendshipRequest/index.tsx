@@ -10,11 +10,16 @@ import {
   
   import { Image } from "react-native";
 
-  import { useState } from "react";
+  import React, { useState } from "react";
   import Modal from "../../components/modal";
 import CardFriendshipRequest from "../../components/cardFriendshipRequest";
+import { useNavigation } from "@react-navigation/native";
+import { IconButton } from "react-native-paper";
+import { BackContainer } from "../Responsavel_4/styles";
+import { Feather } from "@expo/vector-icons";
   
   export default function FriendshipRequestList() {
+    const navigation = useNavigation();
     const [isModalVisible, setModalVisible] = useState(false);
     const [isModalVisibleRefuse, setModalVisibleRefuse] = useState(false);
   
@@ -33,9 +38,18 @@ import CardFriendshipRequest from "../../components/cardFriendshipRequest";
       const closeModalRefuse = () => {
         setModalVisibleRefuse(false);
       };
-  
+
+      const handleArrowPress = () => {
+        navigation.pop();
+      };
+
     return (
       <Container>
+        <BackContainer onPress={handleArrowPress}>
+          <IconButton
+            icon={() => <Feather name="arrow-left" size={30} color="#000" />}
+          />
+        </BackContainer>
         <ImageContainer>
           <Image source={require("../../../assets/iconFriend.png")} />
         </ImageContainer>
