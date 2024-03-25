@@ -25,9 +25,9 @@ import api from "../../services/api";
 
 export default function SeeContact() {
   const navigation = useNavigation();
-  const route = useRoute();
   const [isModalVisible, setModalVisible] = useState(false);
   const [isModalBlockVisible, setModalBlockVisible] = useState(false);
+  const route = useRoute();
   
   const contact = route.params.contact;
   const handleArrowPress = () => {
@@ -41,8 +41,13 @@ export default function SeeContact() {
     navigation.navigate("Chat", {chatId: response.data.data.id})
   }
 
+  async function editContact()
+  {
+    console.log("OK");
+  }
+
   const handlePencilPress = () => {
-    navigation.navigate("EditContact");
+    navigation.navigate("EditContact", {contact: contact});
   };
 
   const handleDeletePress = () => {

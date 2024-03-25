@@ -56,7 +56,7 @@ export default function CardContacts({contacts, navigation}) {
                 );
               } else {
                 return (
-                  <ContentsBox key={contact.id}>
+                  <ContentsBox key={contact.id} onPress={() => showContact(contact)}>
                     <Image 
                         source={contact.photo}
                         style={{ width: 37, height: 37 }} 

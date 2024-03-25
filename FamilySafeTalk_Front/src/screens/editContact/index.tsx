@@ -16,20 +16,31 @@ import {
   PlaceholderTextButton,
   ButtonText,
 } from "./styles";
+import api from "../../services/api";
+import { InputsBox, InputsContainer } from "../login/styles";
 //import api from "../../services/api";
 
 export default function EditContact() {
   const navigation = useNavigation();
-  //const route = useRoute();
+  const route = useRoute();
 
-  //const contact = route.params.contact;
+  const [name, setName] = useState(null);
+
+  const contact = route.params.contact;
 
   const handleArrowPress = () => {
     navigation.pop();
   };
 
-  const handleCheckPress = () => {
-    navigation.navigate("Ver Contato");
+  const handleCheckPress = async () => {
+    const response = await api.put("/contact/" + contact.id, 
+    {
+      name: name,
+      is_blocked: false
+    });
+    const newContact = response.data.data;
+    setName(null)
+    navigation.navigate("Ver Contato", {contact: newContact});
   };
 
   return (
@@ -55,25 +66,12 @@ export default function EditContact() {
                 </TouchableOpacity>
             </TitleContainer>
 
-            <ButtonsContainer>
-            <ButtonBox1>
-                <PlaceholderTextButton>Nome</PlaceholderTextButton>
-                <ButtonText>Julio</ButtonText>
-              </ButtonBox1>
-              <ButtonBox1>
-                <PlaceholderTextButton>Sobrenome</PlaceholderTextButton>
-                <ButtonText></ButtonText>
-              </ButtonBox1>
-              <ButtonBox1>
-                <PlaceholderTextButton>Telefone celular</PlaceholderTextButton>
-                <ButtonText>(82) 98888-8888</ButtonText>
-              </ButtonBox1>
-              <ButtonBox1>
-                <PlaceholderTextButton>E-mail</PlaceholderTextButton>
-                <ButtonText>julio@hotmail.com</ButtonText>
-              </ButtonBox1>
-
-            </ButtonsContainer>
+            <InputsContainer>
+                <InputsBox
+                  onChangeText={setName}
+                  value={contact.name}
+                />
+              </InputsContainer>
 
             <View
               style={{
