@@ -10,6 +10,7 @@ class Preference extends Model
     use HasFactory;
     protected $fillable = [
         'add_contact_permission',
-        'user_id'
+        'user_id',
+        'keywords'
     ];
 }
