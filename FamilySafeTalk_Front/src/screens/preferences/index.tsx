@@ -12,12 +12,41 @@ import {
   RadioBox,
 } from "./styles";
 import { RadioButton } from "react-native-paper";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import api from "../../services/api";
+import { useRoute } from "@react-navigation/native";
 
 export default function Preferences() {
-  const [checked, setChecked] = useState("sim");
+  const [checkedKeyword, setCheckedKeyword] = useState("sim");
   const [checked2, setChecked2] = useState("livre");
   const [checkedPermission, setCheckedPermission] = useState("não");
+  const route = useRoute();
+  const dependent = route.params.dependent;
+  //guardian/dependent/{dependent_id}/preferences
+
+  const getPreferences = async (dependent_id) => {
+    const response = await api.get("/guardian/dependent/"+dependent_id+"/preferences");
+    const add_contact_permission = response.data.data.add_contact_permission ? "sim" : "não";
+    setCheckedPermission(add_contact_permission);
+  }
+
+  const setPreferences = async (dependent_id) => {
+    const response = await api.get("/guardian/dependent/"+dependent_id+"/preferences");
+    const add_contact_permission = response.data.data.add_contact_permission ? "sim" : "não";
+    setCheckedPermission(add_contact_permission);
+  }
+
+  const saveKeywork = (data) => {
+    setCheckedKeyword(data);
+  }
+
+  const savePermission = (data) => {
+    setCheckedPermission(data);
+  }
+
+  useEffect( ()=> {
+    getPreferences(dependent.id);
+  }, [])
 
   return (
     <Container>
@@ -34,22 +63,22 @@ export default function Preferences() {
             <RadioBox>
               <RadioButton
                 value="sim"
-                status={checked === "sim" ? "checked" : "unchecked"}
+                status={checkedKeyword === "sim" ? "checked" : "unchecked"}
                 color="black"
-                onPress={() => setChecked("sim")}
+                onPress={() => saveKeywork("sim")}
               />
-              <RadioButtonText onPress={() => setChecked("sim")}>
+              <RadioButtonText onPress={() => saveKeywork("sim")}>
                 Sim
               </RadioButtonText>
             </RadioBox>
             <RadioBox>
               <RadioButton
                 value="nao"
-                status={checked === "nao" ? "checked" : "unchecked"}
+                status={checkedKeyword === "nao" ? "checked" : "unchecked"}
                 color="black"
-                onPress={() => setChecked("nao")}
+                onPress={() => saveKeywork("nao")}
               />
-              <RadioButtonText onPress={() => setChecked("nao")}>
+              <RadioButtonText onPress={() => saveKeywork("nao")}>
                 Não
               </RadioButtonText>
             </RadioBox>
@@ -101,37 +130,20 @@ export default function Preferences() {
                 value="sim"
                 status={checkedPermission === "sim" ? "checked" : "unchecked"}
                 color="black"
-                onPress={() => setCheckedPermission("sim")}
+                onPress={() => savePermission("sim")}
               />
-              <RadioButtonText onPress={() => setCheckedPermission("sim")}>
+              <RadioButtonText onPress={() => savePermission("sim")}>
                 Sim
               </RadioButtonText>
             </RadioBox>
-            {/* <RadioBox>
-              <RadioButton
-                value="opcao2"
-                status={
-                  checkedPermission === "simWpermission"
-                    ? "checked"
-                    : "unchecked"
-                }
-                color="black"
-                onPress={() => setCheckedPermission("simWpermission")}
-              />
-              <RadioButtonText
-                onPress={() => setCheckedPermission("simWpermission")}
-              >
-                Sim, mas solicitar aprovação
-              </RadioButtonText>
-            </RadioBox> */}
             <RadioBox>
               <RadioButton
                 value="não"
                 status={checkedPermission === "não" ? "checked" : "unchecked"}
                 color="black"
-                onPress={() => setCheckedPermission("não")}
+                onPress={() => savePermission("não")}
               />
-              <RadioButtonText onPress={() => setCheckedPermission("não")}>
+              <RadioButtonText onPress={() => savePermission("não")}>
                 Não
               </RadioButtonText>
             </RadioBox>

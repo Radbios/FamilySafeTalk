@@ -19,6 +19,8 @@ import {
   ButtonTextCTT,
   SubTitleText
 } from "./styles";
+import { ButtonBox1, ButtonText } from "../login/styles";
+import { PlaceholderTextButton } from "../editContact/styles";
 
 export default function Responsavel3() {
 
@@ -65,8 +67,16 @@ export default function Responsavel3() {
             {/* <SubTitleText>Adicionar ou alterar imagem</SubTitleText> */}
             </TouchableOpacity>
           </TitleContainer>
-
+          
           <ButtonsContainer>
+            <ButtonBox>
+                <PlaceholderTextButton>Telefone celular</PlaceholderTextButton>
+                <ButtonText>{dependent.tel}</ButtonText>
+              </ButtonBox>
+              <ButtonBox>
+                <PlaceholderTextButton>E-mail</PlaceholderTextButton>
+                <ButtonText>{dependent.email}</ButtonText>
+              </ButtonBox>
             {/* <ButtonBox>
                 <IconButton
                     icon={() => <Feather name="message-square" size={25} color="#FF69B4" />}
