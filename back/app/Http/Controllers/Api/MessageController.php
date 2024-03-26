@@ -23,10 +23,13 @@ class MessageController extends Controller
         ]);
 
         $child = $message->chat->participants()->where("user_id", "<>", auth()->user()->id)->first()->user;
-        $guardian = $child->guardian->info_guardian;
 
-        if($guardian) SendMessageJob::dispatch($message, $guardian, $child);
-
+        $guardian = $child->guardian;
+        if($guardian)
+        {
+            $guardian = $guardian->info_guardian;
+            SendMessageJob::dispatch($message, $guardian, $child);
+        }
         return response()->json(new MessageResource($message));
     }
 

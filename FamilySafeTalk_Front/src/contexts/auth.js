@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
     useEffect( () => {
         if(user)
         {
-            socketRef.current = io("https://radbios.com:3000");
+            socketRef.current = io("https://socket.radbios.com:3000");
 
             socketRef.current.on("connect", () => {
                 console.log("Conectado ao socket");

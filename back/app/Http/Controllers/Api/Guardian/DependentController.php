@@ -44,14 +44,14 @@ class DependentController extends Controller
         Contact::create([
             "user_id" => Auth::user()->id,
             "contact_id" => $user->id,
-            "name" => Auth()->user()->name . " (Protegido)",
+            "name" => $user->name . " (Protegido)",
             "is_blocked" => false
         ]);
 
         Contact::create([
-            "contact_id" => Auth::user()->id,
             "user_id" => $user->id,
-            "name" => $request->name . " (Responsável)",
+            "contact_id" => Auth::user()->id,
+            "name" => Auth()->user()->name . " (Responsável)",
             "is_blocked" => false
         ]);
 

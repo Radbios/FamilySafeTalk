@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 
-const SOCKET_URL = 'https://radbios.com:3000'
+const SOCKET_URL = 'https://socket.radbios.com:3000'
 
 class WSService {
 
