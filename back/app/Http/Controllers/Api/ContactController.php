@@ -109,4 +109,11 @@ class ContactController extends Controller
         $data->delete();
         return new ContactResource($data);
     }
+
+    public function blockedContacts()
+    {
+        $contacts = Auth()->user()->contacts()->where("is_blocked", true)->get();
+
+        return ContactResource::collection($contacts);
+    }
 }

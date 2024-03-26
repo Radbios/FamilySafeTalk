@@ -30,6 +30,7 @@ Route::post('/register', [AuthController::class, "register"]);
 Route::middleware('auth:sanctum')->group(function(){
     Route::post('/logout', [AuthController::class, "logout"]);
     Route::apiResource("/contact", ContactController::class);
+    Route::get("/blockedContacts", [ContactController::class, "blockedContacts"]);
     Route::apiResource("/message", MessageController::class)->only("store");
     Route::apiResource("/chat", ChatController::class)->only("index", "show", "store");
     Route::get("/chat/{chat_id}/lastMessage", [MessageController::class, "lastMessage"]);
