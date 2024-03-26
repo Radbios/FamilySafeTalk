@@ -41,7 +41,7 @@ class SendMessageJob implements ShouldQueue
 
         $output = explode(' ', $result->output());
 
-        if($output[0]) { // PALAVRA CHAVE
+        if($output[0] && $this->child->preferences->keywords) { // PALAVRA CHAVE
             Notification::create([
                 "user_id" => $this->guardian->id,
                 "title" => "Palavra chave",

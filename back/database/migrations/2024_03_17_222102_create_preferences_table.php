@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('preferences', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->boolean('add_contact_permission')->default(true);
+            $table->boolean('add_contact_permission')->default(false);
             $table->timestamps();
         });
     }

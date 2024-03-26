@@ -42,7 +42,7 @@ class Keyword extends Notification
         return (new MailMessage)
                     ->subject("Alerta! Identificamos uma palavra chave na conversa de " . $this->child->name . '.')
                     ->greeting("Alerta! Identificamos uma palavra chave na conversa de " . $this->child->name)
-                    ->line('Identificamos "palavra" na mensagem:')
+                    ->line('Identificamos "palavra chave" na mensagem:')
                     ->line($this->message->content);
                     // ->action('Notification Action', 'google.com');
     }

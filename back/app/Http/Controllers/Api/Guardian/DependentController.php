@@ -79,9 +79,22 @@ class DependentController extends Controller
             return new PreferenceResource($preference);
         }
 
-        $preference = $dependent->preferences()->create([
-            'add_contact_permission' => 0
-        ]);
+        $preference = $dependent->preferences()->create();
+        return new PreferenceResource($preference);
+    }
+
+    public function setPreference(Request $request, string $child_id)
+    {
+        $dependent = User::findOrFail($child_id);
+        $preference = $dependent->preferences;
+        if($preference)
+        {
+            $preference->update($request->all());
+
+            return new PreferenceResource($preference);
+        }
+
+        $preference = $dependent->preferences()->create();
         return new PreferenceResource($preference);
     }
 
