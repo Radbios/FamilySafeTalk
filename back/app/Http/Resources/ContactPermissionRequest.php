@@ -17,7 +17,8 @@ class ContactPermissionRequest extends JsonResource
         $rules = [
             'id' => $this->id,
             'name' => $this->name,
-            'contact_id' => $this->contact_id
+            'contact_id' => $this->contact_id,
+            'user_id' => $this->user_id
         ];
 
         return $rules;
