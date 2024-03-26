@@ -15,6 +15,7 @@ class ContactPermissionRequest extends JsonResource
     public function toArray(Request $request): array
     {
         $rules = [
+            'id' => $this->id,
             'name' => $this->name,
             'contact_id' => $this->contact_id
         ];

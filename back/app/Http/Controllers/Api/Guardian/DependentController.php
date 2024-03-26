@@ -105,11 +105,11 @@ class DependentController extends Controller
         return ContactPermissionRequest::collection($contacts);
     }
 
-    public function AcceptContact(string $child_id, string $invite_id, int $status)
+    public function AcceptContact(Request $request, string $child_id, string $invite_id)
     {
         $dependent = Auth()->user()->dependents()->where('child_id', $child_id)->first()->info_dependent;
         $invite = $dependent->contact_permissions()->findOrFail($invite_id);
-        if($status)
+        if($request->status)
         {
             $new_contact = $dependent->contacts()->create([
                 "name" => $invite->name,
