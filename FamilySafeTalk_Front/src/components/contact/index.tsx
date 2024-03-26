@@ -31,6 +31,7 @@ const Contatos = ({navigation}) => {
           position: "absolute",
           right: 10,
           top: -5,
+          zIndex: 100
         }}
       >
           <TouchableOpacity onPress={(handlePlusPress)}>
@@ -44,6 +45,7 @@ const Contatos = ({navigation}) => {
               position: "absolute",
               left: 10,
               top: -5,
+              zIndex: 100
             }}
           >
           <TouchableOpacity onPress={(getContacts)}>

@@ -11,7 +11,7 @@ import {
 import { BlockData } from "../../data/blockData";
 
 
-export default function CardBlock({ openModal, contacts }) {
+export default function CardBlock({ unblock, contacts }) {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       {contacts.map((item: any) => (
@@ -21,7 +21,7 @@ export default function CardBlock({ openModal, contacts }) {
             <NameText>{item.name}</NameText>
           </InfosBox>
           <ButtonContainer>
-            <CancelBlockButton onPress={openModal}>
+            <CancelBlockButton onPress={() => unblock(item)}>
               <ButtonText>Desbloquear</ButtonText>
             </CancelBlockButton>
           </ButtonContainer>

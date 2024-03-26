@@ -80,16 +80,7 @@ export default function Cadastro3() {
                   value={password}
                   secureTextEntry={true}
                 />
-                {/* <InputsBox placeholder="Parentesco" /> */}
               </InputsContainer>
-              {/* <BirthInputsContainer>
-                <BirthInputsBox placeholder="Data de Nascimento" />
-                <IconInputsContainer>
-                  <Icon
-                    source={require("../../../../assets/icons8-calendário-32.png")}
-                  />
-                </IconInputsContainer>
-              </BirthInputsContainer> */}
               <ButtonsContainer>
                 <ButtonBox1>
                   <ButtonText onPress={() => {

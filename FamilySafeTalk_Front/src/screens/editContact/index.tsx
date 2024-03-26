@@ -24,9 +24,9 @@ export default function EditContact() {
   const navigation = useNavigation();
   const route = useRoute();
 
-  const [name, setName] = useState(null);
-
+  
   const contact = route.params.contact;
+  const [name, setName] = useState(contact.name);
 
   const handleArrowPress = () => {
     navigation.pop();
@@ -69,7 +69,7 @@ export default function EditContact() {
             <InputsContainer>
                 <InputsBox
                   onChangeText={setName}
-                  value={contact.name}
+                  value={name}
                 />
               </InputsContainer>
 

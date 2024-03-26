@@ -60,7 +60,12 @@ export const AuthProvider = ({ children }) => {
     async function singIn(email, password) {
         setLoading(true)
         const response = await auth.singIn(email, password);
-
+        
+        if(response.error)
+        {
+            setLoading(false);
+            return;
+        }
         setUser(response.user);
 
         api.defaults.headers['Authorization'] = `Bearer ${response.token}`;

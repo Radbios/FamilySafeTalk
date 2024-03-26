@@ -17,31 +17,38 @@ import api from "../../services/api";
 import { useRoute } from "@react-navigation/native";
 
 export default function Preferences() {
-  const [checkedKeyword, setCheckedKeyword] = useState("sim");
+  const [checkedKeyword, setCheckedKeyword] = useState(1);
   const [checked2, setChecked2] = useState("livre");
-  const [checkedPermission, setCheckedPermission] = useState("não");
+  const [checkedPermission, setCheckedPermission] = useState(0);
   const route = useRoute();
   const dependent = route.params.dependent;
-  //guardian/dependent/{dependent_id}/preferences
 
   const getPreferences = async (dependent_id) => {
     const response = await api.get("/guardian/dependent/"+dependent_id+"/preferences");
-    const add_contact_permission = response.data.data.add_contact_permission ? "sim" : "não";
+    const add_contact_permission = response.data.data.add_contact_permission;
+    const keyword_permission = response.data.data.keywords;
     setCheckedPermission(add_contact_permission);
+    setCheckedKeyword(keyword_permission);
   }
 
-  const setPreferences = async (dependent_id) => {
-    const response = await api.get("/guardian/dependent/"+dependent_id+"/preferences");
-    const add_contact_permission = response.data.data.add_contact_permission ? "sim" : "não";
+  const setPreferences = async (dependent_id, key, perm) => {
+    const response = await api.put("/guardian/dependent/"+dependent_id+"/preferences", {
+      'keywords': key,
+      'add_contact_permission': perm
+    });
+    const add_contact_permission = response.data.data.add_contact_permission;
     setCheckedPermission(add_contact_permission);
+
+    const keyword_permission = response.data.data.keywords;
+    setCheckedKeyword(keyword_permission);
   }
 
   const saveKeywork = (data) => {
-    setCheckedKeyword(data);
+    setPreferences(dependent.id, data, checkedPermission);
   }
 
   const savePermission = (data) => {
-    setCheckedPermission(data);
+    setPreferences(dependent.id, checkedKeyword, data);
   }
 
   useEffect( ()=> {
@@ -62,23 +69,23 @@ export default function Preferences() {
           <InputContainer>
             <RadioBox>
               <RadioButton
-                value="sim"
-                status={checkedKeyword === "sim" ? "checked" : "unchecked"}
+                value={1}
+                status={checkedKeyword === 1 ? "checked" : "unchecked"}
                 color="black"
-                onPress={() => saveKeywork("sim")}
+                onPress={() => saveKeywork(1)}
               />
-              <RadioButtonText onPress={() => saveKeywork("sim")}>
+              <RadioButtonText onPress={() => saveKeywork(1)}>
                 Sim
               </RadioButtonText>
             </RadioBox>
             <RadioBox>
               <RadioButton
-                value="nao"
-                status={checkedKeyword === "nao" ? "checked" : "unchecked"}
+                value={0}
+                status={checkedKeyword === 0 ? "checked" : "unchecked"}
                 color="black"
-                onPress={() => saveKeywork("nao")}
+                onPress={() => saveKeywork(0)}
               />
-              <RadioButtonText onPress={() => saveKeywork("nao")}>
+              <RadioButtonText onPress={() => saveKeywork(0)}>
                 Não
               </RadioButtonText>
             </RadioBox>
@@ -89,7 +96,7 @@ export default function Preferences() {
           <InputContainer>
             <RadioBox>
               <RadioButton
-                value="opcao1"
+                value={"}opcao1"
                 status={checked2 === "opcao1" ? "checked" : "unchecked"}
                 color="black"
                 onPress={() => setChecked2("opcao1")}
@@ -100,7 +107,7 @@ export default function Preferences() {
             </RadioBox>
             <RadioBox>
               <RadioButton
-                value="opcao2"
+                value={"}opcao2"
                 status={checked2 === "opcao2" ? "checked" : "unchecked"}
                 color="black"
                 onPress={() => setChecked2("opcao2")}
@@ -111,7 +118,7 @@ export default function Preferences() {
             </RadioBox>
             <RadioBox>
               <RadioButton
-                value="livre"
+                value={"}livre"
                 status={checked2 === "livre" ? "checked" : "unchecked"}
                 color="black"
                 onPress={() => setChecked2("livre")}
@@ -127,23 +134,23 @@ export default function Preferences() {
           <InputContainer>
             <RadioBox>
               <RadioButton
-                value="sim"
-                status={checkedPermission === "sim" ? "checked" : "unchecked"}
+                value={1}
+                status={checkedPermission === 1 ? "checked" : "unchecked"}
                 color="black"
-                onPress={() => savePermission("sim")}
+                onPress={() => savePermission(1)}
               />
-              <RadioButtonText onPress={() => savePermission("sim")}>
+              <RadioButtonText onPress={() => savePermission(1)}>
                 Sim
               </RadioButtonText>
             </RadioBox>
             <RadioBox>
               <RadioButton
-                value="não"
-                status={checkedPermission === "não" ? "checked" : "unchecked"}
+                value={0}
+                status={checkedPermission === 0 ? "checked" : "unchecked"}
                 color="black"
-                onPress={() => savePermission("não")}
+                onPress={() => savePermission(0)}
               />
-              <RadioButtonText onPress={() => savePermission("não")}>
+              <RadioButtonText onPress={() => savePermission(0)}>
                 Não
               </RadioButtonText>
             </RadioBox>

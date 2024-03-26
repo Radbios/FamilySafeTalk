@@ -15,17 +15,17 @@ interface CardBlockProps {
   openModal: () => void;
   openModalRefuse: () => void;
 }
-export default function CardFriendshipRequest({ openModal, openModalRefuse }: CardBlockProps) {
+export default function CardFriendshipRequest({contacts, openModal, openModalRefuse }: CardBlockProps) {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      {BlockData.map((item: any) => (
+      {contacts.map((item: any) => (
         <ContentBox key={item.id}>
           <InfosBox>
-            <Image source={item.avatar} style={{ width: 50, height: 50 }} />
+            <Image source={require("../../../assets/usericon.png")} style={{ width: 50, height: 50 }} />
             <NameText>{item.name}</NameText>
           </InfosBox>
           <ButtonContainer>
-            <CancelBlockButton onPress={openModalRefuse}>
+            <CancelBlockButton onPress={() => openModalRefuse(item.user_id, item.id)}>
                 <IconButton
                   icon={() => (
                     <FontAwesome name="times" size={24} color="#F1006D" />
@@ -33,7 +33,7 @@ export default function CardFriendshipRequest({ openModal, openModalRefuse }: Ca
 
                 />
             </CancelBlockButton>
-            <CancelBlockButton onPress={openModal}>
+            <CancelBlockButton onPress={() => openModal(item.user_id, item.id)}>
                 <IconButton
                   icon={() => (
                     <FontAwesome name="check" size={24} color="#004ECC" />

@@ -24,6 +24,7 @@ import Cadastro2 from "../../screens/cadastro/cadastro2";
 import Cadastro3 from "../../screens/cadastro/cadastro3";
 import { useIsCurrentScreen } from "../../utils/context";
 import cardAudio from "../cardAudio";
+import Configuration from "../../screens/configuration";
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
@@ -123,12 +124,10 @@ export default function BottomTabNavigator() {
           />
         }
 
-        {/* <Tab.Screen
+        <Tab.Screen
           name="Configurações"
           //Voltar SeeContact depois
-
-          component={}
-
+          component={Configuration}
           options={{
             tabBarIcon: ({ color }) => (
               <Image
@@ -137,7 +136,7 @@ export default function BottomTabNavigator() {
               />
             ),
           }}
-        /> */}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

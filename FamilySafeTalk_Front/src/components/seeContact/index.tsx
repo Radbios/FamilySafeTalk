@@ -41,11 +41,6 @@ export default function SeeContact() {
     navigation.navigate("Chat", {chatId: response.data.data.id})
   }
 
-  async function editContact()
-  {
-    console.log("OK");
-  }
-
   const handlePencilPress = () => {
     navigation.navigate("EditContact", {contact: contact});
   };
@@ -67,7 +62,7 @@ export default function SeeContact() {
   async function deleteContact(id) {
     const response = await api.delete('/contact/' + id);
     handleModalDeleteClose();
-    navigation.pop();
+    navigation.navigate('Contatos');
   }
 
   async function blockContact(id) {

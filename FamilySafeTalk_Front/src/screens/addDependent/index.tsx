@@ -46,16 +46,12 @@ export default function Dependent1() {
       name: name,
       email: email,
       password: password,
-      parentage: parentage
     });
+    navigation.push('Dependentes');
+    // setTimeout(() => setShowModal(false), 3000);
+    // setShowModal(true);
   }
   
-  function ConcluirPress(){
-    navigation.push('Dependentes');
-    setTimeout(() => setShowModal(false), 3000);
-    setShowModal(true);
-  }
-
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: "#a0c4ff" }}>
       <KeyboardAvoidingView
@@ -99,18 +95,12 @@ export default function Dependent1() {
                   value={password}
                   secureTextEntry={true}
                 />
-                <InputsBox 
-                  placeholder="Parentesco"
-                  onChangeText={setparentage}
-                  value={parentage} 
-                />
-
               </InputsContainer>
               <ButtonsContainer>
                 <ButtonBox1 onPress={() => {navigation.pop();}}>
                   <ButtonText>Voltar</ButtonText>
                 </ButtonBox1>
-                <ButtonBox2 onPress={() => {submit(); ConcluirPress()}}> 
+                <ButtonBox2 onPress={() => {submit()}}> 
                   <ButtonText>Concluir</ButtonText>
                 </ButtonBox2>
               </ButtonsContainer>

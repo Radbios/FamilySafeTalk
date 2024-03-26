@@ -21,6 +21,7 @@ import {
 } from "./styles";
 import { ButtonBox1, ButtonText } from "../login/styles";
 import { PlaceholderTextButton } from "../editContact/styles";
+import FriendshipRequestList from "../friendshipRequest";
 
 export default function Responsavel3() {
 

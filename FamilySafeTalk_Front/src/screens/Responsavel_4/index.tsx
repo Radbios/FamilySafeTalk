@@ -34,6 +34,10 @@ export default function Responsavel4() {
   const handleBlockedContacts = () => {
     navigation.push("Contatos Bloqueados", {dependent});
   }
+
+  const handlePermissionContacts = () => {
+    navigation.push("Solicitações de Amizade", {dependent});
+  }
   return (
     <GestureHandlerRootView>
       <Container>
@@ -69,7 +73,29 @@ export default function Responsavel4() {
               />
               <ButtonTextCVS>Ver contatos</ButtonTextCVS>
             </ButtonBox> */}
-
+            <ButtonBox onPress={handlePermissionContacts}>
+              <Image 
+                source={require("../../../assets/iconBlocks.png")}
+                style={{
+                  width: 35, 
+                  height: 35,
+                  marginLeft: 15,
+                  marginTop: 5,
+                  marginBottom: 5
+                }}
+              />
+              <IconButton
+                icon={() => <Feather name="chevron-right" size={25} color="#000" />}
+                style={{
+                  width: 38,
+                  height: 38,
+                  position: "absolute",
+                  right: -10,
+                  top: 6
+                }}
+              />
+              <ButtonTextCTT>Solicitações de amizade</ButtonTextCTT>
+            </ButtonBox>
             <ButtonBox onPress={handleBlockedContacts}>
               <Image 
                 source={require("../../../assets/iconBlocks.png")}
@@ -93,6 +119,8 @@ export default function Responsavel4() {
               />
               <ButtonTextCTT>Contatos bloqueados</ButtonTextCTT>
             </ButtonBox>
+
+            
 
             {/* <ButtonBox>
               <IconButton

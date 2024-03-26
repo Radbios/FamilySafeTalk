@@ -30,7 +30,7 @@ export default function AddContact() {
   const [email, setEmail] = useState(null);
   const [name, setName] = useState(null);
   
-  const handleArrowPress = () => {navigation.pop();};
+  const handleArrowPress = () => {navigation.pop()}
 
   async function contactCreate(){
     const response = await api.post("/contact", 
@@ -41,7 +41,7 @@ export default function AddContact() {
     );
     setName(null)
     setEmail(null)
-    navigation.pop();
+    navigation.navigate('Contatos');
     
   }
 

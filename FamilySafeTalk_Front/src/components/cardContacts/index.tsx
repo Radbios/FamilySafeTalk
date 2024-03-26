@@ -26,7 +26,9 @@ export default function CardContacts({contacts, navigation}) {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <Container>
+      <Container style={{
+        flex:1,
+        }}>
         {
             sortedContacts && sortedContacts.length > 0 ? (sortedContacts.map((contact, index) => {
               const firstLetter = contact.name[0].toUpperCase();
@@ -34,7 +36,7 @@ export default function CardContacts({contacts, navigation}) {
               if (firstLetter !== currentLetter) {
                 currentLetter = firstLetter;
                 return (
-                  <React.Fragment key={index}>
+                  <React.Fragment key={contact.id}>
                     <ContentsBox>
                       <InfosBox1>
                         <NameText>{currentLetter}</NameText>

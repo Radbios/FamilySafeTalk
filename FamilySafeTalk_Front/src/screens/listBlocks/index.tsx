@@ -16,14 +16,9 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import api from "../../services/api";
 
 export default function ListBlocks() {
-  const [isModalVisible, setModalVisible] = useState(false);
 
-  const openModal = (contact) => {
-    setModalVisible(true);
-  };
-
-  const closeModal = () => {
-    setModalVisible(false);
+  const unblock = (contact) => {
+    unblockContact(contact)
   };
 
   const [contacts, setContacts] = useState([]);
@@ -44,6 +39,11 @@ export default function ListBlocks() {
       is_blocked: false,
       name: contact.name
     });
+
+    const updatedContacts = contacts.filter((cont) => cont.id !== contact.id);
+
+    setContacts(updatedContacts)
+
   }
 
   useEffect( () => {
@@ -62,17 +62,8 @@ export default function ListBlocks() {
         <SubtitleText>Conta de {dependent.name}</SubtitleText>
       </SubtitleBox>
       <ContentsContainer>
-        <CardBlock contacts={contacts} openModal={openModal} />
+        <CardBlock contacts={contacts} unblock={unblock} />
       </ContentsContainer>
-      {isModalVisible && (
-        <Modal
-          onClose={closeModal}
-          onSubmit={() => {
-            closeModal();
-          }}
-          deleteMessage="Desbloquear"
-        />
-      )}
     </Container>
   );
 }

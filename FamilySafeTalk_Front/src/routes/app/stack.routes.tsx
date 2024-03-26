@@ -13,6 +13,7 @@ import Preferences from '../../screens/preferences';
 import ListBlocks from '../../screens/listBlocks';
 import Dependent1 from '../../screens/addDependent';
 import EditContact from '../../screens/editContact';
+import FriendshipRequestList from '../../screens/friendshipRequest';
 
 const Stack = createStackNavigator();
 
@@ -83,9 +84,13 @@ export function DependenteStackNavigator() {
                 name="Preferencias do Dependente"
                 component={Preferences}
             />
-             <Stack.Screen
+            <Stack.Screen
                 name="Criar Dependente"
                 component={Dependent1}
+            />
+            <Stack.Screen
+                name="Solicitações de Amizade"
+                component={FriendshipRequestList}
             />
         </Stack.Navigator>
     );
