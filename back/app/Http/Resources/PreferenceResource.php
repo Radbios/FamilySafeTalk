@@ -16,7 +16,8 @@ class PreferenceResource extends JsonResource
     {
 
         $rules = [
-            'add_contact_permission' => $this->add_contact_permission
+            'add_contact_permission' => $this->add_contact_permission,
+            'keywords' => $this->keywords
         ];
 
         return $rules;
