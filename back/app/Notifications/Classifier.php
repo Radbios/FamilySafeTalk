@@ -42,7 +42,7 @@ class Classifier extends Notification
         return (new MailMessage)
                     ->subject("Alerta! Identificamos algo suspeita na conversa de " . $this->child->name . '.')
                     ->greeting("Alerta! Identificamos algo suspeita na conversa de " . $this->child->name)
-                    ->line('Identificamos uma mensagem suspeita:')
+                    ->line('Identificamos uma mensagem suspeita enviada por ' . $this->message->sender->name .' (' . $this->message->sender->email . ')' . ':')
                     ->line($this->message->content);
                     // ->action('Notification Action', 'google.com');
     }
