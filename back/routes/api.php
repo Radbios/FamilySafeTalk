@@ -42,5 +42,5 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::put("/guardian/dependent/{dependent_id}/preferences", [DependentController::class, "setPreference"]);
 
     Route::get("/guardian/dependent/{dependent_id}/contactPermissions", [DependentController::class, "getContactPermissions"]);
-    Route::get("/guardian/dependent/{dependent_id}/acceptContact/{invite_id}", [DependentController::class, "acceptContact"]);
+    Route::post("/guardian/dependent/{dependent_id}/acceptContact/{invite_id}", [DependentController::class, "acceptContact"]);
 });

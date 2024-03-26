@@ -105,18 +105,20 @@ class DependentController extends Controller
         return ContactPermissionRequest::collection($contacts);
     }
 
-    public function AcceptContact(string $child_id, string $invite_id)
+    public function AcceptContact(string $child_id, string $invite_id, int $status)
     {
         $dependent = Auth()->user()->dependents()->where('child_id', $child_id)->first()->info_dependent;
         $invite = $dependent->contact_permissions()->findOrFail($invite_id);
-
-        $new_contact = $dependent->contacts()->create([
-            "name" => $invite->name,
-            "contact_id" => $invite->contact_id
-        ]);
+        if($status)
+        {
+            $new_contact = $dependent->contacts()->create([
+                "name" => $invite->name,
+                "contact_id" => $invite->contact_id
+            ]);
+        }
 
         $invite->delete();
 
-        return new ContactResource($new_contact);
+        return new ContactPermissionRequest($invite);
     }
 }
