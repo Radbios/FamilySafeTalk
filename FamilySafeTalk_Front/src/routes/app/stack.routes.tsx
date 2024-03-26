@@ -14,6 +14,8 @@ import ListBlocks from '../../screens/listBlocks';
 import Dependent1 from '../../screens/addDependent';
 import EditContact from '../../screens/editContact';
 import FriendshipRequestList from '../../screens/friendshipRequest';
+import ListBlocksUser from '../../screens/listBlocksUser';
+import Configuration from '../../screens/configuration';
 
 const Stack = createStackNavigator();
 
@@ -91,6 +93,21 @@ export function DependenteStackNavigator() {
             <Stack.Screen
                 name="Solicitações de Amizade"
                 component={FriendshipRequestList}
+            />
+        </Stack.Navigator>
+    );
+}
+
+export function ConfiguraçõesStackNavigator() {
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen
+                name="Configurações"
+                component={Configuration}
+            />
+            <Stack.Screen
+                name="Contatos Bloqueados"
+                component={ListBlocksUser}
             />
         </Stack.Navigator>
     );

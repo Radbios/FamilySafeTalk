@@ -12,6 +12,7 @@ import Responsavel1 from "../../screens/Responsavel_1";
 import Responsavel3 from "../../screens/Responsavel_3";
 import Responsavel4 from "../../screens/Responsavel_4";
 import {
+  ConfiguraçõesStackNavigator,
   ContatoStackNavigator,
   ConversasStackNavigator,
   DependenteStackNavigator,
@@ -125,9 +126,9 @@ export default function BottomTabNavigator() {
         }
 
         <Tab.Screen
-          name="Configurações"
+          name="ConfiguraçõesNavigator"
           //Voltar SeeContact depois
-          component={Configuration}
+          component={ConfiguraçõesStackNavigator}
           options={{
             tabBarIcon: ({ color }) => (
               <Image
@@ -135,6 +136,8 @@ export default function BottomTabNavigator() {
                 style={{ width: 33, height: 27, tintColor: color }}
               />
             ),
+              tabBarLabel: "Configurações",
+              headerTitle: "Configurações",
           }}
         />
       </Tab.Navigator>
